@@ -1,0 +1,10 @@
+- Bibliotecas
+ - Domínios (tipos básicos)
+  - Código de projeto, etc.
+ - Entidades
+  - Gerente de sistema
+  - Gerente de projeto
+  - Desenvolvedor
+  - Projeto
+  - etc.
+ - Testes de unidade
