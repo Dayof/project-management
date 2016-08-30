@@ -2,6 +2,9 @@
 #include <string>
 #include <vector>
 #include <cstdio>
+#include <exception>
+
+using namespace std;
 
 #define ACTIVE 1
 #define INACTIVE 2
