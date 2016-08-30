@@ -8,3 +8,7 @@
   - Projeto
   - etc.
  - Testes de unidade
+ - Controladores
+  - Controle de UI (TUI, GUI) + Stub
+  - Controle de lógica de negócio + Stub
+  - Controle de persistência + Stub
