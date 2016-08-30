@@ -1,9 +1,4 @@
 #define CATCH_CONFIG_MAIN
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <cstdio>
 #include "catch.hpp"
 
 unsigned int Factorial( unsigned int number ) {
