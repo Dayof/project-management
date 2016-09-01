@@ -123,7 +123,8 @@ public:
   Project (string name="",
           string cod="000",
           string init_date="00/00/0000",
-          string end_date="30/12/2000");
+          string end_date="30/12/2000",
+          char phase=INIT);
 
   void setName(string name){this->name = name;};
   string getName() const {return this->name;};
