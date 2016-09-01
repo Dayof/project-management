@@ -8,6 +8,13 @@ class myexception: public exception
   }
 };
 
+SysManager::SysManager(string name, string registration, string password)
+{
+  this->name = name;
+  this->registration = registration;
+  this->password = password;
+}
+
 int main ()
 {
   try
