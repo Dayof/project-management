@@ -1,3 +1,14 @@
 ## Project Management
 
-Projeto 1 da matéria de Técnicas de Programação 1, 2016/2. 
+Gerenciamento de projetos em organizações.
+
+### Executar
+
+``` bash
+$ make all
+$ ./Main
+```
+
+### Motivação 
+Projeto da matéria de Técnicas de Programação 1, professor Fernando Chacon. </br>
+Universidade de Brasília (UnB), 2016/2.
