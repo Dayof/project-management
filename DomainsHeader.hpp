@@ -26,7 +26,6 @@ private:
     string name, registration, password;
 public:
   ~SysManager ();
-  SysManager ();
   SysManager(string name="",
             string registration="000",
             string password="123456");
@@ -47,7 +46,6 @@ private:
   string init_date, end_date;
 public:
   ~Phase ();
-  Phase ();
   Phase (char phase=INIT,
         string init_date="00/00/0000",
         string end_date="30/12/2000");
@@ -67,7 +65,6 @@ private:
   string name, registration, password, phone;
 public:
   ~ProjectManager ();
-  ProjectManager ();
   ProjectManager (string name="",
                   string registration="000",
                   string password="123456",
@@ -92,7 +89,6 @@ private:
     char role;
 public:
   ~Developer ();
-  Developer ();
   Developer (string name="",
             string registration="000",
             string password="123456",
@@ -124,7 +120,6 @@ private:
   Phase phase;
 public:
   ~Project ();
-  Project ();
   Project (string name="",
           string cod="000",
           string init_date="00/00/0000",
