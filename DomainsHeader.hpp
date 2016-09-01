@@ -27,7 +27,9 @@ private:
 public:
   ~SysManager ();
   SysManager ();
-  SysManager(string, string, string);
+  SysManager(string name="",
+            string registration="000",
+            string password="123456");
 
   void setName(string name){this->name = name;};
   string getName() const {return this->name;};
@@ -46,7 +48,9 @@ private:
 public:
   ~Phase ();
   Phase ();
-  Phase (char, string, string);
+  Phase (char phase=INIT,
+        string init_date="00/00/0000",
+        string end_date="30/12/2000");
 
   void setPhase(char phase){this->phase = phase;};
   char getPhase() const {return this->phase;};
@@ -64,7 +68,10 @@ private:
 public:
   ~ProjectManager ();
   ProjectManager ();
-  ProjectManager (string, string, string, string);
+  ProjectManager (string name="",
+                  string registration="000",
+                  string password="123456",
+                  string phone="99999999");
 
   void setName(string name){this->name = name;};
   string getName() const {return this->name;};
@@ -86,7 +93,10 @@ private:
 public:
   ~Developer ();
   Developer ();
-  Developer (string, string, string, string);
+  Developer (string name="",
+            string registration="000",
+            string password="123456",
+            string email="x@y.z");
 
   void setName(string name){this->name = name;};
   string getName() const {return this->name;};
@@ -115,7 +125,10 @@ private:
 public:
   ~Project ();
   Project ();
-  Project (string, string, string, string);
+  Project (string name="",
+          string cod="000",
+          string init_date="00/00/0000",
+          string end_date="30/12/2000");
 
   void setName(string name){this->name = name;};
   string getName() const {return this->name;};
