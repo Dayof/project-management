@@ -1,12 +1,12 @@
 - Bibliotecas
  - Domínios (tipos básicos)
-	- Código de projeto, etc.
- - Entidades
-	- Gerente de sistema
-	- Gerente de projeto
-	- Desenvolvedor
-	- Projeto
-	- etc.
+	- Código de projeto, etc. 
+ - Entidades [OK]
+	- Gerente de sistema [OK]
+	- Gerente de projeto [OK]
+	- Desenvolvedor [OK]
+	- Projeto [OK]
+	- Fase [OK]
  - Testes de unidade
  - Controladores
 	- Controle de UI (TUI, GUI) + Stub
@@ -14,7 +14,7 @@
 	- Controle de persistência + Stub
  - Telas
  - Builders
- 
+
 
 -> Apresentação :
 	- UI (Apt, navegação)

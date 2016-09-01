@@ -1,13 +1,7 @@
-#ifndef DOMAINS_AND_ENTITY_HEADER
-#define DOMAINS_AND_ENTITY_HEADER
+#ifndef ENTITY_HEADER
+#define ENTITY_HEADER
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <cstdio>
-#include <exception>
-
-using namespace std;
+#include "Headers.hpp"
 
 #define ACTIVE 1
 #define INACTIVE 2
@@ -155,7 +149,6 @@ public:
 
   void addDev(Developer);
   vector<Developer> getDev();
-
 };
 
 #endif
