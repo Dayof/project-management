@@ -1,4 +1,4 @@
 language: cpp
 install: make all
-script: scons
 compiler: gcc
+script: ./UnitTest
