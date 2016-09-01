@@ -1,4 +1,4 @@
-#include "DomainsHeader.hpp"
+#include "Entity.hpp"
 
 class myexception: public exception
 {
