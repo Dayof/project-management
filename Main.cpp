@@ -13,12 +13,15 @@ int main ()
   try
   {
     myexception *me = new myexception();
-    throw *me;
+    //throw *me;
   }
   catch (exception& e)
   {
     cout << e.what() << '\n';
   }
+
+  SysManager* sm = new SysManager("josef", "001", "pass_secure");
+  cout << sm->getName() << endl;
 
   return 0;
 }

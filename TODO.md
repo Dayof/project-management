@@ -12,7 +12,9 @@
 	- Controle de UI (TUI, GUI) + Stub
 	- Controle de lógica de negócio + Stub
 	- Controle de persistência + Stub
-
+ - Telas
+ - Builders
+ 
 
 -> Apresentação :
 	- UI (Apt, navegação)
