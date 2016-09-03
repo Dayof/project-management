@@ -2,11 +2,14 @@ language: cpp
 
 compiler:
   - gcc
-  
+
 script:
   - ./UnitTest
 
 install: make all
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 addons:
     code_climate:
