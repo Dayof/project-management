@@ -1,4 +1,7 @@
-## Project Management
+Project Management
+=============
+
+[![Build Status](https://travis-ci.org/Dayof/project-management.svg?branch=master)](https://travis-ci.org/Dayof/project-management)
 
 Gerenciamento de projetos em organizações.
 
