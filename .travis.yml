@@ -10,13 +10,7 @@ script:
   - ./UnitTest --enable-gcov && make && make check
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; eval "$(pyenv init -)"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; pyenv install 2.7.6; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; pyenv global 2.7.6; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; pyenv rehash; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; pip install cpp-coveralls; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; pyenv rehash; fi
+  - pip install cpp-coveralls
 
 install: make all
 
