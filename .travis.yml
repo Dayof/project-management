@@ -1,8 +1,5 @@
 language: cpp
 
-os:
-  - osx
-
 compiler:
   - gcc
 
@@ -10,7 +7,7 @@ script:
   - ./UnitTest --enable-gcov && make && make check
 
 before_install:
-  - sudo pip install cpp-coveralls
+  - sudo pip install --user cpp-coveralls
 
 install: make all
 
