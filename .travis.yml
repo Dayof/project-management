@@ -1,4 +1,13 @@
 language: cpp
+
+compiler:
+  - gcc
+  
+script:
+  - ./UnitTest
+
 install: make all
-compiler: gcc
-script: ./UnitTest
+
+addons:
+    code_climate:
+        repo_token: a6e4ea0199663c3afe02fdf8fd6f5ce14987e333c1a04204dbaa3101dd0866ac
