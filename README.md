@@ -3,7 +3,7 @@ Project Management
 
 [![Build Status](https://travis-ci.org/Dayof/project-management.svg?branch=master)](https://travis-ci.org/Dayof/project-management)
 
-Gerenciamento de projetos em organizações.
+Gerenciamento de projetos em organizaÃ§Ãµes.
 
 ### Executar
 
@@ -12,6 +12,6 @@ $ make all
 $ ./Main
 ```
 
-### Motivação
-Projeto da matéria de Técnicas de Programação 1, professor Fernando Chacon. </br>
-Universidade de Brasília (UnB), 2016/2.
+### MotivaÃ§Ã£o
+Projeto da matÃ©ria de TÃ©cnicas de ProgramaÃ§Ã£o 1, professor Fernando Chacon. </br>
+Universidade de BrasÃ­lia (UnB), 2016/2.

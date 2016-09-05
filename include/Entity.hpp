@@ -151,5 +151,4 @@ public:
   vector<Developer> getDev();
 };
 
-
 #endif // ENTITY_HPP_INCLUDED

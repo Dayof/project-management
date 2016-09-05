@@ -1,6 +1,6 @@
 - Bibliotecas
- - Domínios (tipos básicos)
-	- Código de projeto, etc.
+ - DomÃ­nios (tipos bÃ¡sicos)
+	- CÃ³digo de projeto, etc.
  - Entidades [OK]
 	- Gerente de sistema [OK]
 	- Gerente de projeto [OK]
@@ -10,43 +10,41 @@
  - Testes de unidade
  - Controladores
 	- Controle de UI (TUI, GUI) + Stub
-	- Controle de lógica de negócio + Stub
-	- Controle de persistência + Stub
+	- Controle de lÃ³gica de negÃ³cio + Stub
+	- Controle de persistÃªncia + Stub
  - Telas
  - Builders
 
-
--> Apresentação :
-	- UI (Apt, navegação)
-	- Validação (Formato)
+-> ApresentaÃ§Ã£o :
+	- UI (Apt, navegaÃ§Ã£o)
+	- ValidaÃ§Ã£o (Formato)
 
 --INTERFACE--
-  -> Inicialização/Controle
+  -> InicializaÃ§Ã£o/Controle
     -> MIUIC
       -> Ctrl IUIC (INTERFACE->ILNIC para NEGOCIO)
-  -> Gestão de membros de projeto
+  -> GestÃ£o de membros de projeto
     -> MIUGMP
       -> Ctrl IUGMP (INTERFACE-> para NEGOCIO)
-  -> Gestão de Projeto
+  -> GestÃ£o de Projeto
    -> MUIGP
       -> Ctrl IUGP (INTERFACE-> para NEGOCIO)
 
--> Negócio :
-	- Regras de negócio
+-> NegÃ³cio :
+	- Regras de negÃ³cio
 
 --INTERFACE--
--> Inicialização/Controle
+-> InicializaÃ§Ã£o/Controle
   -> MLNIC
     -> Ctrl LNIC (INTERFACE->IPER para PERSISTENCIA)
--> Gestão de membros de projeto
+-> GestÃ£o de membros de projeto
   -> MLNGMP
     -> Ctrl LNGMP (INTERFACE->IPER para PERSISTENCIA)
--> Gestão de Projeto
+-> GestÃ£o de Projeto
  -> MLNGP
     -> Ctrl LNGP (INTERFACE->IPER para PERSISTENCIA)
 
--> Persistência :
-	- Armazenamento
+-> PersistÃªncia :
 
 --INTERFACE--
   -> IPER : MPERS
