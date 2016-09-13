@@ -4,6 +4,6 @@ compiler:
   - gcc
 
 script:
-  - ./UnitTest
+  - ./main
 
 install: make all
