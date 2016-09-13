@@ -1,0 +1,9 @@
+language: cpp
+
+compiler:
+  - gcc
+
+script:
+  - ./UnitTest
+
+install: make all

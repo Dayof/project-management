@@ -82,8 +82,8 @@ int main ()
     cout << e.what() << '\n';
   }
 
-  SysManager* sm = new SysManager("124", "123", "1");
-  cout << sm->getPassword() << endl;
+ SysManager* sm = new SysManager();
+ cout << sm->getPassword() << endl;
 
   return 0;
 }
