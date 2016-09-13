@@ -1,29 +1,30 @@
 TARGET_MAIN=main
-TARGET_TEST=test
 TARGET_REMOVE=rm
 TARGET_ALL=all
 
 DIR_SRC=src/
 DIR_INC=include/
-DIR_TEST=tests/
-
-FILE_SRC=Main
-FILE_TEST=UnitTest
+DIR_OBJ=obj/
 
 PATH_SRC=$(DIR_SRC)$(FILE_SRC)
-PATH_TEST=$(DIR_TEST)$(FILE_TEST)
+
+_DEPS=catch.hpp Domain.hpp Entity.hpp Headers.hpp
+DEPS = $(patsubst %,$(DIR_INC)%,$(_DEPS))
+
+_OBJ=Main.o Domain.o Entity.o 
+OBJ = $(patsubst %,$(DIR_OBJ)%,$(_OBJ))
 
 CFLAGS= g++
-SU=sudo
 
-$(TARGET_ALL): $(TARGET_REMOVE) $(TARGET_MAIN) $(TARGET_TEST)
+$(DIR_OBJ)%.o: $(DIR_SRC)%.cpp $(DEPS)
+	$(CFLAGS) -c -o $@ $< -I$(DIR_INC)
 
-$(TARGET_MAIN):
-	$(CFLAGS) $(PATH_SRC).cpp -o $(FILE_SRC) -I$(DIR_INC)
+$(TARGET_ALL): $(TARGET_REMOVE) $(TARGET_MAIN)
 
-$(TARGET_TEST):
-	$(CFLAGS) $(PATH_TEST).cpp -o $(FILE_TEST) -I$(DIR_INC)
+$(TARGET_MAIN): $(OBJ)
+	$(CFLAGS) -o $@ $^ -I$(DIR_INC)
 
 $(TARGET_REMOVE):
-	$(TARGET_REMOVE) -f $(FILE_SRC)
-	$(TARGET_REMOVE) -f $(FILE_TEST)
+	$(TARGET_REMOVE) -f $(TARGET_MAIN)
+
+

@@ -11,6 +11,6 @@ public:
 
     void setName(string name);
     string getName() const;
-}
+};
 
 #endif // DOMAIN_HPP_INCLUDED
