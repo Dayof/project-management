@@ -102,8 +102,39 @@ SCENARIO("estado de projeto e inicializado", "[project_state]") {
 
         WHEN( "com mais de 1 digito" ) {
             project_state = 23;
-            THEN( "o codigo de projeto e atribuido e lanca excecao" ) {
+            THEN( "o codigo de projeto nao e atribuido e lanca excecao" ) {
                CHECK_THROWS(ProjectState{project_state});
+            }
+        }
+    }
+}
+
+SCENARIO("fase de projeto e inicializado", "[project_phase]") {
+
+    GIVEN("inteiro para iniciar a fase de projeto") {
+        int project_phase;
+
+        WHEN( "construtor sem parametro" ) {
+            ProjectPhase* projectPhase = new ProjectPhase();
+
+            THEN( "a fase de projeto e atribuida com valor default '0' " ) {
+               REQUIRE(projectPhase->getProjectPhase() == 0);
+            }
+        }
+
+        WHEN( "com menos de 2 digitos e com caracteres validos" ) {
+            project_phase = 7;
+            ProjectPhase* projectPhase = new ProjectPhase(project_phase);
+
+            THEN( "a fase de projeto e atribuida" ) {
+                REQUIRE(projectPhase->getProjectPhase() == project_phase);
+            }
+        }
+
+        WHEN( "com mais de 1 digito" ) {
+            project_phase = 23;
+            THEN( "a fase de projeto nao e atribuida e lanca excecao" ) {
+               CHECK_THROWS(ProjectPhase{project_phase});
             }
         }
     }

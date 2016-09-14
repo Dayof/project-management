@@ -35,6 +35,20 @@ void ProjectState::setProjectState(int project_state)
         "maximo 1 digito.");
 }
 
+ProjectPhase::ProjectPhase(int project_phase)
+{
+  setProjectPhase(project_phase);
+}
+
+void ProjectPhase::setProjectPhase(int project_phase)
+{
+    if(project_phase <= 9 && project_phase>=0)
+        this->project_phase=project_phase;
+    else throw invalid_argument("Fase invalida. Tente algum numero com no"
+        "maximo 1 digito.");
+}
+
+
 Name::Name(string name)
 {
   setName(name);

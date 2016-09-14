@@ -23,6 +23,16 @@ public:
     int getProjectState() const {return this->project_state;};
 };
 
+class ProjectPhase {
+private:
+    int project_phase;
+public:
+    ProjectPhase(int project_phase=0);
+
+    void setProjectPhase(int project_phase);
+    int getProjectPhase() const {return this->project_phase;};
+};
+
 class Name {
 private:
     string name;
