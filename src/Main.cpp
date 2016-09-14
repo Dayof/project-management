@@ -2,23 +2,28 @@
 #define CATCH_CONFIG_MAIN
 
 #include "catch.hpp"
-#include "Entity.hpp"
+#include "Domain.hpp"
 
-unsigned int Factorial( unsigned int number ) {
-    return number <= 1 ? number : Factorial(number-1)*number;
-}
+SCENARIO("nome eh inicializado", "[nome]") {
 
-TEST_CASE( "Testing Entities", "[entity]" ) {
+    GIVEN("strings para iniciar o nome") {
+        string person_name_valid = "taylor";
+        string person_name_invalid = "eudhfjrhdjthfkdsddhgjthg";
 
-    SECTION("Setting SysManager")
-    {
-        SysManager* sm = new SysManager("1", "1", "1");
-        REQUIRE( sm->getPassword() == "2" );
+        WHEN( "com menos de 20 caracteres" ) {
+            Name* name = new Name(person_name_valid);
+
+            THEN( "o nome e atribuido e nao lanca excecao" ) {
+                REQUIRE(name->getName().length() == person_name_valid.length());
+            }
+        }
+
+        WHEN( "com mais de 20 caracteres" ) {
+            THEN( "o nome e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Name{person_name_invalid});
+            }
+        }
     }
-
-    REQUIRE( Factorial(1) == 1 );
-    REQUIRE( Factorial(2) == 2 );
-    REQUIRE( Factorial(3) == 6 );
 }
 
 #endif

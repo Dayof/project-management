@@ -14,7 +14,7 @@ DEPS = $(patsubst %,$(DIR_INC)%,$(_DEPS))
 _OBJ=Main.o Domain.o Entity.o 
 OBJ = $(patsubst %,$(DIR_OBJ)%,$(_OBJ))
 
-CFLAGS=g++ -std=c++11 
+CFLAGS=g++ -std=c++0x 
 
 $(DIR_OBJ)%.o: $(DIR_SRC)%.cpp $(DEPS)
 	$(CFLAGS) -c -o $@ $< -I$(DIR_INC)

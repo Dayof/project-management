@@ -10,7 +10,7 @@ public:
     Name(string name="");
 
     void setName(string name);
-    string getName() const;
+    string getName() const {return this->name;};
 };
 
 #endif // DOMAIN_HPP_INCLUDED

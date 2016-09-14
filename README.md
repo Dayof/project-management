@@ -9,7 +9,7 @@ Gerenciamento de projetos em organizações.
 
 ``` bash
 $ make all
-$ ./Main
+$ ./main -r junit -o tests_results.xml
 ```
 
 ### Motivação
