@@ -3,16 +3,6 @@
 
 #include "Headers.hpp"
 
-class Name {
-private:
-    string name;
-public:
-    Name(string name="Crazy Person");
-
-    void setName(string name);
-    string getName() const {return this->name;};
-};
-
 class ProjectCode {
 private:
     string cod_project;
@@ -21,6 +11,26 @@ public:
 
     void setCodProject(string cod_project);
     string getCodProject() const {return this->cod_project;};
+};
+
+class ProjectState {
+private:
+    int project_state;
+public:
+    ProjectState(int project_state=0);
+
+    void setProjectState(int project_state);
+    int getProjectState() const {return this->project_state;};
+};
+
+class Name {
+private:
+    string name;
+public:
+    Name(string name="");
+
+    void setName(string name);
+    string getName() const {return this->name;};
 };
 
 #endif // DOMAIN_HPP_INCLUDED
