@@ -6,24 +6,42 @@
 
 SCENARIO("nome eh inicializado", "[nome]") {
 
-    GIVEN("strings para iniciar o nome") {
-        string person_name_valid = "taylor";
-        string person_name_invalid = "eudhfjrhdjthfkdsddhgjthg";
+    GIVEN("string para iniciar o nome") {
+        string name_person;
 
         WHEN( "com menos de 20 caracteres" ) {
-            Name* name = new Name(person_name_valid);
+            name_person = "taylor";
+            Name* name = new Name(name_person);
 
-            THEN( "o nome e atribuido e nao lanca excecao" ) {
-                REQUIRE(name->getName().length() == person_name_valid.length());
+            THEN( "o nome e atribuido" ) {
+                REQUIRE(name->getName().length() == name_person.length());
             }
         }
 
         WHEN( "com mais de 20 caracteres" ) {
+            name_person = "eudhfjrhdjthfkdsddhgjthg";
             THEN( "o nome e atribuido e lanca excecao" ) {
-                CHECK_THROWS(Name{person_name_invalid});
+                CHECK_THROWS(Name{name_person});
+            }
+        }
+
+        WHEN( "com caracteres validos" ) {
+            name_person = "Utada Hikaru";
+            Name* name = new Name(name_person);
+
+            THEN( "o nome e atribuido" ) {
+                REQUIRE(name->getName().length() == name_person.length());
+            }
+        }
+
+        WHEN( "com caracteres invalidos" ) {
+            name_person = "utada|@_@|hikaru  ";
+            THEN( "o nome nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Name{name_person});
             }
         }
     }
 }
+
 
 #endif
