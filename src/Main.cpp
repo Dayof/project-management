@@ -48,8 +48,8 @@ SCENARIO("codigo de projeto e inicializado", "[cod_project]") {
         WHEN( "construtor sem parametro" ) {
             ProjectCode* projectCode = new ProjectCode();
 
-            THEN( "o codigo de projeto e atribuido com valor default 'AAA'" ) {
-               REQUIRE(projectCode->getCodProject() == "AAA");
+            THEN( "o codigo de projeto e atribuido com valor default 'AAAAA'" ) {
+               REQUIRE(projectCode->getCodProject() == "AAAAA");
             }
         }
 
@@ -86,8 +86,8 @@ SCENARIO("estado de projeto e inicializado", "[project_state]") {
         WHEN( "construtor sem parametro" ) {
             ProjectState* projectState = new ProjectState();
 
-            THEN( "o estado de projeto e atribuido com valor default '0' " ) {
-               REQUIRE(projectState->getProjectState() == 0);
+            THEN( "o estado de projeto e atribuido com valor default '1' " ) {
+               REQUIRE(projectState->getProjectState() == 1);
             }
         }
 
@@ -117,8 +117,8 @@ SCENARIO("fase de projeto e inicializado", "[project_phase]") {
         WHEN( "construtor sem parametro" ) {
             ProjectPhase* projectPhase = new ProjectPhase();
 
-            THEN( "a fase de projeto e atribuida com valor default '0' " ) {
-               REQUIRE(projectPhase->getProjectPhase() == 0);
+            THEN( "a fase de projeto e atribuida com valor default '1' " ) {
+               REQUIRE(projectPhase->getProjectPhase() == 1);
             }
         }
 
@@ -135,6 +135,35 @@ SCENARIO("fase de projeto e inicializado", "[project_phase]") {
             project_phase = 23;
             THEN( "a fase de projeto nao e atribuida e lanca excecao" ) {
                CHECK_THROWS(ProjectPhase{project_phase});
+            }
+        }
+    }
+}
+
+SCENARIO("funcao e inicializada", "[role]") {
+
+    GIVEN("inteiro para iniciar a funcao") {
+        int role_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "a funcao nao e atribuida e lanca excecao" ) {
+               CHECK_THROWS(Role{});
+            }
+        }
+
+        WHEN( "com menos de 2 digitos e com caracteres validos" ) {
+            role_stub = 7;
+            Role* role = new Role(role_stub);
+
+            THEN( "a funcao e atribuida" ) {
+                REQUIRE(role->getRole() == role_stub);
+            }
+        }
+
+        WHEN( "com mais de 1 digito" ) {
+            role_stub = 23;
+            THEN( "a funcao nao e atribuida e lanca excecao" ) {
+               CHECK_THROWS(Role{role_stub});
             }
         }
     }

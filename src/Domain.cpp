@@ -48,6 +48,19 @@ void ProjectPhase::setProjectPhase(int project_phase)
         "maximo 1 digito.");
 }
 
+Role::Role(int role)
+{
+  setRole(role);
+}
+
+void Role::setRole(int role)
+{
+    if(role <= 9 && role>0)
+        this->role=role;
+    else throw invalid_argument("Funcao invalida. Tente algum numero com no"
+        "maximo 1 digito.");
+}
+
 
 Name::Name(string name)
 {
