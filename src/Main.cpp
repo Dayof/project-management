@@ -91,8 +91,8 @@ SCENARIO("estado de projeto e inicializado", "[project_state]") {
             }
         }
 
-        WHEN( "com menos de 2 digitos e com caracteres validos" ) {
-            project_state = 7;
+        WHEN( "com menos de 2 digitos e com valores validos" ) {
+            project_state = 2;
             ProjectState* projectState = new ProjectState(project_state);
 
             THEN( "o estado de projeto e atribuido" ) {
@@ -104,6 +104,13 @@ SCENARIO("estado de projeto e inicializado", "[project_state]") {
             project_state = 23;
             THEN( "o codigo de projeto nao e atribuido e lanca excecao" ) {
                CHECK_THROWS(ProjectState{project_state});
+            }
+        }
+
+         WHEN( "com valores invalidos" ) {
+            project_state = 3;
+            THEN( "o codigo de projeto nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(ProjectState{project_state});
             }
         }
     }
@@ -122,8 +129,8 @@ SCENARIO("fase de projeto e inicializado", "[project_phase]") {
             }
         }
 
-        WHEN( "com menos de 2 digitos e com caracteres validos" ) {
-            project_phase = 7;
+        WHEN( "com menos de 2 digitos e com valores validos" ) {
+            project_phase = 2;
             ProjectPhase* projectPhase = new ProjectPhase(project_phase);
 
             THEN( "a fase de projeto e atribuida" ) {
@@ -135,6 +142,13 @@ SCENARIO("fase de projeto e inicializado", "[project_phase]") {
             project_phase = 23;
             THEN( "a fase de projeto nao e atribuida e lanca excecao" ) {
                CHECK_THROWS(ProjectPhase{project_phase});
+            }
+        }
+
+        WHEN( "com valores invalidos" ) {
+            project_phase = 5;
+            THEN( "a fase de projeto nao e atribuida e lanca excecao" ) {
+                CHECK_THROWS(ProjectPhase{project_phase});
             }
         }
     }
@@ -151,8 +165,8 @@ SCENARIO("funcao e inicializada", "[role]") {
             }
         }
 
-        WHEN( "com menos de 2 digitos e com caracteres validos" ) {
-            role_stub = 7;
+        WHEN( "com menos de 2 digitos e com valores validos" ) {
+            role_stub = 3;
             Role* role = new Role(role_stub);
 
             THEN( "a funcao e atribuida" ) {
@@ -164,6 +178,13 @@ SCENARIO("funcao e inicializada", "[role]") {
             role_stub = 23;
             THEN( "a funcao nao e atribuida e lanca excecao" ) {
                CHECK_THROWS(Role{role_stub});
+            }
+        }
+
+         WHEN( "com valores invalidos" ) {
+            role_stub = 5;
+            THEN( "a funcao nao e atribuida e lanca excecao" ) {
+                CHECK_THROWS(Role{role_stub});
             }
         }
     }

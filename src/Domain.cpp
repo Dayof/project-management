@@ -9,7 +9,7 @@ void ProjectCode::setCodProject(string cod_project)
 {
     if(cod_project.length() <= 5 && cod_project.length()>0)
         this->cod_project=cod_project;
-    else throw invalid_argument("Codigo invalido. Tente algum codigo com no"
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum codigo com no"
         "maximo 5 caracteres.");
 
     for(int i=0; i<cod_project.length(); ++i)
@@ -17,7 +17,7 @@ void ProjectCode::setCodProject(string cod_project)
         if((cod_project[i] >= 65 && cod_project[i] <= 90) ||
             (cod_project[i] >= 95 && cod_project[i] <= 122))
             this->cod_project=cod_project;
-        else throw invalid_argument("Nome invalido. Tente algum codigo"
+        else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum codigo"
         "com caracteres entre A-Z.");
     }
 }
@@ -29,10 +29,10 @@ ProjectState::ProjectState(int project_state)
 
 void ProjectState::setProjectState(int project_state)
 {
-    if(project_state <= 9 && project_state>=0)
+    if(project_state==1  || project_state==2)
         this->project_state=project_state;
-    else throw invalid_argument("Estado invalido. Tente algum codigo com no"
-        "maximo 1 digito.");
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum codigo com no"
+        "maximo 1 digito, sendo 1 para 'Ativo' e 2 para 'Inativo'.");
 }
 
 ProjectPhase::ProjectPhase(int project_phase)
@@ -42,10 +42,11 @@ ProjectPhase::ProjectPhase(int project_phase)
 
 void ProjectPhase::setProjectPhase(int project_phase)
 {
-    if(project_phase <= 9 && project_phase>=0)
+    if(project_phase <= 4 && project_phase>=1)
         this->project_phase=project_phase;
-    else throw invalid_argument("Fase invalida. Tente algum numero com no"
-        "maximo 1 digito.");
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum numero com no"
+        "maximo 1 digito, sendo 1 para 'Iniciacao', 2 'Preparacao', 3 'Execucao' e"
+        " 4 para 'Encerramento'.");
 }
 
 Role::Role(int role)
@@ -55,12 +56,11 @@ Role::Role(int role)
 
 void Role::setRole(int role)
 {
-    if(role <= 9 && role>0)
+    if(role <= 3 && role>0)
         this->role=role;
-    else throw invalid_argument("Funcao invalida. Tente algum numero com no"
-        "maximo 1 digito.");
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum numero com no"
+        "maximo 1 digito, sendo 1 para 'Analista', 2 'Projetista' e 3 para 'Programador'.");
 }
-
 
 Name::Name(string name)
 {
@@ -70,7 +70,7 @@ Name::Name(string name)
 void Name::setName(string name)
 {
     if(name.length() <= 20 && name.length()>0) this->name=name;
-    else throw invalid_argument("Nome invalido. Tente algum nome com no"
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum nome com no"
         "maximo 20 caracteres.");
 
     for(int i=0; i<name.length(); ++i)
@@ -78,7 +78,7 @@ void Name::setName(string name)
         if((name[i] >= 65 && name[i] <= 90) ||
             (name[i] >= 95 && name[i] <= 122) ||
             (name[i] == 32)) this->name=name;
-        else throw invalid_argument("Nome invalido. Tente algum nome"
+        else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum nome"
         "com caracteres entre A-Z ou espaco em branco.");
     }
 }
