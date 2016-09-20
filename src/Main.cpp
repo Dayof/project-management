@@ -105,7 +105,7 @@ SCENARIO("estado de projeto e inicializado", "[project_state]") {
             }
         }
 
-        WHEN( "com menos de 2 digitos e com valores validos" ) {
+        WHEN( "com valores validos, CASO: 1 digito entre 0-9" ) {
             project_state = 2;
             ProjectState* projectState = new ProjectState(project_state);
 
@@ -114,14 +114,14 @@ SCENARIO("estado de projeto e inicializado", "[project_state]") {
             }
         }
 
-        WHEN( "com mais de 1 digito" ) {
+        WHEN( "com valores invalidos, CASO 1: Mais de 1 digito" ) {
             project_state = 23;
             THEN( "o codigo de projeto nao e atribuido e lanca excecao" ) {
                CHECK_THROWS(ProjectState{project_state});
             }
         }
 
-         WHEN( "com valores invalidos" ) {
+         WHEN( "com valores invalidos, CASO 2: Valores nao permitidos" ) {
             project_state = 3;
             THEN( "o codigo de projeto nao e atribuido e lanca excecao" ) {
                 CHECK_THROWS(ProjectState{project_state});
@@ -143,7 +143,7 @@ SCENARIO("fase de projeto e inicializado", "[project_phase]") {
             }
         }
 
-        WHEN( "com menos de 2 digitos e com valores validos" ) {
+        WHEN( "com valores validos, CASO: 1 digito entre 0-9") {
             project_phase = 2;
             ProjectPhase* projectPhase = new ProjectPhase(project_phase);
 
@@ -152,14 +152,14 @@ SCENARIO("fase de projeto e inicializado", "[project_phase]") {
             }
         }
 
-        WHEN( "com mais de 1 digito" ) {
+        WHEN( "com valores invalidos, CASO 1: Mais de 1 digito" ) {
             project_phase = 23;
             THEN( "a fase de projeto nao e atribuida e lanca excecao" ) {
                CHECK_THROWS(ProjectPhase{project_phase});
             }
         }
 
-        WHEN( "com valores invalidos" ) {
+        WHEN( "com valores invalidos, CASO 2: Valores nao permitidos" ) {
             project_phase = 5;
             THEN( "a fase de projeto nao e atribuida e lanca excecao" ) {
                 CHECK_THROWS(ProjectPhase{project_phase});
