@@ -7,19 +7,12 @@ ProjectCode::ProjectCode(string cod_project)
 
 void ProjectCode::setCodProject(string cod_project)
 {
-    if(cod_project.length() <= 5 && cod_project.length()>0)
-        this->cod_project=cod_project;
-    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum codigo com no"
-        "maximo 5 caracteres.");
+    bool valid_cod = regex_match(cod_project,
+    regex("^[A-Z]{5}$") );
 
-    for(int i=0; i<cod_project.length(); ++i)
-    {
-        if((cod_project[i] >= 65 && cod_project[i] <= 90) ||
-            (cod_project[i] >= 95 && cod_project[i] <= 122))
-            this->cod_project=cod_project;
-        else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum codigo"
-        "com caracteres entre A-Z.");
-    }
+    if(valid_cod) this->cod_project=cod_project;
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum codigo com"
+        " 5 caracteres do tipo A-Z .");
 }
 
 ProjectState::ProjectState(int project_state)

@@ -53,24 +53,38 @@ SCENARIO("codigo de projeto e inicializado", "[cod_project]") {
             }
         }
 
-        WHEN( "com menos de 6 caracteres e com caracteres validos" ) {
-            cod_project = "MIT";
+        WHEN("com valores validos, CASO: 5 letras de A-Z") {
+            cod_project = "ABCDE";
             ProjectCode* projectCode = new ProjectCode(cod_project);
 
             THEN( "o codigo de projeto e atribuido" ) {
-                REQUIRE(projectCode->getCodProject().length() == cod_project.length());
+                REQUIRE(projectCode->getCodProject() == cod_project);
             }
         }
 
-        WHEN( "com mais de 5 caracteres" ) {
-            cod_project = "MITMIT";
-            THEN( "o codigo de projeto e atribuido e lanca excecao" ) {
+         WHEN( "com valores invalidos, CASO 1: Menos de 5 caracteres" ) {
+            cod_project = "MIT";
+            THEN( "o codigo de projeto nao e atribuido e lanca excecao"  ) {
                 CHECK_THROWS(ProjectCode{cod_project});
             }
         }
 
-        WHEN( "com caracteres invalidos" ) {
-            cod_project = "M I_T";
+        WHEN( "com valores invalidos, CASO 2: Mais de 5 caracteres" ) {
+            cod_project = "MITMIT";
+            THEN( "o codigo de projeto nao e atribuido e lanca excecao"  ) {
+                 CHECK_THROWS(ProjectCode{cod_project});
+            }
+        }
+
+        WHEN(  "com valores invalidos, CASO 3: Caracteres a-z" ) {
+            cod_project = "mitmit";
+            THEN( "o codigo de projeto nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(ProjectCode{cod_project});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 4: Caracteres especiais" ) {
+            cod_project = "MIT_$";
             THEN( "o codigo de projeto nao e atribuido e lanca excecao" ) {
                 CHECK_THROWS(ProjectCode{cod_project});
             }
@@ -190,13 +204,13 @@ SCENARIO("funcao e inicializada", "[role]") {
     }
 }
 
-SCENARIO("e-mail e inicializada", "[email]") {
+SCENARIO("e-mail e inicializado", "[email]") {
 
     GIVEN("string para iniciar o e-mail") {
         string email_stub;
 
         WHEN( "construtor sem parametro" ) {
-            THEN( "o email nao e atribuida e lanca excecao" ) {
+            THEN( "o email nao e atribuido e lanca excecao" ) {
                CHECK_THROWS(Email{});
             }
         }
