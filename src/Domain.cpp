@@ -150,4 +150,19 @@ void Password::setPassword(string password)
     }
 }
 
+Registration::Registration(string reg)
+{
+  setRegistration(reg);
+}
+
+void Registration::setRegistration(string reg)
+{
+    bool valid_reg = regex_match(reg,
+    regex("^[0-9]{5}$") );
+
+    if(valid_reg) this->reg=reg;
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente alguma matricula"
+        " com 5 digitos de 0-9.");
+}
+
 

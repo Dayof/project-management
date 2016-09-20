@@ -382,4 +382,48 @@ SCENARIO("senha e inicializada", "[password]") {
     }
 }
 
+SCENARIO("matricula e inicializada", "[registration]") {
+
+    GIVEN("string para iniciar a matricula") {
+        string reg_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "a matricula nao e atribuida e lanca excecao" ) {
+               CHECK_THROWS(Registration{});
+            }
+        }
+
+        WHEN("com valores validos, CASO: 5 digitos, sendo de 0-9") {
+            reg_stub = "00000";
+            Registration* reg = new Registration(reg_stub);
+
+            THEN( "a matricula e atribuida" ) {
+                REQUIRE(reg->getRegistration() == reg_stub);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 1: Matricula com valores"
+            " nao decimais" ) {
+            reg_stub = "ab123";
+            THEN( "a matricula nao e atribuida e lanca excecao" ) {
+                CHECK_THROWS(Registration{reg_stub});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 2: Menos de 5 digitos" ) {
+            reg_stub = "145";
+            THEN( "a matricula nao e atribuida e lanca excecao" ) {
+                CHECK_THROWS(Registration{reg_stub});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 3: Mais de 5 digitos" ) {
+            reg_stub = "678512";
+            THEN( "a matricula nao e atribuida e lanca excecao" ) {
+                CHECK_THROWS(Registration{reg_stub});
+            }
+        }
+    }
+}
+
 #endif

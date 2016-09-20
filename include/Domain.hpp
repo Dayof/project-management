@@ -93,5 +93,14 @@ public:
     string getPassword() const {return this->password;};
 };
 
+class Registration {
+private:
+    string reg;
+public:
+    Registration(string reg="");
+
+    void setRegistration(string reg);
+    string getRegistration() const {return this->reg;};
+};
 
 #endif // DOMAIN_HPP_INCLUDED
