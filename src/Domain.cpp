@@ -165,4 +165,18 @@ void Registration::setRegistration(string reg)
         " com 5 digitos de 0-9.");
 }
 
+Cost::Cost(string cost)
+{
+  setCost(cost);
+}
+
+void Cost::setCost(string cost)
+{
+    bool valid_cost = regex_match(cost,
+    regex("^[+-]?(?=[.]?[0-9])[0-9]*(?:[.][0-9]*)?(?:[Ee][+-]?[0-9]+)?$") );
+
+    if(valid_cost) this->cost=cost;
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum custo"
+        " do formato 0.00 .");
+}
 

@@ -103,4 +103,14 @@ public:
     string getRegistration() const {return this->reg;};
 };
 
+class Cost {
+private:
+    string cost;
+public:
+    Cost(string cost="");
+
+    void setCost(string cost);
+    string getCost() const {return this->cost;};
+};
+
 #endif // DOMAIN_HPP_INCLUDED

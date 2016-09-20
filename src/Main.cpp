@@ -426,4 +426,41 @@ SCENARIO("matricula e inicializada", "[registration]") {
     }
 }
 
+SCENARIO("custo e inicializado", "[cost]") {
+
+    GIVEN("string para iniciar o custo") {
+        string cost_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "o custo nao e atribuido e lanca excecao" ) {
+               CHECK_THROWS(Cost{});
+            }
+        }
+
+        WHEN("com valores validos, CASO: 0.00") {
+            cost_stub = "5.36";
+            Cost* cost = new Cost(cost_stub);
+
+            THEN( "o custo e atribuido" ) {
+                REQUIRE(cost->getCost() == cost_stub);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 1: Custo com 2 pontos" ) {
+            cost_stub = "5..40";
+            THEN( "o custo nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Cost{cost_stub});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 2: Custo com caracteres"
+            " nao decimais antes ou depois do ponto") {
+            cost_stub = "a5.4t0";
+            THEN( "o custo nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Cost{cost_stub});
+            }
+        }
+    }
+}
+
 #endif
