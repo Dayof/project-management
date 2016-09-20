@@ -53,4 +53,14 @@ public:
     string getName() const {return this->name;};
 };
 
+class Email {
+private:
+    string email;
+public:
+    Email(string email="");
+
+    void setEmail(string email);
+    string getEmail() const {return this->email;};
+};
+
 #endif // DOMAIN_HPP_INCLUDED

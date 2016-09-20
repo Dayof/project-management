@@ -82,3 +82,23 @@ void Name::setName(string name)
         "com caracteres entre A-Z ou espaco em branco.");
     }
 }
+
+Email::Email(string email)
+{
+  setEmail(email);
+}
+
+void Email::setEmail(string email)
+{
+    bool valid_email = regex_match(email,
+    regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9]+$") );
+
+    if(valid_email && email.length()>0) this->email=email;
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum e-mail"
+    " no formato RFC.");
+}
+
+
+
+
+

@@ -190,4 +190,65 @@ SCENARIO("funcao e inicializada", "[role]") {
     }
 }
 
+SCENARIO("e-mail e inicializada", "[email]") {
+
+    GIVEN("string para iniciar o e-mail") {
+        string email_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "a funcao nao e atribuida e lanca excecao" ) {
+               CHECK_THROWS(Email{});
+            }
+        }
+
+        WHEN("com valores validos, CASO: Parte local com caracteres validos"
+            " seguida de um caracter @ e sub endereco com caracteres validos"
+            " com um ponto somente") {
+            email_stub = "testing@gmail.com";
+            Email* email = new Email(email_stub);
+
+            THEN( "o email e atribuido" ) {
+                REQUIRE(email->getEmail() == email_stub);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 1: Sem caracter @" ) {
+            email_stub = "Abc.example.com";
+            THEN( "o email nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Email{email_stub});
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 2: Com mais de um caracter @" ) {
+            email_stub = "A@b@c@example.com";
+            THEN( "o email nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Email{email_stub});
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 3: Nenhum caracter especial"
+            " na parte local e permitido sem estar entra aspas") {
+            email_stub = "a\"b(c)d,e:f;g<h>i[j\k]l@example.com";
+            THEN( "o email nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Email{email_stub});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 4: String entre aspas"
+            " precisam estar separadas por pontos ou ser a unica string"
+            " da parte local") {
+            email_stub = "just\"not\"right@example.com";
+            THEN( "o email nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Email{email_stub});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 5: Dois pontos apos o caracter @") {
+            email_stub = "john.doe@example..com";
+            THEN( "o email nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Email{email_stub});
+            }
+        }
+    }
+}
 #endif
