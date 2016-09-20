@@ -98,6 +98,21 @@ void Email::setEmail(string email)
     " no formato RFC.");
 }
 
+Date::Date(string date)
+{
+  setDate(date);
+}
+
+void Date::setDate(string date)
+{
+    bool valid_date = regex_match(date,
+    regex("^(0[1-9]|[12][0-9]|3[01])([- /.])(0[1-9]|1[012])([- /.])201[0-6]|20[234]\d|2050$") );
+
+    if(valid_date && date.length()>0) this->date=date;
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum e-mail"
+    " no formato 1-31/1-12/2016-2050.");
+}
+
 
 
 

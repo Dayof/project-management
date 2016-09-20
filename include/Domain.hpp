@@ -63,4 +63,14 @@ public:
     string getEmail() const {return this->email;};
 };
 
+class Date {
+private:
+    string date;
+public:
+    Date(string date="");
+
+    void setDate(string date);
+    string getDate() const {return this->date;};
+};
+
 #endif // DOMAIN_HPP_INCLUDED

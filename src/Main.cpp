@@ -251,4 +251,62 @@ SCENARIO("e-mail e inicializada", "[email]") {
         }
     }
 }
+
+SCENARIO("data e inicializada", "[date]") {
+
+    GIVEN("string para iniciar a data") {
+        string date_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "a data nao e atribuida e lanca excecao" ) {
+               CHECK_THROWS(Date{});
+            }
+        }
+
+        WHEN("com valores validos, CASO: formato 1-31/1-12/2016-2050") {
+            date_stub = "17/06/2016";
+            Date* date = new Date(date_stub);
+
+            THEN( "o email e atribuido" ) {
+                REQUIRE(date->getDate() == date_stub);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 1: nenhum valor entre barras" ) {
+            date_stub = "///";
+            THEN( "a data nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Date{date_stub});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 2: com menos de 3 barras" ) {
+            date_stub = "17/062016";
+            THEN( "a data nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Date{date_stub});
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 3: data com ano superior"
+            " a 2050") {
+            date_stub = "17/06/2051";
+            THEN( "a data nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Date{date_stub});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 4: dia 0") {
+            date_stub = "0/06/2016";
+            THEN( "a data nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Date{date_stub});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 5: mes maior que 12") {
+            date_stub = "17/15/2016";
+            THEN( "a data nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Date{date_stub});
+            }
+        }
+    }
+}
 #endif
