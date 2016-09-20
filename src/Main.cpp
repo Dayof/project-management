@@ -339,4 +339,47 @@ SCENARIO("telefone e inicializado", "[phone]") {
     }
 }
 
+SCENARIO("senha e inicializada", "[password]") {
+
+    GIVEN("string para iniciar a senha") {
+        string pass_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "a senha nao e atribuida e lanca excecao" ) {
+               CHECK_THROWS(Password{});
+            }
+        }
+
+        WHEN("com valores validos, CASO: 5 caracteres sem repeticao") {
+            pass_stub = "12345";
+            Password* pass = new Password(pass_stub);
+
+            THEN( "a senha e atribuida" ) {
+                REQUIRE(pass->getPassword() == pass_stub);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 1: Repeticao de caracteres" ) {
+            pass_stub = "abccf";
+            THEN( "a senha nao e atribuida e lanca excecao" ) {
+                CHECK_THROWS(Password{pass_stub});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 2: Menos de 5 caracteres" ) {
+            pass_stub = "abs";
+            THEN( "a senha nao e atribuida e lanca excecao" ) {
+                CHECK_THROWS(Password{pass_stub});
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 3: Mais de 5 caracteres" ) {
+            pass_stub = "absabs";
+            THEN( "a senha nao e atribuida e lanca excecao" ) {
+                CHECK_THROWS(Password{pass_stub});
+            }
+        }
+    }
+}
+
 #endif

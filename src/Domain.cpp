@@ -125,6 +125,29 @@ void Phone::setPhone(string phone)
     " com 8 digitos, sendo o digito decimal de 0-9.");
 }
 
+Password::Password(string password)
+{
+  setPassword(password);
+}
 
+void Password::setPassword(string password)
+{
+    char temp;
+    int j;
+
+    if(password.length() == 5) this->password=password;
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum nome com "
+        "5 caracteres.");
+
+    for(j=0; j<password.length(); ++j)
+    {
+        temp=password[j];
+        for(int i=j+1; i<password.length(); ++i)
+        {
+            if(temp==password[i]) throw invalid_argument("ERRO: ENTRADA INVALIDA. "
+            "Tente algum nome com 5 caracteres sem repeticao.");
+        }
+    }
+}
 
 

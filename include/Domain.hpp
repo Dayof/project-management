@@ -83,4 +83,15 @@ public:
     string getPhone() const {return this->phone;};
 };
 
+class Password {
+private:
+    string password;
+public:
+    Password(string password="");
+
+    void setPassword(string password);
+    string getPassword() const {return this->password;};
+};
+
+
 #endif // DOMAIN_HPP_INCLUDED
