@@ -73,4 +73,14 @@ public:
     string getDate() const {return this->date;};
 };
 
+class Phone {
+private:
+    string phone;
+public:
+    Phone(string phone="");
+
+    void setPhone(string phone);
+    string getPhone() const {return this->phone;};
+};
+
 #endif // DOMAIN_HPP_INCLUDED

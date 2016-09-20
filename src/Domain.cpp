@@ -109,10 +109,21 @@ void Date::setDate(string date)
     regex("^(0[1-9]|[12][0-9]|3[01])([- /.])(0[1-9]|1[012])([- /.])201[0-6]|20[234]\d|2050$") );
 
     if(valid_date && date.length()>0) this->date=date;
-    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum e-mail"
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente alguma data"
     " no formato 1-31/1-12/2016-2050.");
 }
 
+Phone::Phone(string phone)
+{
+  setPhone(phone);
+}
+
+void Phone::setPhone(string phone)
+{
+    if(phone.length()<9 && phone.length()>0) this->phone=phone;
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum telefone"
+    " com 8 digitos, sendo o digito decimal de 0-9.");
+}
 
 
 

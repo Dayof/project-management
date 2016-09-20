@@ -196,7 +196,7 @@ SCENARIO("e-mail e inicializada", "[email]") {
         string email_stub;
 
         WHEN( "construtor sem parametro" ) {
-            THEN( "a funcao nao e atribuida e lanca excecao" ) {
+            THEN( "o email nao e atribuida e lanca excecao" ) {
                CHECK_THROWS(Email{});
             }
         }
@@ -267,7 +267,7 @@ SCENARIO("data e inicializada", "[date]") {
             date_stub = "17/06/2016";
             Date* date = new Date(date_stub);
 
-            THEN( "o email e atribuido" ) {
+            THEN( "a data e atribuida" ) {
                 REQUIRE(date->getDate() == date_stub);
             }
         }
@@ -309,4 +309,34 @@ SCENARIO("data e inicializada", "[date]") {
         }
     }
 }
+
+SCENARIO("telefone e inicializado", "[phone]") {
+
+    GIVEN("string para iniciar o telefone") {
+        string phone_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "o telefone nao e atribuido e lanca excecao" ) {
+               CHECK_THROWS(Phone{});
+            }
+        }
+
+        WHEN("com valores validos, CASO: 8 digitos, sendo 0-9") {
+            phone_stub = "12345678";
+            Phone* phone = new Phone(phone_stub);
+
+            THEN( "o telefone e atribuido" ) {
+                REQUIRE(phone->getPhone() == phone_stub);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 1: Mais de 8 digitos" ) {
+            phone_stub = "123456789";
+            THEN( "o telefone nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Phone{phone_stub});
+            }
+        }
+    }
+}
+
 #endif
