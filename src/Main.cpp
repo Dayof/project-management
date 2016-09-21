@@ -179,7 +179,7 @@ SCENARIO("funcao e inicializada", "[role]") {
             }
         }
 
-        WHEN( "com menos de 2 digitos e com valores validos" ) {
+        WHEN( "com valores validos, CASO: 1 digito entre 0-9") {
             role_stub = 3;
             Role* role = new Role(role_stub);
 
@@ -188,14 +188,14 @@ SCENARIO("funcao e inicializada", "[role]") {
             }
         }
 
-        WHEN( "com mais de 1 digito" ) {
+        WHEN( "com valores invalidos, CASO 1: Mais de 1 digito" ) {
             role_stub = 23;
             THEN( "a funcao nao e atribuida e lanca excecao" ) {
                CHECK_THROWS(Role{role_stub});
             }
         }
 
-         WHEN( "com valores invalidos" ) {
+        WHEN( "com valores invalidos, CASO 2: Valores nao permitidos" ) {
             role_stub = 5;
             THEN( "a funcao nao e atribuida e lanca excecao" ) {
                 CHECK_THROWS(Role{role_stub});
