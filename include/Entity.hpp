@@ -77,7 +77,6 @@ private:
   char phase;
   string init_date, end_date;
 public:
-  ~Phase ();
   Phase (char phase=INIT,
         string init_date="00/00/0000",
         string end_date="30/12/2000");
@@ -94,48 +93,46 @@ public:
 
 class Project {
 private:
-  string name, cod, init_date, end_date;
-  ProjectManager projectManager;
-  vector<Developer> developers;
-  float current_cost, estimate_cost;
-  char state;
-  Phase phase;
+    string name, code, init_date, end_date, current_cost, estimate_cost;
+    vector<Developer> developers;
+    ProjectManager* projectManager;
+    int state;
 public:
-  Project (string name="",
-          string cod="000",
-          string init_date="00/00/0000",
-          string end_date="30/12/2000",
-          char phase=INIT);
+    Project (string name,
+            string code,
+            ProjectManager* projectManager,
+            string init_date,
+            int state);
+    Project(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome,"
+    " codigo, gerente de projeto, data de inicio e estado do projeto.");};
 
-  void setName(string name){this->name = name;};
+  void setName(string name);
   string getName() const {return this->name;};
 
-  void setCod(string cod){this->cod = cod;};
-  string getCod() const {return this->cod;};
+  void setCode(string code);
+  string getCode() const {return this->code;};
 
-  void setInitDate(string init_date){this->init_date = init_date;};
+  void setInitDate(string init_date);
   string getInitDate() const {return this->init_date;};
 
-  void setEndDate(string){this->end_date = end_date;};
+  void setEndDate(string end_date);
   string getEndDate() const {return this->end_date;};
 
-  void setProjectManager(ProjectManager pM){this->projectManager = pM;};
-  ProjectManager getProjectManager() const {return this->projectManager;};
+    void setCurrCost(string current_cost);
+  string getCurrCost() const {return this->current_cost;};
 
-  void setCurrCost(float current_cost){this->current_cost = current_cost;};
-  float getCurrCost() const {return this->current_cost;};
+  void setEstimateCost(string estimate_cost);
+  string getEstimateCost() const {return this->estimate_cost;};
 
-  void setEstimateCost(float ec){this->estimate_cost = ec;};
-  float getEstimateCost() const {return this->estimate_cost;};
+   void setState(int state);
+  int getState() const {return this->state;};
 
-  void setState(char state){this->state = state;};
-  char getState() const {return this->state;};
+  void setProjectManager(ProjectManager* projectManager) {this->projectManager = projectManager;};
+  ProjectManager* getProjectManager() const {return this->projectManager;};
 
-  void setPhase(Phase phase){this->phase = phase;};
-  Phase getPhase() const {return this->phase;};
-
-  void addDev(Developer);
-  vector<Developer> getDev();
+  void addDev(string reg);
+  void removeDev(string reg);
+  vector<Developer> getAllDevelopers();
 };
 
 #endif // ENTITY_HPP_INCLUDED

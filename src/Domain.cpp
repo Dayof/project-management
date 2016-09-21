@@ -99,7 +99,7 @@ Date::Date(string date)
 void Date::setDate(string date)
 {
     bool valid_date = regex_match(date,
-    regex("^(0[1-9]|[12][0-9]|3[01])([- /.])(0[1-9]|1[012])([- /.])201[0-6]|20[234]\d|2050$") );
+    regex("^(0[1-9]|[12][0-9]|3[01])([- /.])(0[1-9]|1[012])([- /.])201[6-9]|20[234][0-9]|2050$") );
 
     if(valid_date && date.length()>0) this->date=date;
     else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente alguma data"

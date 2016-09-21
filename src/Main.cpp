@@ -281,7 +281,7 @@ SCENARIO("data e inicializada", "[date]") {
         }
 
         WHEN("com valores validos, CASO: formato 1-31/1-12/2016-2050") {
-            date_stub = "17/06/2016";
+            date_stub = "17/06/2020";
             Date* date = new Date(date_stub);
 
             THEN( "a data e atribuida" ) {
@@ -703,6 +703,121 @@ SCENARIO("desenvolvedor eh inicializado", "[developer]") {
 
             THEN( "o telefone e atribuido ao gerente de projeto" ) {
                 CHECK_THROWS(dev->setEmail(phone_stub););
+            }
+        }
+    }
+}
+
+SCENARIO("projeto eh inicializado", "[project]") {
+
+    GIVEN("strings de nome, codigo, data de inicio, data de termino,"
+        " de custo atual, custo previsto, inteiro de estado, classe de gerente de projeto"
+        " e desenvolvedores do projeto para iniciar o projeto") {
+        string name_stub, code_stub, init_date, end_date, current_cost, estimate_cost;
+        vector<Developer> developers;
+        ProjectManager* projectManager;
+        int state;
+
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "o projeto nao e criado e lanca excecao" ) {
+               CHECK_THROWS(Project{});
+            }
+        }
+
+        WHEN("com valores validos, CASO 1: Construtor e criado se e passado"
+            " no minimo nome, codigo, gerente de projeto, data de inicio e estado"
+            " com valores validos") {
+            name_stub = "FUCKING PROJECT";
+            code_stub = "LOLLO";
+            projectManager = new ProjectManager("Sir", "34567", "12345");
+            init_date = "13/03/2020";
+            state = ACTIVE;
+
+            Project* project = new Project(name_stub,
+                                            code_stub,
+                                            projectManager,
+                                            init_date,
+                                            state);
+
+            THEN( "o nome e atribuido ao projeto" ) {
+                REQUIRE(project->getName() == name_stub);
+            }
+
+            THEN( "o codigo e atribuido ao projeto" ) {
+                REQUIRE(project->getCode() == code_stub);
+            }
+
+            THEN( "o gerente de projeto e atribuido ao projeto" ) {
+                REQUIRE(project->getProjectManager() == projectManager);
+            }
+
+             THEN( "a data de inicio e atribuida ao projeto" ) {
+                REQUIRE(project->getInitDate() == init_date);
+            }
+
+             THEN( "o estado e atribuido ao projeto" ) {
+                REQUIRE(project->getState() == state);
+            }
+        }
+
+        WHEN( "com valores validos, CASO 2: Construtor criado recebe"
+            " data de termino com valor valido") {
+            name_stub = "FUCKING PROJECT";
+            code_stub = "LOLLO";
+            projectManager = new ProjectManager("Sir", "34567", "12345");
+            init_date = "13/03/2029";
+            state = ACTIVE;
+            end_date = "13/04/2030";
+
+            Project* project = new Project(name_stub,
+                                            code_stub,
+                                            projectManager,
+                                            init_date,
+                                            state);
+
+            project->setEndDate(end_date);
+
+            THEN( "a data de termino e atribuida ao projeto" ) {
+                REQUIRE(project->getEndDate() == end_date);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 1: Construtor nao e criado se"
+             " e passado nome, codigo, gerente de projeto, data de inicio ou estado"
+            " com valores invalidos") {
+            name_stub = "FUCKING_PROJECT";
+            code_stub = "LOLLO";
+            projectManager = new ProjectManager("Sir", "34567", "12345");
+            init_date = "13/03/2029";
+            state = ACTIVE;
+
+            THEN( "o projeto nao e criado e lanca excecao" ) {
+                CHECK_THROWS(Project project (name_stub,
+                                            code_stub,
+                                            projectManager,
+                                            init_date,
+                                            state));
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 2: Construtor criado recebe"
+            " data de termino com valor invalido") {
+            name_stub = "FUCKING PROJECT";
+            code_stub = "LOLLO";
+            projectManager = new ProjectManager("Sir", "34567", "12345");
+            init_date = "13/03/2029";
+            state = ACTIVE;
+            end_date = "13/04/2080";
+
+            Project* project = new Project(name_stub,
+                                            code_stub,
+                                            projectManager,
+                                            init_date,
+                                            state);
+
+            THEN( "o telefone e atribuido ao gerente de projeto" ) {
+                CHECK_THROWS(project->setEndDate(end_date););
             }
         }
     }

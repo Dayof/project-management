@@ -134,6 +134,64 @@ void Developer::setEmail(string email_str)
 }
 
 
+Project::Project(string name,
+                string code,
+                ProjectManager* projectManager,
+                string init_date,
+                int state)
+{
+    setName(name);
+    setCode(code);
+    setProjectManager(projectManager);
+    setInitDate(init_date);
+    setState(state);
+}
+
+void Project::setName(string name_str)
+{
+    Name* name;
+    try{ name = new Name(name_str); }
+    catch (exception& err) { throw err.what(); }
+    this->name = name->getName();
+
+}
+
+void Project::setCode(string code_str)
+{
+    ProjectCode* code;
+    try{ code = new ProjectCode(code_str); }
+    catch (exception& err) { throw err.what(); }
+    this->code = code->getCodProject();
+
+}
+
+void Project::setInitDate(string init_date_str)
+{
+    cout << init_date_str << endl;
+    Date* init_date;
+    try{ init_date = new Date(init_date_str); }
+    catch (exception& err) { throw err.what(); }
+    this->init_date = init_date->getDate();
+}
+
+void Project::setEndDate(string end_date_str)
+{
+    Date* end_date;
+    try{ end_date = new Date(end_date_str); }
+    catch (exception& err) { throw err.what(); }
+    this->end_date = end_date->getDate();
+}
+
+
+void Project::setState(int state_int)
+{
+    ProjectState* state;
+    try{ state = new ProjectState(state_int); }
+    catch (exception& err) { throw err.what(); }
+    this->state = state->getProjectState();
+}
+
+
 Phase::Phase(char phase, string init_date, string end_date)
 {
   this->phase = phase;
