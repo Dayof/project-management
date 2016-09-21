@@ -1,10 +1,37 @@
 #include "Entity.hpp"
+#include "Domain.hpp"
 
-SysManager::SysManager(string name, string registration, string password)
+SysManager::SysManager(string name,
+                    string registration,
+                    string password)
 {
-  this->name = name;
-  this->registration = registration;
-  this->password = password;
+    setName(name);
+    setRegistration(registration);
+    setPassword(password);
+}
+
+void SysManager::setName(string name_str)
+{
+    try{ Name* name = new Name(name_str); }
+    catch (exception& err) { throw err.what(); }
+    this->name = name_str;
+
+}
+
+void SysManager::setRegistration(string reg_str)
+{
+    try{ Registration* registration = new Registration(reg_str); }
+    catch (exception& err) { throw err.what(); }
+    this->registration = reg_str;
+
+}
+
+void SysManager::setPassword(string pass_str)
+{
+    try{ Password* name = new Password(pass_str); }
+    catch (exception& err) { throw err.what(); }
+    this->password = pass_str;
+
 }
 
 Phase::Phase(char phase, string init_date, string end_date)

@@ -19,18 +19,17 @@ class SysManager {
 private:
     string name, registration, password;
 public:
-  ~SysManager ();
-  SysManager(string name="",
-            string registration="000",
-            string password="123456");
+  SysManager(string name, string registration, string password);
+  SysManager(){throw invalid_argument("ERRO: ENTRADA VAZIA. Passe nome,"
+    " matricula e senha do gerente de sistema.");};
 
-  void setName(string name){this->name = name;};
+  void setName(string name);
   string getName() const {return this->name;};
 
-  void setRegistration(string registration){this->registration = registration;};
+  void setRegistration(string registration);
   string getRegistration() const {return this->registration;};
 
-  void setPassword(string password){this->password = password;};
+  void setPassword(string password);
   string getPassword() const {return this->password;};
 };
 

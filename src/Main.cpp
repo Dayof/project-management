@@ -3,6 +3,9 @@
 
 #include "catch.hpp"
 #include "Domain.hpp"
+#include "Entity.hpp"
+
+// TESTES DOS DOMINIOS
 
 SCENARIO("nome eh inicializado", "[name]") {
 
@@ -15,7 +18,7 @@ SCENARIO("nome eh inicializado", "[name]") {
             }
         }
 
-        WHEN( "com menos de 21 caracteres e com caracteres validos" ) {
+        WHEN("com valores validos, CASO: Ate 20 caracteres, sendo A-Z e espaco em branco") {
             name_person = "taylor";
             Name* name = new Name(name_person);
 
@@ -24,14 +27,14 @@ SCENARIO("nome eh inicializado", "[name]") {
             }
         }
 
-        WHEN( "com mais de 20 caracteres" ) {
+         WHEN( "com valores invalidos, CASO 1: Mais de 20 caracteres" ) {
             name_person = "eudhfjrhdjthfkdsddhgjthg";
             THEN( "o nome e atribuido e lanca excecao" ) {
                 CHECK_THROWS(Name{name_person});
             }
         }
 
-        WHEN( "com caracteres invalidos" ) {
+        WHEN( "com valores invalidos, CASO 2: Com caracteres especiais" ) {
             name_person = "utada|@_@|hikaru  ";
             THEN( "o nome nao e atribuido e lanca excecao" ) {
                 CHECK_THROWS(Name{name_person});
@@ -490,5 +493,57 @@ SCENARIO("custo e inicializado", "[cost]") {
         }
     }
 }
+
+// TESTES DAS ENTIDADES
+
+SCENARIO("gerente de sistema eh inicializado", "[sysmanager]") {
+
+    GIVEN("strings de nome, matricula e senha para iniciar o gerente de sistema") {
+        string name_stub;
+        string reg_stub;
+        string pass_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "o gerente de sistema nao e criado e lanca excecao" ) {
+               CHECK_THROWS(SysManager{});
+            }
+        }
+
+        WHEN("com valores validos, CASO: Construtor e criado se e passado"
+            " nome, matricula e senha com valores validos") {
+            name_stub = "Day";
+            reg_stub = "13010";
+            pass_stub = "abcde";
+
+            SysManager* sysManager = new SysManager(name_stub,
+                                                    reg_stub,
+                                                    pass_stub);
+
+            THEN( "o nome e atribuido ao gerente de sistema" ) {
+                REQUIRE(sysManager->getName() == name_stub);
+            }
+
+            THEN( "a matricula e atribuida ao gerente de sistema" ) {
+                REQUIRE(sysManager->getRegistration() == reg_stub);
+            }
+
+            THEN( "a senha e atribuida ao gerente de sistema" ) {
+                REQUIRE(sysManager->getPassword() == pass_stub);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO: Construtor nao e criado se"
+            " e passado nome, matricula e senha com valores invalidos") {
+            name_stub = "Day@";
+            reg_stub = "1301A0";
+            pass_stub = "abafsfasc1231a";
+
+            THEN( "o gerente de sistema nao e criado e lanca excecao" ) {
+                CHECK_THROWS(SysManager sysManager (name_stub,reg_stub,pass_stub));
+            }
+        }
+    }
+}
+
 
 #endif
