@@ -3,18 +3,6 @@
 
 #include "Headers.hpp"
 
-#define ACTIVE 1
-#define INACTIVE 2
-
-#define INIT 1
-#define PREPARATION 2
-#define EXEC 3
-#define CLOSURE 4
-
-#define ANALIST 1
-#define MANAGER 2
-#define DEVELOPER 3
-
 class SysManager {
 private:
     string name, registration, password;
@@ -31,26 +19,6 @@ public:
 
   void setPassword(string password);
   string getPassword() const {return this->password;};
-};
-
-class Phase {
-private:
-  char phase;
-  string init_date, end_date;
-public:
-  ~Phase ();
-  Phase (char phase=INIT,
-        string init_date="00/00/0000",
-        string end_date="30/12/2000");
-
-  void setPhase(char phase){this->phase = phase;};
-  char getPhase() const {return this->phase;};
-
-  void setInitDate(string init_date){this->init_date = init_date;};
-  string getInitDate() const {return this->init_date;};
-
-  void setEndDate(string){this->end_date = end_date;};
-  string getEndDate() const {return this->end_date;};
 };
 
 class ProjectManager {
@@ -79,28 +47,49 @@ public:
 class Developer {
 private:
     string name, registration, password, email;
-    char role;
+    int role;
 public:
-  ~Developer ();
-  Developer (string name="",
-            string registration="000",
-            string password="123456",
-            string email="x@y.z");
+  Developer (string name,
+            string registration,
+            string password,
+            int role);
+    Developer(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome,"
+    " matricula, senha e funcao do desenvolvedor.");};
 
-  void setName(string name){this->name = name;};
+  void setName(string name);
   string getName() const {return this->name;};
 
-  void setRegistration(string registration){this->registration = registration;};
+  void setRegistration(string registration);
   string getRegistration() const {return this->registration;};
 
-  void setPassword(string password){this->password = password;};
+  void setPassword(string password);
   string getPassword() const {return this->password;};
 
-  void setEmail(string email){this->email = email;};
+  void setEmail(string email);
   string getEmail() const {return this->email;};
 
-  void setRole(char role){this->role = role;};
+  void setRole(int role);
   char getRole() const {return this->role;};
+};
+
+class Phase {
+private:
+  char phase;
+  string init_date, end_date;
+public:
+  ~Phase ();
+  Phase (char phase=INIT,
+        string init_date="00/00/0000",
+        string end_date="30/12/2000");
+
+  void setPhase(char phase){this->phase = phase;};
+  char getPhase() const {return this->phase;};
+
+  void setInitDate(string init_date){this->init_date = init_date;};
+  string getInitDate() const {return this->init_date;};
+
+  void setEndDate(string){this->end_date = end_date;};
+  string getEndDate() const {return this->end_date;};
 };
 
 class Project {
@@ -112,7 +101,6 @@ private:
   char state;
   Phase phase;
 public:
-  ~Project ();
   Project (string name="",
           string cod="000",
           string init_date="00/00/0000",

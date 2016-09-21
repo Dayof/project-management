@@ -80,6 +80,60 @@ void ProjectManager::setPhone(string phone_str)
     this->phone = phone->getPhone();
 }
 
+Developer::Developer(string name,
+                      string registration,
+                      string password,
+                      int role)
+{
+    setName(name);
+    setRegistration(registration);
+    setPassword(password);
+    setRole(role);
+}
+
+void Developer::setName(string name_str)
+{
+    Name* name;
+    try{ name = new Name(name_str); }
+    catch (exception& err) { throw err.what(); }
+    this->name = name->getName();
+
+}
+
+void Developer::setRegistration(string reg_str)
+{
+    Registration* registration;
+    try{ registration = new Registration(reg_str); }
+    catch (exception& err) { throw err.what(); }
+    this->registration = registration->getRegistration();
+
+}
+
+void Developer::setPassword(string pass_str)
+{
+    Password* pass;
+    try{ pass = new Password(pass_str); }
+    catch (exception& err) { throw err.what(); }
+    this->password = pass->getPassword();
+}
+
+void Developer::setRole(int role_int)
+{
+    Role* role;
+    try{ role = new Role(role_int); }
+    catch (exception& err) { throw err.what(); }
+    this->role = role->getRole();
+}
+
+void Developer::setEmail(string email_str)
+{
+    Email* email;
+    try{ email = new Email(email_str); }
+    catch (exception& err) { throw err.what(); }
+    this->email = email->getEmail();
+}
+
+
 Phase::Phase(char phase, string init_date, string end_date)
 {
   this->phase = phase;
@@ -87,16 +141,6 @@ Phase::Phase(char phase, string init_date, string end_date)
   this->end_date = end_date;
 }
 
-Developer::Developer(string name,
-                    string registration,
-                    string password,
-                    string email)
-{
-  this->name = name;
-  this->registration = registration;
-  this->password = password;
-  this->email = email;
-}
 
 // //TODO
 // Project::Project(string name,

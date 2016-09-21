@@ -554,7 +554,7 @@ SCENARIO("gerente de projeto eh inicializado", "[projectmanager]") {
             }
         }
 
-        WHEN("com valores validos, CASO: Construtor e criado se e passado"
+        WHEN("com valores validos, CASO 1: Construtor e criado se e passado"
             " nome, matricula e senha com valores validos no minimo") {
             name_stub = "Diana";
             reg_stub = "16000";
@@ -623,4 +623,88 @@ SCENARIO("gerente de projeto eh inicializado", "[projectmanager]") {
     }
 }
 
+SCENARIO("desenvolvedor eh inicializado", "[developer]") {
+
+    GIVEN("strings de nome, matricula, senha e e-mail, e inteiro de funcao"
+        " para iniciar o desenvolvedor") {
+        string name_stub, reg_stub, pass_stub, phone_stub, email_stub;
+        int role_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "o desenvolvedor nao e criado e lanca excecao" ) {
+               CHECK_THROWS(Developer{});
+            }
+        }
+
+        WHEN("com valores validos, CASO 1: Construtor e criado se e passado"
+            " nome, matricula, senha e funcao com valores validos no minimo") {
+            name_stub = "Diana";
+            reg_stub = "16000";
+            pass_stub = "abcde";
+            role_stub = ANALIST;
+
+            Developer* dev = new Developer(name_stub, reg_stub, pass_stub, role_stub);
+
+            THEN( "o nome e atribuido ao desenvolvedor" ) {
+                REQUIRE(dev->getName() == name_stub);
+            }
+
+            THEN( "a matricula e atribuida ao desenvolvedor" ) {
+                REQUIRE(dev->getRegistration() == reg_stub);
+            }
+
+            THEN( "a senha e atribuida ao desenvolvedor" ) {
+                REQUIRE(dev->getPassword() == pass_stub);
+            }
+
+             THEN( "a funcao e atribuida ao desenvolvedor" ) {
+                REQUIRE(dev->getRole() == role_stub);
+            }
+        }
+
+        WHEN( "com valores validos, CASO 2: Construtor criado recebe"
+            " email com valor valido") {
+            name_stub = "Diana";
+            reg_stub = "16000";
+            pass_stub = "abcde";
+            role_stub = ANALIST;
+            email_stub = "moz@gmail.com";
+
+            Developer* dev = new Developer(name_stub, reg_stub, pass_stub, role_stub);
+
+            dev->setEmail(email_stub);
+
+            THEN( "o email e atribuido ao desenvolvedor" ) {
+                REQUIRE(dev->getEmail() == email_stub);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 1: Construtor nao e criado se"
+            " e passado nome, matricula, senha ou funcao com valores invalidos") {
+            name_stub = "Day@";
+            reg_stub = "16000";
+            pass_stub = "abcde";
+            role_stub = PROGRAMMER;
+
+            THEN( "o desenvolvedor nao e criado e lanca excecao" ) {
+                CHECK_THROWS(Developer dev (name_stub,reg_stub,pass_stub, role_stub));
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 2: Construtor criado recebe"
+            " e-mail com valor invalido") {
+            name_stub = "Diana";
+            reg_stub = "16000";
+            pass_stub = "abcde";
+            role_stub = SOFTWARE_DESIGNER;
+            email_stub = "moz@gmail..com";
+
+            Developer* dev = new Developer(name_stub, reg_stub, pass_stub, role_stub);
+
+            THEN( "o telefone e atribuido ao gerente de projeto" ) {
+                CHECK_THROWS(dev->setEmail(phone_stub););
+            }
+        }
+    }
+}
 #endif
