@@ -20,7 +20,7 @@ private:
     string name, registration, password;
 public:
   SysManager(string name, string registration, string password);
-  SysManager(){throw invalid_argument("ERRO: ENTRADA VAZIA. Passe nome,"
+  SysManager(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome,"
     " matricula e senha do gerente de sistema.");};
 
   void setName(string name);
@@ -57,22 +57,22 @@ class ProjectManager {
 private:
   string name, registration, password, phone;
 public:
-  ~ProjectManager ();
-  ProjectManager (string name="",
-                  string registration="000",
-                  string password="123456",
-                  string phone="99999999");
+    ProjectManager (string name,
+                string registration,
+                string password);
+    ProjectManager(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome,"
+    " matricula e senha do gerente de projeto.");};
 
-  void setName(string name){this->name = name;};
+  void setName(string name);
   string getName() const {return this->name;};
 
-  void setRegistration(string registration){this->registration = registration;};
+  void setRegistration(string registration);
   string getRegistration() const {return this->registration;};
 
-  void setPassword(string password){this->password = password;};
+  void setPassword(string password);
   string getPassword() const {return this->password;};
 
-  void setPhone(string phone){this->phone = phone;};
+  void setPhone(string phone);
   string getPhone() const {return this->phone;};
 };
 

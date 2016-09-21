@@ -499,9 +499,7 @@ SCENARIO("custo e inicializado", "[cost]") {
 SCENARIO("gerente de sistema eh inicializado", "[sysmanager]") {
 
     GIVEN("strings de nome, matricula e senha para iniciar o gerente de sistema") {
-        string name_stub;
-        string reg_stub;
-        string pass_stub;
+        string name_stub, reg_stub, pass_stub;
 
         WHEN( "construtor sem parametro" ) {
             THEN( "o gerente de sistema nao e criado e lanca excecao" ) {
@@ -533,7 +531,7 @@ SCENARIO("gerente de sistema eh inicializado", "[sysmanager]") {
         }
 
          WHEN( "com valores invalidos, CASO: Construtor nao e criado se"
-            " e passado nome, matricula e senha com valores invalidos") {
+            " e passado nome, matricula ou senha com valores invalidos") {
             name_stub = "Day@";
             reg_stub = "1301A0";
             pass_stub = "abafsfasc1231a";
@@ -545,5 +543,84 @@ SCENARIO("gerente de sistema eh inicializado", "[sysmanager]") {
     }
 }
 
+SCENARIO("gerente de projeto eh inicializado", "[projectmanager]") {
+
+    GIVEN("strings de nome, matricula, senha e telefone para iniciar o gerente de projeto") {
+        string name_stub, reg_stub, pass_stub, phone_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "o gerente de projeto nao e criado e lanca excecao" ) {
+               CHECK_THROWS(ProjectManager{});
+            }
+        }
+
+        WHEN("com valores validos, CASO: Construtor e criado se e passado"
+            " nome, matricula e senha com valores validos no minimo") {
+            name_stub = "Diana";
+            reg_stub = "16000";
+            pass_stub = "abcde";
+
+            ProjectManager* projectManager = new ProjectManager(name_stub,
+                                                                reg_stub,
+                                                                pass_stub);
+
+            THEN( "o nome e atribuido ao gerente de projeto" ) {
+                REQUIRE(projectManager->getName() == name_stub);
+            }
+
+            THEN( "a matricula e atribuida ao gerente de projeto" ) {
+                REQUIRE(projectManager->getRegistration() == reg_stub);
+            }
+
+            THEN( "a senha e atribuida ao gerente de projeto" ) {
+                REQUIRE(projectManager->getPassword() == pass_stub);
+            }
+        }
+
+        WHEN( "com valores validos, CASO 2: Construtor criado recebe"
+            " telefone com valor valido") {
+            name_stub = "Diana";
+            reg_stub = "16000";
+            pass_stub = "abcde";
+            phone_stub = "12345678";
+
+            ProjectManager* projectManager = new ProjectManager(name_stub,
+                                                                reg_stub,
+                                                                pass_stub);
+            projectManager->setPhone(phone_stub);
+
+
+            THEN( "o telefone e atribuido ao gerente de projeto" ) {
+                REQUIRE(projectManager->getPhone() == phone_stub);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 1: Construtor nao e criado se"
+            " e passado nome, matricula ou senha com valores invalidos") {
+            name_stub = "Day@";
+            reg_stub = "16000";
+            pass_stub = "abcde";
+
+            THEN( "o gerente de projeto nao e criado e lanca excecao" ) {
+                CHECK_THROWS(ProjectManager projectManager (name_stub,reg_stub,pass_stub));
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 2: Construtor criado recebe"
+            " telefone com valor invalido") {
+            name_stub = "Diana";
+            reg_stub = "16000";
+            pass_stub = "abcde";
+            phone_stub = "123456789";
+
+            ProjectManager* projectManager = new ProjectManager(name_stub,
+                                                                reg_stub,
+                                                                pass_stub);
+            THEN( "o telefone e atribuido ao gerente de projeto" ) {
+                CHECK_THROWS(projectManager->setPhone(phone_stub););
+            }
+        }
+    }
+}
 
 #endif

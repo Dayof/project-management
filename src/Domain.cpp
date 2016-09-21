@@ -25,7 +25,7 @@ void ProjectState::setProjectState(int project_state)
     if(project_state==1  || project_state==2)
         this->project_state=project_state;
     else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum codigo com no"
-        "maximo 1 digito, sendo 1 para 'Ativo' e 2 para 'Inativo'.");
+        " maximo 1 digito, sendo 1 para 'Ativo' e 2 para 'Inativo'.");
 }
 
 ProjectPhase::ProjectPhase(int project_phase)
@@ -38,7 +38,7 @@ void ProjectPhase::setProjectPhase(int project_phase)
     if(project_phase <= 4 && project_phase>=1)
         this->project_phase=project_phase;
     else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum numero com no"
-        "maximo 1 digito, sendo 1 para 'Iniciacao', 2 'Preparacao', 3 'Execucao' e"
+        " maximo 1 digito, sendo 1 para 'Iniciacao', 2 'Preparacao', 3 'Execucao' e"
         " 4 para 'Encerramento'.");
 }
 
@@ -52,7 +52,7 @@ void Role::setRole(int role)
     if(role <= 3 && role>0)
         this->role=role;
     else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum numero com no"
-        "maximo 1 digito, sendo 1 para 'Analista', 2 'Projetista' e 3 para 'Programador'.");
+        " maximo 1 digito, sendo 1 para 'Analista', 2 'Projetista' e 3 para 'Programador'.");
 }
 
 Name::Name(string name)
@@ -64,7 +64,7 @@ void Name::setName(string name)
 {
     if(name.length() <= 20 && name.length()>0) this->name=name;
     else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum nome com no"
-        "maximo 20 caracteres.");
+        " maximo 20 caracteres.");
 
     for(int i=0; i<name.length(); ++i)
     {
@@ -72,7 +72,7 @@ void Name::setName(string name)
             (name[i] >= 95 && name[i] <= 122) ||
             (name[i] == 32)) this->name=name;
         else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum nome"
-        "com caracteres entre A-Z ou espaco em branco.");
+        " com caracteres entre A-Z ou espaco em branco.");
     }
 }
 
