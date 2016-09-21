@@ -113,7 +113,10 @@ Phone::Phone(string phone)
 
 void Phone::setPhone(string phone)
 {
-    if(phone.length()<9 && phone.length()>0) this->phone=phone;
+    bool valid_phone = regex_match(phone,
+    regex("^[0-9]{8}$") );
+
+    if(valid_phone) this->phone=phone;
     else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum telefone"
     " com 8 digitos, sendo o digito decimal de 0-9.");
 }

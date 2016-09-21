@@ -350,6 +350,20 @@ SCENARIO("telefone e inicializado", "[phone]") {
                 CHECK_THROWS(Phone{phone_stub});
             }
         }
+
+        WHEN( "com valores invalidos, CASO 2: Menos de 8 digitos" ) {
+            phone_stub = "123489";
+            THEN( "o telefone nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Phone{phone_stub});
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 3: Caracteres nao decimais" ) {
+            phone_stub = "1234567t";
+            THEN( "o telefone nao e atribuido e lanca excecao" ) {
+                CHECK_THROWS(Phone{phone_stub});
+            }
+        }
     }
 }
 
