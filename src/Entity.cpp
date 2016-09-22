@@ -1,3 +1,13 @@
+/** @file Entity.cpp
+ *  @brief Implementação das Entidades do sistema.
+ *
+ *  Neste arquivo contém as implementações das
+ *  assinaturas dos métodos das classes de entidade.
+ *
+ *  @author Dayanne Fernandes
+ *  @bug Sem bug conhecido.
+ */
+
 #include "Entity.hpp"
 #include "Domain.hpp"
 

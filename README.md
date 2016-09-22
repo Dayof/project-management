@@ -25,6 +25,11 @@ Este projeto foca em desenvolver um gerenciador de projetos em organizações.
 | Arquivo   | [.git](.git)   				     	     | Arquivo de configurações do Git	     |
 | Arquivo   | [.gitignore](.gitignore)         		 	     | Arquivos/pastas ignorados pelo Git    |
 
+## Ferramenta de teste utilizada
+
+Biblioteca [Catch](https://github.com/philsquared/Catch) para C++. 
+Utiliza-se somente um header catch.hpp para utilizar essa ferramenta.
+
 ### Entidades
 - Gerente de Sistema
 	- Domínios: Nome, matrícula e senha.

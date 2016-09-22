@@ -1,3 +1,14 @@
+/** @file Main.cpp
+ *  @brief Arquivo de testes da classes de Domínio e Entidade.
+ *
+ *  Neste arquivo contém cenários de testes utilizando BDD
+ *  (Behavior Driver Development) utilizando a biblioteca de teste
+ *  Catch do C++.
+ *
+ *  @author Dayanne Fernandes
+ *  @bug Sem bug conhecido.
+ */
+
 #ifndef CATCH_CONFIG_MAIN
 #define CATCH_CONFIG_MAIN
 
