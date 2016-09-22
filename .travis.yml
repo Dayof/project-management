@@ -1,10 +1,14 @@
 language: cpp
 
-install:
+before_install:
+- sudo apt-get install -y gcc
+- sudo apt-get install -y g++
+- sudo apt-get update
+- sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc
+
+script:
 - make all
+- ./main -r junit -o tests_results.xml
 
 compiler:
   - g++
-
-script:
-  - ./main -r junit -o tests_results.xml
