@@ -816,7 +816,7 @@ SCENARIO("projeto eh inicializado", "[project]") {
                                             init_date,
                                             state);
 
-            THEN( "o telefone e atribuido ao gerente de projeto" ) {
+            THEN( "o projeto nao e criado e lanca excecao" ) {
                 CHECK_THROWS(project->setEndDate(end_date););
             }
         }

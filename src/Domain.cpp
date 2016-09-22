@@ -62,18 +62,13 @@ Name::Name(string name)
 
 void Name::setName(string name)
 {
-    if(name.length() <= 20 && name.length()>0) this->name=name;
+
+    bool valid_name = regex_match(name,
+    regex("^[a-zA-Z ]*$") );
+
+    if(valid_name && name.length() <= 20 && name.length()>0) this->name=name;
     else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum nome com no"
         " maximo 20 caracteres.");
-
-    for(int i=0; i<name.length(); ++i)
-    {
-        if((name[i] >= 65 && name[i] <= 90) ||
-            (name[i] >= 95 && name[i] <= 122) ||
-            (name[i] == 32)) this->name=name;
-        else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum nome"
-        " com caracteres entre A-Z ou espaco em branco.");
-    }
 }
 
 Email::Email(string email)
@@ -99,9 +94,9 @@ Date::Date(string date)
 void Date::setDate(string date)
 {
     bool valid_date = regex_match(date,
-    regex("^(0[1-9]|[12][0-9]|3[01])([- /.])(0[1-9]|1[012])([- /.])201[6-9]|20[234][0-9]|2050$") );
+    regex("^(0[1-9]|[12][0-9]|3[01])([- /.])(0[1-9]|1[012])([- /.])(201[6-9]|20[234][0-9]|2050)$") );
 
-    if(valid_date && date.length()>0) this->date=date;
+    if(valid_date) this->date=date;
     else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente alguma data"
     " no formato 1-31/1-12/2016-2050.");
 }

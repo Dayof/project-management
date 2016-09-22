@@ -167,7 +167,6 @@ void Project::setCode(string code_str)
 
 void Project::setInitDate(string init_date_str)
 {
-    cout << init_date_str << endl;
     Date* init_date;
     try{ init_date = new Date(init_date_str); }
     catch (exception& err) { throw err.what(); }
