@@ -8,13 +8,23 @@ DIR_OBJ=obj/
 
 PATH_SRC=$(DIR_SRC)$(FILE_SRC)
 
-_DEPS=catch.hpp Domain.hpp Entity.hpp Headers.hpp
-DEPS = $(patsubst %,$(DIR_INC)%,$(_DEPS))
+ifdef SYSTEMROOT
+	RM = del /Q
+	FixPath = $(subst /,\,$1)
+else
+	ifeq ($(shell uname), Linux)
+		RM = rm -f
+		FixPath = $1
+	endif
+endif
 
-_OBJ=Main.o Domain.o Entity.o 
+_DEPS=catch.hpp Domain.hpp Entity.hpp Headers.hpp
+DEPS=$(patsubst %,$(DIR_INC)%,$(_DEPS))
+
+_OBJ=Main.o Domain.o Entity.o
 OBJ = $(patsubst %,$(DIR_OBJ)%,$(_OBJ))
 
-CFLAGS=g++ -std=c++0x 
+CFLAGS=g++ -std=gnu++11
 
 $(DIR_OBJ)%.o: $(DIR_SRC)%.cpp $(DEPS)
 	$(CFLAGS) -c -o $@ $< -I$(DIR_INC)
@@ -25,6 +35,4 @@ $(TARGET_MAIN): $(OBJ)
 	$(CFLAGS) -o $@ $^ -I$(DIR_INC)
 
 $(TARGET_REMOVE):
-	$(TARGET_REMOVE) -f $(TARGET_MAIN)
-
-
+	$(RM) $(call FixPath,main)
