@@ -1,0 +1,30 @@
+\hypertarget{classCost}{}\section{Referência da Classe Cost}
+\label{classCost}\index{Cost@{Cost}}
+
+
+Diagrama de colaboração para Cost\+:
+% FIG 0
+\subsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Cost} (string cost=\char`\"{}\char`\"{})\hypertarget{classCost_af76ca2c4eb2957cd76192f6cb4dd2037}{}\label{classCost_af76ca2c4eb2957cd76192f6cb4dd2037}
+
+\item 
+void {\bfseries set\+Cost} (string cost)\hypertarget{classCost_ab05daee6845a9cddf35e8efc48ff5f50}{}\label{classCost_ab05daee6845a9cddf35e8efc48ff5f50}
+
+\item 
+string {\bfseries get\+Cost} () const \hypertarget{classCost_a6d619a5f49a659ae9f21bb2fd5df0cc3}{}\label{classCost_a6d619a5f49a659ae9f21bb2fd5df0cc3}
+
+\end{DoxyCompactItemize}
+\subsection*{Atributos Privados}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries cost}\hypertarget{classCost_a141bf2e958ee9145ef5323c9872d9387}{}\label{classCost_a141bf2e958ee9145ef5323c9872d9387}
+
+\end{DoxyCompactItemize}
+
+
+A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
+\item 
+include/Domain.\+hpp\item 
+src/Domain.\+cpp\end{DoxyCompactItemize}

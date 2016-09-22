@@ -1,0 +1,10 @@
+digraph "Catch::Ptr&lt; T &gt;"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Catch::Ptr\< T \>\n|- m_p\l|+ Ptr()\l+ Ptr()\l+ Ptr()\l+ ~Ptr()\l+ reset()\l+ operator=()\l+ operator=()\l+ swap()\l+ get()\l+ operator*()\l+ operator-\>()\l+ operator!()\l+ operator SafeBool::type()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="orange",fontsize="10",style="solid",label=" \< Catch::Matchers::\lImpl::Matcher\< ExpressionT \> \>" ,fontname="Helvetica"];
+  Node2 [label="{Catch::Ptr\< Catch::\lMatchers::Impl::Matcher\l\< ExpressionT \> \>\n|- m_p\l|+ Ptr()\l+ Ptr()\l+ Ptr()\l+ ~Ptr()\l+ reset()\l+ operator=()\l+ operator=()\l+ swap()\l+ get()\l+ operator*()\l+ operator-\>()\l+ operator!()\l+ operator SafeBool::type()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCatch_1_1Ptr.html"];
+  Node1 -> Node3 [dir="back",color="orange",fontsize="10",style="solid",label=" \< Catch::ITestCase \>" ,fontname="Helvetica"];
+  Node3 [label="{Catch::Ptr\< Catch::\lITestCase \>\n|- m_p\l|+ Ptr()\l+ Ptr()\l+ Ptr()\l+ ~Ptr()\l+ reset()\l+ operator=()\l+ operator=()\l+ swap()\l+ get()\l+ operator*()\l+ operator-\>()\l+ operator!()\l+ operator SafeBool::type()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCatch_1_1Ptr.html"];
+}

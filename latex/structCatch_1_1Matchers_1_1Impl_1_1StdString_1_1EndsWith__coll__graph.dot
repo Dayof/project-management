@@ -1,0 +1,32 @@
+digraph "Catch::Matchers::Impl::StdString::EndsWith"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Catch::Matchers::Impl\l::StdString::EndsWith\n||+ EndsWith()\l+ EndsWith()\l+ ~EndsWith()\l+ match()\l+ toString()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node2 [label="{Catch::Matchers::Impl\l::MatcherImpl\< EndsWith,\l std::string \>\n||+ clone()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1Matchers_1_1Impl_1_1MatcherImpl.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node3 [label="{Catch::Matchers::Impl\l::Matcher\< std::string \>\n||+ ~Matcher()\l+ clone()\l+ match()\l+ toString()\l+ operator&&()\l+ operator\|\|()\l+ operator!()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1Matchers_1_1Impl_1_1Matcher.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node4 [label="{Catch::SharedImpl\<\l IShared \>\n|+ m_rc\l|+ SharedImpl()\l+ addRef()\l+ release()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1SharedImpl.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node5 [label="{Catch::IShared\n||+ ~IShared()\l+ addRef()\l+ release()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1IShared.html"];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node6 [label="{Catch::NonCopyable\n||# NonCopyable()\l# ~NonCopyable()\l- NonCopyable()\l- operator=()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCatch_1_1NonCopyable.html"];
+  Node7 -> Node4 [dir="back",color="orange",fontsize="10",style="solid",label=" \< IShared \>" ];
+  Node7 [label="{Catch::SharedImpl\< T \>\n|+ m_rc\l|+ SharedImpl()\l+ addRef()\l+ release()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1SharedImpl.html"];
+  Node8 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node8 [label="{T\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node3 [dir="back",color="orange",fontsize="10",style="solid",label=" \< std::string \>" ];
+  Node9 [label="{Catch::Matchers::Impl\l::Matcher\< ExpressionT \>\n||+ ~Matcher()\l+ clone()\l+ match()\l+ toString()\l+ operator&&()\l+ operator\|\|()\l+ operator!()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1Matchers_1_1Impl_1_1Matcher.html"];
+  Node4 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node10 -> Node2 [dir="back",color="orange",fontsize="10",style="solid",label=" \< EndsWith, std::string \>" ];
+  Node10 [label="{Catch::Matchers::Impl\l::MatcherImpl\< DerivedT,\l ExpressionT \>\n||+ clone()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1Matchers_1_1Impl_1_1MatcherImpl.html"];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node11 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +m_data" ,arrowhead="odiamond"];
+  Node11 [label="{Catch::Matchers::Impl\l::StdString::CasedString\n|+ m_caseSensitivity\l|+ CasedString()\l+ adjustString()\l+ toStringSuffix()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1Matchers_1_1Impl_1_1StdString_1_1CasedString.html"];
+  Node12 -> Node11 [color="grey25",fontsize="10",style="solid",label=" +m_str" ,arrowhead="odiamond"];
+  Node12 [label="{std::string\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node13 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node13 [label="{std::basic_string\<\l char \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+}

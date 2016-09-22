@@ -1,0 +1,18 @@
+digraph "Catch::AssertionResult"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Catch::AssertionResult\n||+ AssertionResult()\l+ AssertionResult()\l+ ~AssertionResult()\l+ isOk()\l+ succeeded()\l+ getResultType()\l+ hasExpression()\l+ hasMessage()\l+ getExpression()\l+ getExpressionInMacro()\l+ hasExpandedExpression()\l+ getExpandedExpression()\l+ getMessage()\l+ getSourceInfo()\l+ getTestMacroName()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" #m_resultData" ,arrowhead="odiamond"];
+  Node2 [label="{Catch::AssertionResultData\n|+ resultType\l|+ AssertionResultData()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1AssertionResultData.html"];
+  Node3 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +reconstructedExpression\n+message" ,arrowhead="odiamond"];
+  Node3 [label="{std::string\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node4 [label="{std::basic_string\<\l char \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node5 -> Node1 [color="grey25",fontsize="10",style="solid",label=" #m_info" ,arrowhead="odiamond"];
+  Node5 [label="{Catch::AssertionInfo\n|+ resultDisposition\l|+ AssertionInfo()\l+ AssertionInfo()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1AssertionInfo.html"];
+  Node6 -> Node5 [color="grey25",fontsize="10",style="solid",label=" +lineInfo" ,arrowhead="odiamond"];
+  Node6 [label="{Catch::SourceLineInfo\n|+ line\l|+ SourceLineInfo()\l+ SourceLineInfo()\l+ SourceLineInfo()\l+ empty()\l+ operator==()\l+ operator\<()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1SourceLineInfo.html"];
+  Node3 -> Node6 [color="grey25",fontsize="10",style="solid",label=" +file" ,arrowhead="odiamond"];
+  Node3 -> Node5 [color="grey25",fontsize="10",style="solid",label=" +macroName\n+capturedExpression" ,arrowhead="odiamond"];
+}

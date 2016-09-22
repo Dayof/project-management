@@ -1,0 +1,32 @@
+digraph "Catch::Matchers::Impl::Generic::AnyOf&lt; ExpressionT &gt;"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Catch::Matchers::Impl\l::Generic::AnyOf\< ExpressionT \>\n||+ AnyOf()\l+ AnyOf()\l+ add()\l+ match()\l+ toString()\l+ operator\|\|()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node2 [label="{Catch::Matchers::Impl\l::MatcherImpl\< AnyOf\l\< ExpressionT \>, ExpressionT \>\n||+ clone()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1Matchers_1_1Impl_1_1MatcherImpl.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node3 [label="{Catch::Matchers::Impl\l::Matcher\< ExpressionT \>\n||+ ~Matcher()\l+ clone()\l+ match()\l+ toString()\l+ operator&&()\l+ operator\|\|()\l+ operator!()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1Matchers_1_1Impl_1_1Matcher.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node4 [label="{Catch::SharedImpl\<\l IShared \>\n|+ m_rc\l|+ SharedImpl()\l+ addRef()\l+ release()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1SharedImpl.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node5 [label="{Catch::IShared\n||+ ~IShared()\l+ addRef()\l+ release()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1IShared.html"];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node6 [label="{Catch::NonCopyable\n||# NonCopyable()\l# ~NonCopyable()\l- NonCopyable()\l- operator=()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCatch_1_1NonCopyable.html"];
+  Node7 -> Node4 [dir="back",color="orange",fontsize="10",style="solid",label=" \< IShared \>" ];
+  Node7 [label="{Catch::SharedImpl\< T \>\n|+ m_rc\l|+ SharedImpl()\l+ addRef()\l+ release()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1SharedImpl.html"];
+  Node8 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node8 [label="{T\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node2 [dir="back",color="orange",fontsize="10",style="solid",label=" \< AnyOf\< ExpressionT\l \>, ExpressionT \>" ];
+  Node9 [label="{Catch::Matchers::Impl\l::MatcherImpl\< DerivedT,\l ExpressionT \>\n||+ clone()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1Matchers_1_1Impl_1_1MatcherImpl.html"];
+  Node3 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node10 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -m_matchers" ,arrowhead="odiamond"];
+  Node10 [label="{std::vector\< Catch\l::Ptr\< Catch::Matchers\l::Impl::Matcher\< ExpressionT \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node11 -> Node10 [color="grey25",fontsize="10",style="solid",label=" +elements" ,arrowhead="odiamond"];
+  Node11 [label="{Catch::Ptr\< Catch::\lMatchers::Impl::Matcher\l\< ExpressionT \> \>\n|- m_p\l|+ Ptr()\l+ Ptr()\l+ Ptr()\l+ ~Ptr()\l+ reset()\l+ operator=()\l+ operator=()\l+ swap()\l+ get()\l+ operator*()\l+ operator-\>()\l+ operator!()\l+ operator SafeBool::type()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCatch_1_1Ptr.html"];
+  Node12 -> Node11 [dir="back",color="orange",fontsize="10",style="solid",label=" \< Catch::Matchers::\lImpl::Matcher\< ExpressionT \> \>" ];
+  Node12 [label="{Catch::Ptr\< T \>\n|- m_p\l|+ Ptr()\l+ Ptr()\l+ Ptr()\l+ ~Ptr()\l+ reset()\l+ operator=()\l+ operator=()\l+ swap()\l+ get()\l+ operator*()\l+ operator-\>()\l+ operator!()\l+ operator SafeBool::type()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCatch_1_1Ptr.html"];
+  Node13 -> Node10 [dir="back",color="orange",fontsize="10",style="solid",label=" \< Catch::Ptr\< Catch\l::Matchers::Impl::Matcher\l\< ExpressionT \> \> \>" ];
+  Node13 [label="{std::vector\< T \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node8 -> Node13 [color="grey25",fontsize="10",style="solid",label=" +elements" ,arrowhead="odiamond"];
+}

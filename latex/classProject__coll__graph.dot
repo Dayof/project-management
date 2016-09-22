@@ -1,0 +1,22 @@
+digraph "Project"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Project\n|- state\l|+ Project()\l+ Project()\l+ setName()\l+ getName()\l+ setCode()\l+ getCode()\l+ setInitDate()\l+ getInitDate()\l+ setEndDate()\l+ getEndDate()\l+ setCurrCost()\l+ getCurrCost()\l+ setEstimateCost()\l+ getEstimateCost()\l+ setState()\l+ getState()\l+ setProjectManager()\l+ getProjectManager()\l+ addDev()\l+ removeDev()\l+ getAllDevelopers()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -projectManager" ,arrowhead="odiamond"];
+  Node2 [label="{ProjectManager\n||+ ProjectManager()\l+ ProjectManager()\l+ setName()\l+ getName()\l+ setRegistration()\l+ getRegistration()\l+ setPassword()\l+ getPassword()\l+ setPhone()\l+ getPhone()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classProjectManager.html"];
+  Node3 -> Node2 [color="grey25",fontsize="10",style="solid",label=" -password\n-name\n-phone\n-registration" ,arrowhead="odiamond"];
+  Node3 [label="{std::string\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node4 [label="{std::basic_string\<\l char \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node5 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -developers" ,arrowhead="odiamond"];
+  Node5 [label="{std::vector\< Developer \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node5 [color="grey25",fontsize="10",style="solid",label=" +elements" ,arrowhead="odiamond"];
+  Node6 [label="{Developer\n|- role\l|+ Developer()\l+ Developer()\l+ setName()\l+ getName()\l+ setRegistration()\l+ getRegistration()\l+ setPassword()\l+ getPassword()\l+ setEmail()\l+ getEmail()\l+ setRole()\l+ getRole()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDeveloper.html"];
+  Node3 -> Node6 [color="grey25",fontsize="10",style="solid",label=" -password\n-name\n-email\n-registration" ,arrowhead="odiamond"];
+  Node7 -> Node5 [dir="back",color="orange",fontsize="10",style="solid",label=" \< Developer \>" ];
+  Node7 [label="{std::vector\< T \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node8 -> Node7 [color="grey25",fontsize="10",style="solid",label=" +elements" ,arrowhead="odiamond"];
+  Node8 [label="{T\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -end_date\n-estimate_cost\n-code\n-name\n-current_cost\n-init_date" ,arrowhead="odiamond"];
+}

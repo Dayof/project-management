@@ -1,0 +1,32 @@
+digraph "Catch::TestCase"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Catch::TestCase\n||+ TestCase()\l+ TestCase()\l+ withName()\l+ invoke()\l+ getTestCaseInfo()\l+ swap()\l+ operator==()\l+ operator\<()\l+ operator=()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{Catch::TestCaseInfo\n|+ properties\l|+ TestCaseInfo()\l+ TestCaseInfo()\l+ isHidden()\l+ throws()\l+ okToFail()\l+ expectedToFail()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1TestCaseInfo.html"];
+  Node3 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +lineInfo" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node3 [label="{Catch::SourceLineInfo\n|+ line\l|+ SourceLineInfo()\l+ SourceLineInfo()\l+ SourceLineInfo()\l+ empty()\l+ operator==()\l+ operator\<()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1SourceLineInfo.html"];
+  Node4 -> Node3 [color="grey25",fontsize="10",style="solid",label=" +file" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node4 [label="{std::string\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node5 [label="{std::basic_string\<\l char \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node6 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +lcaseTags\n+tags" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node6 [label="{std::set\< std::string \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node6 [color="grey25",fontsize="10",style="solid",label=" +keys" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node7 -> Node6 [dir="back",color="orange",fontsize="10",style="solid",label=" \< std::string \>" ,fontname="Helvetica"];
+  Node7 [label="{std::set\< K \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node8 -> Node7 [color="grey25",fontsize="10",style="solid",label=" +keys" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node8 [label="{K\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +tagsAsString\n+name\n+description\n+className" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node9 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -test" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node9 [label="{Catch::Ptr\< Catch::\lITestCase \>\n||+ Ptr()\l+ Ptr()\l+ Ptr()\l+ ~Ptr()\l+ reset()\l+ operator=()\l+ operator=()\l+ swap()\l+ get()\l+ operator*()\l+ operator-\>()\l+ operator!()\l+ operator SafeBool::type()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCatch_1_1Ptr.html"];
+  Node10 -> Node9 [color="grey25",fontsize="10",style="solid",label=" -m_p" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node10 [label="{Catch::ITestCase\n||+ invoke()\l# ~ITestCase()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1ITestCase.html"];
+  Node11 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node11 [label="{Catch::IShared\n||+ ~IShared()\l+ addRef()\l+ release()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structCatch_1_1IShared.html"];
+  Node12 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node12 [label="{Catch::NonCopyable\n||# NonCopyable()\l# ~NonCopyable()\l- NonCopyable()\l- operator=()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCatch_1_1NonCopyable.html"];
+  Node13 -> Node9 [dir="back",color="orange",fontsize="10",style="solid",label=" \< Catch::ITestCase \>" ,fontname="Helvetica"];
+  Node13 [label="{Catch::Ptr\< T \>\n|- m_p\l|+ Ptr()\l+ Ptr()\l+ Ptr()\l+ ~Ptr()\l+ reset()\l+ operator=()\l+ operator=()\l+ swap()\l+ get()\l+ operator*()\l+ operator-\>()\l+ operator!()\l+ operator SafeBool::type()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCatch_1_1Ptr.html"];
+}

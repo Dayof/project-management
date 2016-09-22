@@ -1,0 +1,94 @@
+\hypertarget{classProjectCode}{}\section{Referência da Classe Project\+Code}
+\label{classProjectCode}\index{Project\+Code@{Project\+Code}}
+
+
+Domínio de Código de Projeto.  
+
+
+
+
+{\ttfamily \#include $<$Domain.\+hpp$>$}
+
+
+
+Diagrama de colaboração para Project\+Code\+:
+% FIG 0
+\subsection*{Métodos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classProjectCode_adb4266f1d34ad0737a116db0df9b8dd2}{Project\+Code} (string cod\+\_\+project=\char`\"{}A\+A\+A\+AA\char`\"{})\hypertarget{classProjectCode_adb4266f1d34ad0737a116db0df9b8dd2}{}\label{classProjectCode_adb4266f1d34ad0737a116db0df9b8dd2}
+
+\begin{DoxyCompactList}\small\item\em Construtor do Código de Projeto O construtor tem valor default de \char`\"{}\+A\+A\+A\+A\+A\char`\"{}. \end{DoxyCompactList}\item 
+void \hyperlink{classProjectCode_a053de7ba0bd5dbdaa8a78043c4e2c6ec}{set\+Cod\+Project} (string cod\+\_\+project)
+\begin{DoxyCompactList}\small\item\em Método setter do domínio de Código de Projeto. \end{DoxyCompactList}\item 
+string \hyperlink{classProjectCode_ae57151a35f220af7c3b9bf6ea5acf4b9}{get\+Cod\+Project} () const 
+\begin{DoxyCompactList}\small\item\em Método getter do domínio de Código de Projeto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Atributos Privados}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries cod\+\_\+project}\hypertarget{classProjectCode_ade4bb7f9d81e005c106d68cc8e2017d9}{}\label{classProjectCode_ade4bb7f9d81e005c106d68cc8e2017d9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Domínio de Código de Projeto. 
+
+Este domínio só permite entradas de exatamente cinco caracteres de A-\/Z e a-\/z. 
+
+\subsection{Métodos}
+\index{Project\+Code@{Project\+Code}!get\+Cod\+Project@{get\+Cod\+Project}}
+\index{get\+Cod\+Project@{get\+Cod\+Project}!Project\+Code@{Project\+Code}}
+\subsubsection[{\texorpdfstring{get\+Cod\+Project() const }{getCodProject() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Project\+Code\+::get\+Cod\+Project (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProjectCode_ae57151a35f220af7c3b9bf6ea5acf4b9}{}\label{classProjectCode_ae57151a35f220af7c3b9bf6ea5acf4b9}
+
+
+Método getter do domínio de Código de Projeto. 
+
+\begin{DoxyReturn}{Retorna}
+o codigo do projeto 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+33 \{\textcolor{keywordflow}{return} this->cod\_project;\};
+\end{DoxyCode}
+\index{Project\+Code@{Project\+Code}!set\+Cod\+Project@{set\+Cod\+Project}}
+\index{set\+Cod\+Project@{set\+Cod\+Project}!Project\+Code@{Project\+Code}}
+\subsubsection[{\texorpdfstring{set\+Cod\+Project(string cod\+\_\+project)}{setCodProject(string cod_project)}}]{\setlength{\rightskip}{0pt plus 5cm}void Project\+Code\+::set\+Cod\+Project (
+\begin{DoxyParamCaption}
+\item[{string}]{cod\+\_\+project}
+\end{DoxyParamCaption}
+)}\hypertarget{classProjectCode_a053de7ba0bd5dbdaa8a78043c4e2c6ec}{}\label{classProjectCode_a053de7ba0bd5dbdaa8a78043c4e2c6ec}
+
+
+Método setter do domínio de Código de Projeto. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em cod\+\_\+project} & uma string que recebe o codigo do projeto \\
+\hline
+\end{DoxyParams}
+
+
+Referenciado por Project\+Code().
+
+
+\begin{DoxyCode}
+9 \{
+10     \textcolor{keywordtype}{bool} valid\_cod = regex\_match(cod\_project,
+11     regex(\textcolor{stringliteral}{"^[A-Z]\{5\}$"}) );
+12 
+13     \textcolor{keywordflow}{if}(valid\_cod) this->cod\_project=cod\_project;
+14     \textcolor{keywordflow}{else} \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INVALIDA. Tente algum codigo com"}
+15         \textcolor{stringliteral}{" 5 caracteres do tipo A-Z ."});
+16 \}
+\end{DoxyCode}
+
+
+A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
+\item 
+include/Domain.\+hpp\item 
+src/Domain.\+cpp\end{DoxyCompactItemize}

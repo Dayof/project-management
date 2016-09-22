@@ -1,0 +1,6 @@
+digraph "Catch::Detail::Approx"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Catch::Detail::Approx\n|- m_epsilon\l- m_scale\l- m_value\l|+ Approx()\l+ Approx()\l+ operator()()\l+ epsilon()\l+ scale()\l+ toString()\l+ custom()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+}

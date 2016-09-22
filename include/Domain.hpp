@@ -3,13 +3,33 @@
 
 #include "Headers.hpp"
 
+/**
+ * \class ProjectCode
+ *
+ * \brief Domínio de Código de Projeto
+ *
+ * Este domínio só permite entradas de exatamente
+ * cinco caracteres de A-Z e a-z.
+ *
+ */
+
 class ProjectCode {
 private:
     string cod_project;
 public:
+    /** Construtor do Código de Projeto
+     *  O construtor tem valor default de "AAAAA"
+     */
     ProjectCode(string cod_project="AAAAA");
 
+    /** Método setter do domínio de Código de Projeto
+     *  @param cod_project uma string que recebe o codigo do projeto
+     */
     void setCodProject(string cod_project);
+
+    /** Método getter do domínio de Código de Projeto
+     *  @return o codigo do projeto
+     */
     string getCodProject() const {return this->cod_project;};
 };
 
