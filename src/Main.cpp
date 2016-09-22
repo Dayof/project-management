@@ -822,4 +822,74 @@ SCENARIO("projeto eh inicializado", "[project]") {
         }
     }
 }
+
+SCENARIO("fase eh inicializada", "[phase]") {
+
+    GIVEN("strings de data de inicio, data de termino,"
+        " e inteiro de codigo para iniciar a fase") {
+        string init_date, end_date;
+        int phase_stub;
+
+        WHEN( "construtor sem parametro" ) {
+            THEN( "a fase nao e criada e lanca excecao" ) {
+               CHECK_THROWS(Phase{});
+            }
+        }
+
+        WHEN("com valores validos, CASO 1: Construtor e criado se e passado"
+            " no minimo data de inicio e codigo com valores validos") {
+            init_date = "13/03/2020";
+            phase_stub = INIT;
+
+            Phase* phase = new Phase(init_date, phase_stub);
+
+             THEN( "a data de inicio e atribuida a fase" ) {
+                REQUIRE(phase->getInitDate() == init_date);
+            }
+
+             THEN( "o codigo e atribuido a fase" ) {
+                REQUIRE(phase->getPhase() == phase_stub);
+            }
+        }
+
+        WHEN( "com valores validos, CASO 2: Construtor criado recebe"
+            " data de termino com valor valido") {
+            init_date = "13/03/2029";
+            phase_stub = EXEC;
+            end_date = "13/04/2030";
+
+          Phase* phase = new Phase(init_date, phase_stub);
+
+            phase->setEndDate(end_date);
+
+            THEN( "a data de termino e atribuida a fase" ) {
+                REQUIRE(phase->getEndDate() == end_date);
+            }
+        }
+
+         WHEN( "com valores invalidos, CASO 1: Construtor nao e criado se"
+             " e passado data de inicio ou codigo com valores invalidos") {
+            init_date = "13/03/2059";
+            phase_stub = PREPARATION;
+
+            THEN( "a fase nao e criada e lanca excecao" ) {
+                CHECK_THROWS(Phase phase(init_date, phase_stub));
+            }
+        }
+
+        WHEN( "com valores invalidos, CASO 2: Construtor criado recebe"
+            " data de termino com valor invalido") {
+            init_date = "13/03/2029";
+            phase_stub = CLOSURE;
+            end_date = "13/04/2080";
+
+            Phase* phase = new Phase(init_date, phase_stub);
+
+            THEN( "a fase nao e criada e lanca excecao" ) {
+                CHECK_THROWS(phase->setEndDate(end_date));
+            }
+        }
+    }
+}
+
 #endif

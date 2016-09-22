@@ -72,25 +72,6 @@ public:
   char getRole() const {return this->role;};
 };
 
-class Phase {
-private:
-  char phase;
-  string init_date, end_date;
-public:
-  Phase (char phase=INIT,
-        string init_date="00/00/0000",
-        string end_date="30/12/2000");
-
-  void setPhase(char phase){this->phase = phase;};
-  char getPhase() const {return this->phase;};
-
-  void setInitDate(string init_date){this->init_date = init_date;};
-  string getInitDate() const {return this->init_date;};
-
-  void setEndDate(string){this->end_date = end_date;};
-  string getEndDate() const {return this->end_date;};
-};
-
 class Project {
 private:
     string name, code, init_date, end_date, current_cost, estimate_cost;
@@ -133,6 +114,26 @@ public:
   void addDev(string reg);
   void removeDev(string reg);
   vector<Developer> getAllDevelopers();
+};
+
+class Phase {
+private:
+    string init_date, end_date;
+    int phase;
+public:
+  Phase (string init_date, int phase);
+  Phase(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe  data de inicio "
+    " e codigo da fase.");};
+
+  void setInitDate(string init_date);
+  string getInitDate() const {return this->init_date;};
+
+  void setEndDate(string end_date);
+  string getEndDate() const {return this->end_date;};
+
+    void setPhase(int phase);
+  int getPhase() const {return this->phase;};
+
 };
 
 #endif // ENTITY_HPP_INCLUDED

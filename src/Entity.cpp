@@ -133,7 +133,6 @@ void Developer::setEmail(string email_str)
     this->email = email->getEmail();
 }
 
-
 Project::Project(string name,
                 string code,
                 ProjectManager* projectManager,
@@ -181,7 +180,6 @@ void Project::setEndDate(string end_date_str)
     this->end_date = end_date->getDate();
 }
 
-
 void Project::setState(int state_int)
 {
     ProjectState* state;
@@ -190,14 +188,35 @@ void Project::setState(int state_int)
     this->state = state->getProjectState();
 }
 
-
-Phase::Phase(char phase, string init_date, string end_date)
+Phase::Phase(string init_date, int phase)
 {
-  this->phase = phase;
-  this->init_date = init_date;
-  this->end_date = end_date;
+    setInitDate(init_date);
+    setPhase(phase);
 }
 
+void Phase::setInitDate(string init_date_str)
+{
+    Date* init_date;
+    try{ init_date = new Date(init_date_str); }
+    catch (exception& err) { throw err.what(); }
+    this->init_date = init_date->getDate();
+}
+
+void Phase::setEndDate(string end_date_str)
+{
+    Date* end_date;
+    try{ end_date = new Date(end_date_str); }
+    catch (exception& err) { throw err.what(); }
+    this->end_date = end_date->getDate();
+}
+
+void Phase::setPhase(int phase_int)
+{
+    ProjectPhase* projectPhase;
+    try{ projectPhase = new ProjectPhase(phase_int); }
+    catch (exception& err) { throw err.what(); }
+    this->phase = projectPhase->getProjectPhase();
+}
 
 // //TODO
 // Project::Project(string name,
