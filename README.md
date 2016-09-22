@@ -5,6 +5,26 @@ Project Management
 
 Este projeto foca em desenvolver um gerenciador de projetos em organizações.
 
+## Diretórios e Informações dos arquivos
+
+| Tipo      | Nome                              	             | Função                          	     |
+| --------- | ------------------------------------------------------ | ------------------------------------- |
+| Diretório | [include](include)           		  	     | Possui os arquivos de biblioteca	     |
+| Diretório | [src](src)                 		  	     | Possui os arquivos de implementação   |
+| Diretório | [obj](obj)                  		  	     | Possui os arquivos objetos            |
+| Diretório | [html](html)                         		     | Arquivos HTML do Doxygen      	     |
+| Diretório | [latex](latex)                         		     | Arquivos Latex do Doxygen	     |
+| Arquivo   | [project-management.cbp](project-management.cbp)	     | Arquivo do software para o C::B       |
+| Arquivo   | [project-management.layout](project-management.layout) | Arquivo do software para o C::B       |
+| Arquivo   | [README.md](README.md)           			     | Instruções gerais do projeto          |
+| Arquivo   | [tests_results.xml](tests_results.xml)   		     | Resultados de todos os testes         |
+| Arquivo   | [TODO.md](TODO.md)   				     | Alguns TODO para o Trabalho 2	     |
+| Arquivo   | [Doxyfile](Doxyfile)   				     | Arquivo de configuração do Doxygen    |
+| Arquivo   | [main](main)   				     	     | Arquivo executável do sistema	     |
+| Arquivo   | [.travis.yml](.travis.yml)   		     	     | Arquivo de build do Travis	     |
+| Arquivo   | [.git](.git)   				     	     | Arquivo de configurações do Git	     |
+| Arquivo   | [.gitignore](.gitignore)         		 	     | Arquivos/pastas ignorados pelo Git    |
+
 ### Entidades
 - Gerente de Sistema
 	- Domínios: Nome, matrícula e senha.
@@ -26,6 +46,17 @@ Este projeto foca em desenvolver um gerenciador de projetos em organizações.
 - Testes unitários para os domínios com por ao menos um caso válido e um caso inválido;
 - Testes unitários para as entidades com por ao menos um caso válido e um caso inválido.
 - Todos os testes estão passando!
+
+### Convenção de Codificação
+
+- Arquivos: CamelCase.cpp;
+- Classes: class CamelCase extends ParentObject;
+- Variáveis: variables_underscored;
+- Objetos que contém instâncias: camelCase = new CamelCase();
+- Chaves de vetores: collection['underscored_keys'];
+- Constantes: ALL_CAPS_AND_UNDERSCORED;
+- Métodos: camelCase.fooMethod();
+- Métodos estáticos: CamelCase::justLikeRegularMethod().
 
 ### TODO: 
 - Camadas de Apresentação, Negócio e Persistência.
