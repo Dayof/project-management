@@ -1,3 +1,13 @@
+/** @file Domain.hpp
+ *  @brief Biblioteca de Domínios do sistema.
+ *
+ *  Neste arquivo contém os cabeçalhos das classes
+ *  de domínio.
+ *
+ *  @author Dayanne Fernandes
+ *  @bug Sem bug conhecido.
+ */
+
 #ifndef DOMAIN_HPP_INCLUDED
 #define DOMAIN_HPP_INCLUDED
 
@@ -12,7 +22,6 @@
  * 5 caracteres de A-Z e a-z.
  *
  */
-
 class ProjectCode {
 private:
     /**

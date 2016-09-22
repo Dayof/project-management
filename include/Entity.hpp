@@ -1,3 +1,13 @@
+/** @file Entity.hpp
+ *  @brief Biblioteca de Entidades do sistema.
+ *
+ *  Neste arquivo contém os cabeçalhos das classes
+ *  de entidades.
+ *
+ *  @author Dayanne Fernandes
+ *  @bug Sem bug conhecido.
+ */
+
 #ifndef ENTITY_HPP_INCLUDED
 #define ENTITY_HPP_INCLUDED
 
