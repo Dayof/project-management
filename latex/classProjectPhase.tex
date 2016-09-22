@@ -2,26 +2,109 @@
 \label{classProjectPhase}\index{Project\+Phase@{Project\+Phase}}
 
 
+Domínio de Código de Fase de Projeto.  
+
+
+
+
+{\ttfamily \#include $<$Domain.\+hpp$>$}
+
+
+
 Diagrama de colaboração para Project\+Phase\+:
 % FIG 0
 \subsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Project\+Phase} (int project\+\_\+phase=1)\hypertarget{classProjectPhase_a22ef4b1402f6ddd2c101927bd7793e63}{}\label{classProjectPhase_a22ef4b1402f6ddd2c101927bd7793e63}
-
-\item 
-void {\bfseries set\+Project\+Phase} (int project\+\_\+phase)\hypertarget{classProjectPhase_ad3babff97fc60bb738e263fd76ce6245}{}\label{classProjectPhase_ad3babff97fc60bb738e263fd76ce6245}
-
-\item 
-int {\bfseries get\+Project\+Phase} () const \hypertarget{classProjectPhase_ae4848dccd98eb7ec3a6ffc2038b15a0f}{}\label{classProjectPhase_ae4848dccd98eb7ec3a6ffc2038b15a0f}
-
-\end{DoxyCompactItemize}
+\hyperlink{classProjectPhase_a22ef4b1402f6ddd2c101927bd7793e63}{Project\+Phase} (int \hyperlink{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}{project\+\_\+phase}=1)
+\begin{DoxyCompactList}\small\item\em Construtor do Código de Fase de Projeto. \end{DoxyCompactList}\item 
+void \hyperlink{classProjectPhase_ad3babff97fc60bb738e263fd76ce6245}{set\+Project\+Phase} (int \hyperlink{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}{project\+\_\+phase})
+\begin{DoxyCompactList}\small\item\em Método setter do domínio de Código de Fase de Projeto. \end{DoxyCompactList}\item 
+int \hyperlink{classProjectPhase_ae4848dccd98eb7ec3a6ffc2038b15a0f}{get\+Project\+Phase} () const 
+\begin{DoxyCompactList}\small\item\em Método getter do domínio de Código de Fase de Projeto. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Atributos Privados}
 \begin{DoxyCompactItemize}
 \item 
-int {\bfseries project\+\_\+phase}\hypertarget{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}{}\label{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}
+int \hyperlink{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}{project\+\_\+phase}\hypertarget{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}{}\label{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Variavel para armazenar o código da fase de projeto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Domínio de Código de Fase de Projeto. 
+
+Este domínio só permite entradas de exatamente 1 dígito, sendo 1 para Iniciação, 2 para Preparação, 3 para Execução e 4 para Encerramento. 
+
+\subsection{Construtores \& Destrutores}
+\index{Project\+Phase@{Project\+Phase}!Project\+Phase@{Project\+Phase}}
+\index{Project\+Phase@{Project\+Phase}!Project\+Phase@{Project\+Phase}}
+\subsubsection[{\texorpdfstring{Project\+Phase(int project\+\_\+phase=1)}{ProjectPhase(int project_phase=1)}}]{\setlength{\rightskip}{0pt plus 5cm}Project\+Phase\+::\+Project\+Phase (
+\begin{DoxyParamCaption}
+\item[{int}]{project\+\_\+phase = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\hypertarget{classProjectPhase_a22ef4b1402f6ddd2c101927bd7793e63}{}\label{classProjectPhase_a22ef4b1402f6ddd2c101927bd7793e63}
+
+
+Construtor do Código de Fase de Projeto. 
+
+O construtor tem valor default de 1, ou seja, fase de Iniciação. 
+\begin{DoxyParams}{Parâmetros}
+{\em project\+\_\+phase} & um inteiro que recebe o código de fase de projeto. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+32 \{
+33   \hyperlink{classProjectPhase_ad3babff97fc60bb738e263fd76ce6245}{setProjectPhase}(\hyperlink{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}{project\_phase});
+34 \}
+\end{DoxyCode}
+
+
+\subsection{Métodos}
+\index{Project\+Phase@{Project\+Phase}!get\+Project\+Phase@{get\+Project\+Phase}}
+\index{get\+Project\+Phase@{get\+Project\+Phase}!Project\+Phase@{Project\+Phase}}
+\subsubsection[{\texorpdfstring{get\+Project\+Phase() const }{getProjectPhase() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Project\+Phase\+::get\+Project\+Phase (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProjectPhase_ae4848dccd98eb7ec3a6ffc2038b15a0f}{}\label{classProjectPhase_ae4848dccd98eb7ec3a6ffc2038b15a0f}
+
+
+Método getter do domínio de Código de Fase de Projeto. 
+
+\begin{DoxyReturn}{Retorna}
+o código de fase de projeto validado. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+119 \{\textcolor{keywordflow}{return} this->\hyperlink{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}{project\_phase};\};
+\end{DoxyCode}
+\index{Project\+Phase@{Project\+Phase}!set\+Project\+Phase@{set\+Project\+Phase}}
+\index{set\+Project\+Phase@{set\+Project\+Phase}!Project\+Phase@{Project\+Phase}}
+\subsubsection[{\texorpdfstring{set\+Project\+Phase(int project\+\_\+phase)}{setProjectPhase(int project_phase)}}]{\setlength{\rightskip}{0pt plus 5cm}void Project\+Phase\+::set\+Project\+Phase (
+\begin{DoxyParamCaption}
+\item[{int}]{project\+\_\+phase}
+\end{DoxyParamCaption}
+)}\hypertarget{classProjectPhase_ad3babff97fc60bb738e263fd76ce6245}{}\label{classProjectPhase_ad3babff97fc60bb738e263fd76ce6245}
+
+
+Método setter do domínio de Código de Fase de Projeto. 
+
+Ele valida o valor recebido e atribui se for correto. 
+\begin{DoxyParams}{Parâmetros}
+{\em project\+\_\+phase} & um inteiro que recebe o código de fase de projeto. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+37 \{
+38     \textcolor{keywordflow}{if}(project\_phase <= 4 && project\_phase>=1)
+39         this->\hyperlink{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}{project\_phase}=\hyperlink{classProjectPhase_a32edffe407c553fd0cabd072dc71bdf9}{project\_phase};
+40     \textcolor{keywordflow}{else} \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INVALIDA. Tente algum numero com no"}
+41         \textcolor{stringliteral}{" maximo 1 digito, sendo 1 para 'Iniciacao', 2 'Preparacao', 3 'Execucao' e"}
+42         \textcolor{stringliteral}{" 4 para 'Encerramento'."});
+43 \}
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}

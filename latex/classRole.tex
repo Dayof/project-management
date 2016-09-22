@@ -2,26 +2,126 @@
 \label{classRole}\index{Role@{Role}}
 
 
+Domínio de Função.  
+
+
+
+
+{\ttfamily \#include $<$Domain.\+hpp$>$}
+
+
+
 Diagrama de colaboração para Role\+:
 % FIG 0
 \subsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Role} (int role=0)\hypertarget{classRole_a70253cfd20a49f15e2af380ac04e845d}{}\label{classRole_a70253cfd20a49f15e2af380ac04e845d}
-
-\item 
-void {\bfseries set\+Role} (int role)\hypertarget{classRole_a202ba4ab34f0b4cdefc9a434f3e58f86}{}\label{classRole_a202ba4ab34f0b4cdefc9a434f3e58f86}
-
-\item 
-int {\bfseries get\+Role} () const \hypertarget{classRole_a9e7769617e1a42323d0b752bbe13b721}{}\label{classRole_a9e7769617e1a42323d0b752bbe13b721}
-
-\end{DoxyCompactItemize}
+\hyperlink{classRole_aa53892a736a3cca81d015cfb5e6ba241}{Role} (int \hyperlink{classRole_a19a26703a0776f3ee79ce0e057b908cb}{role})
+\begin{DoxyCompactList}\small\item\em Construtor com parâmetro da Função. \end{DoxyCompactList}\item 
+\hyperlink{classRole_a720f8920d5c6980dd3f380f4b060904a}{Role} ()
+\begin{DoxyCompactList}\small\item\em Construtor sem parâmetro da Função. \end{DoxyCompactList}\item 
+void \hyperlink{classRole_a202ba4ab34f0b4cdefc9a434f3e58f86}{set\+Role} (int \hyperlink{classRole_a19a26703a0776f3ee79ce0e057b908cb}{role})
+\begin{DoxyCompactList}\small\item\em Método setter do domínio de Função. \end{DoxyCompactList}\item 
+int \hyperlink{classRole_a9e7769617e1a42323d0b752bbe13b721}{get\+Role} () const 
+\begin{DoxyCompactList}\small\item\em Método getter do domínio de Função. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Atributos Privados}
 \begin{DoxyCompactItemize}
 \item 
-int {\bfseries role}\hypertarget{classRole_a19a26703a0776f3ee79ce0e057b908cb}{}\label{classRole_a19a26703a0776f3ee79ce0e057b908cb}
+int \hyperlink{classRole_a19a26703a0776f3ee79ce0e057b908cb}{role}\hypertarget{classRole_a19a26703a0776f3ee79ce0e057b908cb}{}\label{classRole_a19a26703a0776f3ee79ce0e057b908cb}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Variavel para armazenar a função. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Domínio de Função. 
+
+Este domínio só permite entradas de exatamente 1 dígito, sendo 1 para Analista, 2 para Projetista e 3 para Programador. 
+
+\subsection{Construtores \& Destrutores}
+\index{Role@{Role}!Role@{Role}}
+\index{Role@{Role}!Role@{Role}}
+\subsubsection[{\texorpdfstring{Role(int role)}{Role(int role)}}]{\setlength{\rightskip}{0pt plus 5cm}Role\+::\+Role (
+\begin{DoxyParamCaption}
+\item[{int}]{role}
+\end{DoxyParamCaption}
+)}\hypertarget{classRole_aa53892a736a3cca81d015cfb5e6ba241}{}\label{classRole_aa53892a736a3cca81d015cfb5e6ba241}
+
+
+Construtor com parâmetro da Função. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em role} & um inteiro que recebe o código de de referência à função do desenvolvedor. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+46 \{
+47   \hyperlink{classRole_a202ba4ab34f0b4cdefc9a434f3e58f86}{setRole}(\hyperlink{classRole_a19a26703a0776f3ee79ce0e057b908cb}{role});
+48 \}
+\end{DoxyCode}
+\index{Role@{Role}!Role@{Role}}
+\index{Role@{Role}!Role@{Role}}
+\subsubsection[{\texorpdfstring{Role()}{Role()}}]{\setlength{\rightskip}{0pt plus 5cm}Role\+::\+Role (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classRole_a720f8920d5c6980dd3f380f4b060904a}{}\label{classRole_a720f8920d5c6980dd3f380f4b060904a}
+
+
+Construtor sem parâmetro da Função. 
+
+Assinatura para lançar exceção caso nenhum parâmetro seja passado. 
+\begin{DoxyCode}
+149           \{\textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INCOMPLETA. Passe o codigo "}
+150     \textcolor{stringliteral}{" da função."});\};
+\end{DoxyCode}
+
+
+\subsection{Métodos}
+\index{Role@{Role}!get\+Role@{get\+Role}}
+\index{get\+Role@{get\+Role}!Role@{Role}}
+\subsubsection[{\texorpdfstring{get\+Role() const }{getRole() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Role\+::get\+Role (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classRole_a9e7769617e1a42323d0b752bbe13b721}{}\label{classRole_a9e7769617e1a42323d0b752bbe13b721}
+
+
+Método getter do domínio de Função. 
+
+\begin{DoxyReturn}{Retorna}
+o código validado de referência à função do desenvolvedor. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+163 \{\textcolor{keywordflow}{return} this->\hyperlink{classRole_a19a26703a0776f3ee79ce0e057b908cb}{role};\};
+\end{DoxyCode}
+\index{Role@{Role}!set\+Role@{set\+Role}}
+\index{set\+Role@{set\+Role}!Role@{Role}}
+\subsubsection[{\texorpdfstring{set\+Role(int role)}{setRole(int role)}}]{\setlength{\rightskip}{0pt plus 5cm}void Role\+::set\+Role (
+\begin{DoxyParamCaption}
+\item[{int}]{role}
+\end{DoxyParamCaption}
+)}\hypertarget{classRole_a202ba4ab34f0b4cdefc9a434f3e58f86}{}\label{classRole_a202ba4ab34f0b4cdefc9a434f3e58f86}
+
+
+Método setter do domínio de Função. 
+
+Ele valida o valor recebido e atribui se for correto. 
+\begin{DoxyParams}{Parâmetros}
+{\em role} & um inteiro que recebe o código de referência à função do desenvolvedor. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+51 \{
+52     \textcolor{keywordflow}{if}(role <= 3 && role>0)
+53         this->\hyperlink{classRole_a19a26703a0776f3ee79ce0e057b908cb}{role}=\hyperlink{classRole_a19a26703a0776f3ee79ce0e057b908cb}{role};
+54     \textcolor{keywordflow}{else} \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INVALIDA. Tente algum numero com no"}
+55         \textcolor{stringliteral}{" maximo 1 digito, sendo 1 para 'Analista', 2 'Projetista' e 3 para 'Programador'."});
+56 \}
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}

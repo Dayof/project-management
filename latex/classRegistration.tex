@@ -2,26 +2,127 @@
 \label{classRegistration}\index{Registration@{Registration}}
 
 
+Domínio de Matrícula.  
+
+
+
+
+{\ttfamily \#include $<$Domain.\+hpp$>$}
+
+
+
 Diagrama de colaboração para Registration\+:
 % FIG 0
 \subsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Registration} (string reg=\char`\"{}\char`\"{})\hypertarget{classRegistration_adaf7a6aa993b11cde0b298c976ae5913}{}\label{classRegistration_adaf7a6aa993b11cde0b298c976ae5913}
-
-\item 
-void {\bfseries set\+Registration} (string reg)\hypertarget{classRegistration_af8cb446598b308d73c8fefd63f02a2aa}{}\label{classRegistration_af8cb446598b308d73c8fefd63f02a2aa}
-
-\item 
-string {\bfseries get\+Registration} () const \hypertarget{classRegistration_a7bfd5b95fa00e3465c625d36b45d9de5}{}\label{classRegistration_a7bfd5b95fa00e3465c625d36b45d9de5}
-
-\end{DoxyCompactItemize}
+\hyperlink{classRegistration_a2ce7d00addbdb8083d272226dc272e63}{Registration} (string \hyperlink{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}{reg})
+\begin{DoxyCompactList}\small\item\em Construtor com parâmetro da Matrícula. \end{DoxyCompactList}\item 
+\hyperlink{classRegistration_aac811faf22fe96a7f657a282d6d679ab}{Registration} ()
+\begin{DoxyCompactList}\small\item\em Construtor sem parâmetro da Matrícula. \end{DoxyCompactList}\item 
+void \hyperlink{classRegistration_af8cb446598b308d73c8fefd63f02a2aa}{set\+Registration} (string \hyperlink{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}{reg})
+\begin{DoxyCompactList}\small\item\em Método setter do domínio de Matrícula. \end{DoxyCompactList}\item 
+string \hyperlink{classRegistration_a7bfd5b95fa00e3465c625d36b45d9de5}{get\+Registration} () const 
+\begin{DoxyCompactList}\small\item\em Método getter do domínio de Matrícula. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Atributos Privados}
 \begin{DoxyCompactItemize}
 \item 
-string {\bfseries reg}\hypertarget{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}{}\label{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}
+string \hyperlink{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}{reg}\hypertarget{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}{}\label{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Variavel para armazenar a Matrícula. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Domínio de Matrícula. 
+
+Este domínio só permite entradas de exatamente 5 dígitos de 0 a 9. 
+
+\subsection{Construtores \& Destrutores}
+\index{Registration@{Registration}!Registration@{Registration}}
+\index{Registration@{Registration}!Registration@{Registration}}
+\subsubsection[{\texorpdfstring{Registration(string reg)}{Registration(string reg)}}]{\setlength{\rightskip}{0pt plus 5cm}Registration\+::\+Registration (
+\begin{DoxyParamCaption}
+\item[{string}]{reg}
+\end{DoxyParamCaption}
+)}\hypertarget{classRegistration_a2ce7d00addbdb8083d272226dc272e63}{}\label{classRegistration_a2ce7d00addbdb8083d272226dc272e63}
+
+
+Construtor com parâmetro da Matrícula. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em reg} & uma string que recebe a matrícula. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+145 \{
+146   \hyperlink{classRegistration_af8cb446598b308d73c8fefd63f02a2aa}{setRegistration}(\hyperlink{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}{reg});
+147 \}
+\end{DoxyCode}
+\index{Registration@{Registration}!Registration@{Registration}}
+\index{Registration@{Registration}!Registration@{Registration}}
+\subsubsection[{\texorpdfstring{Registration()}{Registration()}}]{\setlength{\rightskip}{0pt plus 5cm}Registration\+::\+Registration (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classRegistration_aac811faf22fe96a7f657a282d6d679ab}{}\label{classRegistration_aac811faf22fe96a7f657a282d6d679ab}
+
+
+Construtor sem parâmetro da Matrícula. 
+
+Assinatura para lançar exceção caso nenhum parâmetro seja passado. 
+\begin{DoxyCode}
+396 \{\textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INCOMPLETA. Passe a matrícula."});\};
+\end{DoxyCode}
+
+
+\subsection{Métodos}
+\index{Registration@{Registration}!get\+Registration@{get\+Registration}}
+\index{get\+Registration@{get\+Registration}!Registration@{Registration}}
+\subsubsection[{\texorpdfstring{get\+Registration() const }{getRegistration() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Registration\+::get\+Registration (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classRegistration_a7bfd5b95fa00e3465c625d36b45d9de5}{}\label{classRegistration_a7bfd5b95fa00e3465c625d36b45d9de5}
+
+
+Método getter do domínio de Matrícula. 
+
+\begin{DoxyReturn}{Retorna}
+a matrícula validada. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+408 \{\textcolor{keywordflow}{return} this->\hyperlink{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}{reg};\};
+\end{DoxyCode}
+\index{Registration@{Registration}!set\+Registration@{set\+Registration}}
+\index{set\+Registration@{set\+Registration}!Registration@{Registration}}
+\subsubsection[{\texorpdfstring{set\+Registration(string reg)}{setRegistration(string reg)}}]{\setlength{\rightskip}{0pt plus 5cm}void Registration\+::set\+Registration (
+\begin{DoxyParamCaption}
+\item[{string}]{reg}
+\end{DoxyParamCaption}
+)}\hypertarget{classRegistration_af8cb446598b308d73c8fefd63f02a2aa}{}\label{classRegistration_af8cb446598b308d73c8fefd63f02a2aa}
+
+
+Método setter do domínio de Matrícula. 
+
+Ele valida o valor recebido e atribui se for correto. 
+\begin{DoxyParams}{Parâmetros}
+{\em reg} & uma string que recebe a matrícula. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+150 \{
+151     \textcolor{keywordtype}{bool} valid\_reg = regex\_match(\hyperlink{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}{reg},
+152     regex(\textcolor{stringliteral}{"^[0-9]\{5\}$"}) );
+153 
+154     \textcolor{keywordflow}{if}(valid\_reg) this->\hyperlink{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}{reg}=\hyperlink{classRegistration_afb78d65446087c2dd479cebb5b7cc89f}{reg};
+155     \textcolor{keywordflow}{else} \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INVALIDA. Tente alguma matricula"}
+156         \textcolor{stringliteral}{" com 5 digitos de 0-9."});
+157 \}
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}

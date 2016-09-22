@@ -90,6 +90,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Busca');
 <div class="title">Referência da Classe ProjectState</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Domínio de Estado de Projeto.  
+ <a href="classProjectState.html#details">Mais...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Domain_8hpp_source.html">Domain.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Diagrama de colaboração para ProjectState:</div>
 <div class="dyncontent">
@@ -99,22 +104,106 @@ Diagrama de colaboração para ProjectState:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos Públicos</h2></td></tr>
-<tr class="memitem:a61af7f1893ff51ef66c4aeb46585db8e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61af7f1893ff51ef66c4aeb46585db8e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ProjectState</b> (int project_state=1)</td></tr>
+<tr class="memitem:a61af7f1893ff51ef66c4aeb46585db8e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectState.html#a61af7f1893ff51ef66c4aeb46585db8e">ProjectState</a> (int <a class="el" href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">project_state</a>=1)</td></tr>
+<tr class="memdesc:a61af7f1893ff51ef66c4aeb46585db8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor do Estado de Projeto.  <a href="#a61af7f1893ff51ef66c4aeb46585db8e">Mais...</a><br /></td></tr>
 <tr class="separator:a61af7f1893ff51ef66c4aeb46585db8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04b2df31e839624a758dd39f18dd522c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04b2df31e839624a758dd39f18dd522c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setProjectState</b> (int project_state)</td></tr>
+<tr class="memitem:a04b2df31e839624a758dd39f18dd522c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectState.html#a04b2df31e839624a758dd39f18dd522c">setProjectState</a> (int <a class="el" href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">project_state</a>)</td></tr>
+<tr class="memdesc:a04b2df31e839624a758dd39f18dd522c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método setter do domínio de Estado de Projeto.  <a href="#a04b2df31e839624a758dd39f18dd522c">Mais...</a><br /></td></tr>
 <tr class="separator:a04b2df31e839624a758dd39f18dd522c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27bad04e4d2c7becc39daf276c1841a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27bad04e4d2c7becc39daf276c1841a1"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getProjectState</b> () const </td></tr>
+<tr class="memitem:a27bad04e4d2c7becc39daf276c1841a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectState.html#a27bad04e4d2c7becc39daf276c1841a1">getProjectState</a> () const </td></tr>
+<tr class="memdesc:a27bad04e4d2c7becc39daf276c1841a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método getter do domínio de Estado de Projeto.  <a href="#a27bad04e4d2c7becc39daf276c1841a1">Mais...</a><br /></td></tr>
 <tr class="separator:a27bad04e4d2c7becc39daf276c1841a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Atributos Privados</h2></td></tr>
 <tr class="memitem:ae498c9ef4da8937df35a12379ee1486a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae498c9ef4da8937df35a12379ee1486a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>project_state</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">project_state</a></td></tr>
+<tr class="memdesc:ae498c9ef4da8937df35a12379ee1486a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variavel para armazenar o estado de projeto. <br /></td></tr>
 <tr class="separator:ae498c9ef4da8937df35a12379ee1486a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
+<div class="textblock"><p>Domínio de Estado de Projeto. </p>
+<p>Este domínio só permite entradas de exatamente 1 dígito, sendo 1 para estado Ativo e 2 para estado Inativo. </p>
+</div><h2 class="groupheader">Construtores &amp; Destrutores</h2>
+<a class="anchor" id="a61af7f1893ff51ef66c4aeb46585db8e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ProjectState::ProjectState </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>project_state</em> = <code>1</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construtor do Estado de Projeto. </p>
+<p>O construtor tem valor default de 1, ou seja, estado Ativo assim que é iniciado. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">project_state</td><td>um inteiro que recebe o estado de projeto. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="classProjectState.html#a04b2df31e839624a758dd39f18dd522c">setProjectState</a>(<a class="code" href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">project_state</a>);</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div><div class="ttc" id="classProjectState_html_a04b2df31e839624a758dd39f18dd522c"><div class="ttname"><a href="classProjectState.html#a04b2df31e839624a758dd39f18dd522c">ProjectState::setProjectState</a></div><div class="ttdeci">void setProjectState(int project_state)</div><div class="ttdoc">Método setter do domínio de Estado de Projeto. </div><div class="ttdef"><b>Definition:</b> Domain.cpp:23</div></div>
+<div class="ttc" id="classProjectState_html_ae498c9ef4da8937df35a12379ee1486a"><div class="ttname"><a href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">ProjectState::project_state</a></div><div class="ttdeci">int project_state</div><div class="ttdoc">Variavel para armazenar o estado de projeto. </div><div class="ttdef"><b>Definition:</b> Domain.hpp:59</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Métodos</h2>
+<a class="anchor" id="a27bad04e4d2c7becc39daf276c1841a1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ProjectState::getProjectState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Método getter do domínio de Estado de Projeto. </p>
+<dl class="section return"><dt>Retorna</dt><dd>o estado de projeto validado. </dd></dl>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{<span class="keywordflow">return</span> this-&gt;<a class="code" href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">project_state</a>;};</div><div class="ttc" id="classProjectState_html_ae498c9ef4da8937df35a12379ee1486a"><div class="ttname"><a href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">ProjectState::project_state</a></div><div class="ttdeci">int project_state</div><div class="ttdoc">Variavel para armazenar o estado de projeto. </div><div class="ttdef"><b>Definition:</b> Domain.hpp:59</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a04b2df31e839624a758dd39f18dd522c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ProjectState::setProjectState </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>project_state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Método setter do domínio de Estado de Projeto. </p>
+<p>Ele valida o valor recebido e atribui se for correto. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">project_state</td><td>um inteiro que recebe o estado de projeto. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">project_state</a>==1  || <a class="code" href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">project_state</a>==2)</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        this-&gt;<a class="code" href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">project_state</a>=<a class="code" href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">project_state</a>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">throw</span> invalid_argument(<span class="stringliteral">&quot;ERRO: ENTRADA INVALIDA. Tente algum codigo com no&quot;</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="stringliteral">&quot; maximo 1 digito, sendo 1 para &#39;Ativo&#39; e 2 para &#39;Inativo&#39;.&quot;</span>);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div><div class="ttc" id="classProjectState_html_ae498c9ef4da8937df35a12379ee1486a"><div class="ttname"><a href="classProjectState.html#ae498c9ef4da8937df35a12379ee1486a">ProjectState::project_state</a></div><div class="ttdeci">int project_state</div><div class="ttdoc">Variavel para armazenar o estado de projeto. </div><div class="ttdef"><b>Definition:</b> Domain.hpp:59</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <hr/>A documentação para esta classe foi gerada a partir dos seguintes arquivos:<ul>
 <li>include/<a class="el" href="Domain_8hpp_source.html">Domain.hpp</a></li>
 <li>src/Domain.cpp</li>

@@ -2,26 +2,127 @@
 \label{classEmail}\index{Email@{Email}}
 
 
+Domínio de E-\/mail.  
+
+
+
+
+{\ttfamily \#include $<$Domain.\+hpp$>$}
+
+
+
 Diagrama de colaboração para Email\+:
 % FIG 0
 \subsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Email} (string email=\char`\"{}\char`\"{})\hypertarget{classEmail_aee5a4cf06a9acd9246e042f526191ebc}{}\label{classEmail_aee5a4cf06a9acd9246e042f526191ebc}
-
-\item 
-void {\bfseries set\+Email} (string email)\hypertarget{classEmail_a2614b3a19d961411d1bece9c1bdf616f}{}\label{classEmail_a2614b3a19d961411d1bece9c1bdf616f}
-
-\item 
-string {\bfseries get\+Email} () const \hypertarget{classEmail_aa2898fe9d48e9bf02b32b63fb18b63b9}{}\label{classEmail_aa2898fe9d48e9bf02b32b63fb18b63b9}
-
-\end{DoxyCompactItemize}
+\hyperlink{classEmail_af8b9c460e98ace322cf83a3af2509e7c}{Email} (string \hyperlink{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{email})
+\begin{DoxyCompactList}\small\item\em Construtor com parâmetro do E-\/mail. \end{DoxyCompactList}\item 
+\hyperlink{classEmail_a2cfcfea1e55511208e7858c33f48ad9d}{Email} ()
+\begin{DoxyCompactList}\small\item\em Construtor sem parâmetro do E-\/mail. \end{DoxyCompactList}\item 
+void \hyperlink{classEmail_a2614b3a19d961411d1bece9c1bdf616f}{set\+Email} (string \hyperlink{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{email})
+\begin{DoxyCompactList}\small\item\em Método setter do domínio de E-\/mail. \end{DoxyCompactList}\item 
+string \hyperlink{classEmail_aa2898fe9d48e9bf02b32b63fb18b63b9}{get\+Email} () const 
+\begin{DoxyCompactList}\small\item\em Método getter do domínio de E-\/mail. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Atributos Privados}
 \begin{DoxyCompactItemize}
 \item 
-string {\bfseries email}\hypertarget{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{}\label{classEmail_ac0a91a44652858a0c5178ef836ec9c93}
+string \hyperlink{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{email}\hypertarget{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{}\label{classEmail_ac0a91a44652858a0c5178ef836ec9c93}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Variavel para armazenar o email. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Domínio de E-\/mail. 
+
+Este domínio só permite entradas no formato de email definido em R\+FC. 
+
+\subsection{Construtores \& Destrutores}
+\index{Email@{Email}!Email@{Email}}
+\index{Email@{Email}!Email@{Email}}
+\subsubsection[{\texorpdfstring{Email(string email)}{Email(string email)}}]{\setlength{\rightskip}{0pt plus 5cm}Email\+::\+Email (
+\begin{DoxyParamCaption}
+\item[{string}]{email}
+\end{DoxyParamCaption}
+)}\hypertarget{classEmail_af8b9c460e98ace322cf83a3af2509e7c}{}\label{classEmail_af8b9c460e98ace322cf83a3af2509e7c}
+
+
+Construtor com parâmetro do E-\/mail. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em email} & uma string que recebe o e-\/mail. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+75 \{
+76   \hyperlink{classEmail_a2614b3a19d961411d1bece9c1bdf616f}{setEmail}(\hyperlink{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{email});
+77 \}
+\end{DoxyCode}
+\index{Email@{Email}!Email@{Email}}
+\index{Email@{Email}!Email@{Email}}
+\subsubsection[{\texorpdfstring{Email()}{Email()}}]{\setlength{\rightskip}{0pt plus 5cm}Email\+::\+Email (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classEmail_a2cfcfea1e55511208e7858c33f48ad9d}{}\label{classEmail_a2cfcfea1e55511208e7858c33f48ad9d}
+
+
+Construtor sem parâmetro do E-\/mail. 
+
+Assinatura para lançar exceção caso nenhum parâmetro seja passado. 
+\begin{DoxyCode}
+233 \{\textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INCOMPLETA. Passe o e-mail."});\};
+\end{DoxyCode}
+
+
+\subsection{Métodos}
+\index{Email@{Email}!get\+Email@{get\+Email}}
+\index{get\+Email@{get\+Email}!Email@{Email}}
+\subsubsection[{\texorpdfstring{get\+Email() const }{getEmail() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Email\+::get\+Email (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classEmail_aa2898fe9d48e9bf02b32b63fb18b63b9}{}\label{classEmail_aa2898fe9d48e9bf02b32b63fb18b63b9}
+
+
+Método getter do domínio de E-\/mail. 
+
+\begin{DoxyReturn}{Retorna}
+o e-\/mail validado. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+245 \{\textcolor{keywordflow}{return} this->\hyperlink{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{email};\};
+\end{DoxyCode}
+\index{Email@{Email}!set\+Email@{set\+Email}}
+\index{set\+Email@{set\+Email}!Email@{Email}}
+\subsubsection[{\texorpdfstring{set\+Email(string email)}{setEmail(string email)}}]{\setlength{\rightskip}{0pt plus 5cm}void Email\+::set\+Email (
+\begin{DoxyParamCaption}
+\item[{string}]{email}
+\end{DoxyParamCaption}
+)}\hypertarget{classEmail_a2614b3a19d961411d1bece9c1bdf616f}{}\label{classEmail_a2614b3a19d961411d1bece9c1bdf616f}
+
+
+Método setter do domínio de E-\/mail. 
+
+Ele valida o valor recebido e atribui se for correto. 
+\begin{DoxyParams}{Parâmetros}
+{\em email} & uma string que recebe o e-\/mail. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+80 \{
+81     \textcolor{keywordtype}{bool} valid\_email = regex\_match(\hyperlink{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{email},
+82     regex(\textcolor{stringliteral}{"^[a-zA-Z0-9\_.+-]+@[a-zA-Z0-9-]+\(\backslash\).[a-zA-Z0-9]+$"}) );
+83 
+84     \textcolor{keywordflow}{if}(valid\_email && \hyperlink{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{email}.length()>0) this->\hyperlink{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{email}=\hyperlink{classEmail_ac0a91a44652858a0c5178ef836ec9c93}{email};
+85     \textcolor{keywordflow}{else} \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INVALIDA. Tente algum e-mail"}
+86     \textcolor{stringliteral}{" no formato RFC."});
+87 \}
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}

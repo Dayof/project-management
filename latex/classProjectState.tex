@@ -2,26 +2,108 @@
 \label{classProjectState}\index{Project\+State@{Project\+State}}
 
 
+Domínio de Estado de Projeto.  
+
+
+
+
+{\ttfamily \#include $<$Domain.\+hpp$>$}
+
+
+
 Diagrama de colaboração para Project\+State\+:
 % FIG 0
 \subsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Project\+State} (int project\+\_\+state=1)\hypertarget{classProjectState_a61af7f1893ff51ef66c4aeb46585db8e}{}\label{classProjectState_a61af7f1893ff51ef66c4aeb46585db8e}
-
-\item 
-void {\bfseries set\+Project\+State} (int project\+\_\+state)\hypertarget{classProjectState_a04b2df31e839624a758dd39f18dd522c}{}\label{classProjectState_a04b2df31e839624a758dd39f18dd522c}
-
-\item 
-int {\bfseries get\+Project\+State} () const \hypertarget{classProjectState_a27bad04e4d2c7becc39daf276c1841a1}{}\label{classProjectState_a27bad04e4d2c7becc39daf276c1841a1}
-
-\end{DoxyCompactItemize}
+\hyperlink{classProjectState_a61af7f1893ff51ef66c4aeb46585db8e}{Project\+State} (int \hyperlink{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{project\+\_\+state}=1)
+\begin{DoxyCompactList}\small\item\em Construtor do Estado de Projeto. \end{DoxyCompactList}\item 
+void \hyperlink{classProjectState_a04b2df31e839624a758dd39f18dd522c}{set\+Project\+State} (int \hyperlink{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{project\+\_\+state})
+\begin{DoxyCompactList}\small\item\em Método setter do domínio de Estado de Projeto. \end{DoxyCompactList}\item 
+int \hyperlink{classProjectState_a27bad04e4d2c7becc39daf276c1841a1}{get\+Project\+State} () const 
+\begin{DoxyCompactList}\small\item\em Método getter do domínio de Estado de Projeto. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Atributos Privados}
 \begin{DoxyCompactItemize}
 \item 
-int {\bfseries project\+\_\+state}\hypertarget{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{}\label{classProjectState_ae498c9ef4da8937df35a12379ee1486a}
+int \hyperlink{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{project\+\_\+state}\hypertarget{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{}\label{classProjectState_ae498c9ef4da8937df35a12379ee1486a}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Variavel para armazenar o estado de projeto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Domínio de Estado de Projeto. 
+
+Este domínio só permite entradas de exatamente 1 dígito, sendo 1 para estado Ativo e 2 para estado Inativo. 
+
+\subsection{Construtores \& Destrutores}
+\index{Project\+State@{Project\+State}!Project\+State@{Project\+State}}
+\index{Project\+State@{Project\+State}!Project\+State@{Project\+State}}
+\subsubsection[{\texorpdfstring{Project\+State(int project\+\_\+state=1)}{ProjectState(int project_state=1)}}]{\setlength{\rightskip}{0pt plus 5cm}Project\+State\+::\+Project\+State (
+\begin{DoxyParamCaption}
+\item[{int}]{project\+\_\+state = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\hypertarget{classProjectState_a61af7f1893ff51ef66c4aeb46585db8e}{}\label{classProjectState_a61af7f1893ff51ef66c4aeb46585db8e}
+
+
+Construtor do Estado de Projeto. 
+
+O construtor tem valor default de 1, ou seja, estado Ativo assim que é iniciado. 
+\begin{DoxyParams}{Parâmetros}
+{\em project\+\_\+state} & um inteiro que recebe o estado de projeto. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+19 \{
+20   \hyperlink{classProjectState_a04b2df31e839624a758dd39f18dd522c}{setProjectState}(\hyperlink{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{project\_state});
+21 \}
+\end{DoxyCode}
+
+
+\subsection{Métodos}
+\index{Project\+State@{Project\+State}!get\+Project\+State@{get\+Project\+State}}
+\index{get\+Project\+State@{get\+Project\+State}!Project\+State@{Project\+State}}
+\subsubsection[{\texorpdfstring{get\+Project\+State() const }{getProjectState() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Project\+State\+::get\+Project\+State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classProjectState_a27bad04e4d2c7becc39daf276c1841a1}{}\label{classProjectState_a27bad04e4d2c7becc39daf276c1841a1}
+
+
+Método getter do domínio de Estado de Projeto. 
+
+\begin{DoxyReturn}{Retorna}
+o estado de projeto validado. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+79 \{\textcolor{keywordflow}{return} this->\hyperlink{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{project\_state};\};
+\end{DoxyCode}
+\index{Project\+State@{Project\+State}!set\+Project\+State@{set\+Project\+State}}
+\index{set\+Project\+State@{set\+Project\+State}!Project\+State@{Project\+State}}
+\subsubsection[{\texorpdfstring{set\+Project\+State(int project\+\_\+state)}{setProjectState(int project_state)}}]{\setlength{\rightskip}{0pt plus 5cm}void Project\+State\+::set\+Project\+State (
+\begin{DoxyParamCaption}
+\item[{int}]{project\+\_\+state}
+\end{DoxyParamCaption}
+)}\hypertarget{classProjectState_a04b2df31e839624a758dd39f18dd522c}{}\label{classProjectState_a04b2df31e839624a758dd39f18dd522c}
+
+
+Método setter do domínio de Estado de Projeto. 
+
+Ele valida o valor recebido e atribui se for correto. 
+\begin{DoxyParams}{Parâmetros}
+{\em project\+\_\+state} & um inteiro que recebe o estado de projeto. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+24 \{
+25     \textcolor{keywordflow}{if}(\hyperlink{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{project\_state}==1  || \hyperlink{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{project\_state}==2)
+26         this->\hyperlink{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{project\_state}=\hyperlink{classProjectState_ae498c9ef4da8937df35a12379ee1486a}{project\_state};
+27     \textcolor{keywordflow}{else} \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INVALIDA. Tente algum codigo com no"}
+28         \textcolor{stringliteral}{" maximo 1 digito, sendo 1 para 'Ativo' e 2 para 'Inativo'."});
+29 \}
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}

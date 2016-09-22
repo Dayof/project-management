@@ -2,26 +2,127 @@
 \label{classCost}\index{Cost@{Cost}}
 
 
+Domínio de Custo.  
+
+
+
+
+{\ttfamily \#include $<$Domain.\+hpp$>$}
+
+
+
 Diagrama de colaboração para Cost\+:
 % FIG 0
 \subsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Cost} (string cost=\char`\"{}\char`\"{})\hypertarget{classCost_af76ca2c4eb2957cd76192f6cb4dd2037}{}\label{classCost_af76ca2c4eb2957cd76192f6cb4dd2037}
-
-\item 
-void {\bfseries set\+Cost} (string cost)\hypertarget{classCost_ab05daee6845a9cddf35e8efc48ff5f50}{}\label{classCost_ab05daee6845a9cddf35e8efc48ff5f50}
-
-\item 
-string {\bfseries get\+Cost} () const \hypertarget{classCost_a6d619a5f49a659ae9f21bb2fd5df0cc3}{}\label{classCost_a6d619a5f49a659ae9f21bb2fd5df0cc3}
-
-\end{DoxyCompactItemize}
+\hyperlink{classCost_ad77bb54b647c18d5bfed2702539c8e5f}{Cost} (string \hyperlink{classCost_a141bf2e958ee9145ef5323c9872d9387}{cost})
+\begin{DoxyCompactList}\small\item\em Construtor com parâmetro do Custo. \end{DoxyCompactList}\item 
+\hyperlink{classCost_a279e7aa24cfc7c619df593b37061843d}{Cost} ()
+\begin{DoxyCompactList}\small\item\em Construtor sem parâmetro do Custo. \end{DoxyCompactList}\item 
+void \hyperlink{classCost_ab05daee6845a9cddf35e8efc48ff5f50}{set\+Cost} (string \hyperlink{classCost_a141bf2e958ee9145ef5323c9872d9387}{cost})
+\begin{DoxyCompactList}\small\item\em Método setter do domínio de Custo. \end{DoxyCompactList}\item 
+string \hyperlink{classCost_a6d619a5f49a659ae9f21bb2fd5df0cc3}{get\+Cost} () const 
+\begin{DoxyCompactList}\small\item\em Método getter do domínio de Custo. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Atributos Privados}
 \begin{DoxyCompactItemize}
 \item 
-string {\bfseries cost}\hypertarget{classCost_a141bf2e958ee9145ef5323c9872d9387}{}\label{classCost_a141bf2e958ee9145ef5323c9872d9387}
+string \hyperlink{classCost_a141bf2e958ee9145ef5323c9872d9387}{cost}\hypertarget{classCost_a141bf2e958ee9145ef5323c9872d9387}{}\label{classCost_a141bf2e958ee9145ef5323c9872d9387}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Variavel para armazenar o valor de Custo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Domínio de Custo. 
+
+Este domínio só permite entradas com o formato 0.\+00. Ele é utilizado nas entidades para custo\+\_\+atual e custo\+\_\+previsto. 
+
+\subsection{Construtores \& Destrutores}
+\index{Cost@{Cost}!Cost@{Cost}}
+\index{Cost@{Cost}!Cost@{Cost}}
+\subsubsection[{\texorpdfstring{Cost(string cost)}{Cost(string cost)}}]{\setlength{\rightskip}{0pt plus 5cm}Cost\+::\+Cost (
+\begin{DoxyParamCaption}
+\item[{string}]{cost}
+\end{DoxyParamCaption}
+)}\hypertarget{classCost_ad77bb54b647c18d5bfed2702539c8e5f}{}\label{classCost_ad77bb54b647c18d5bfed2702539c8e5f}
+
+
+Construtor com parâmetro do Custo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em cost} & uma string que recebe o custo. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+160 \{
+161   \hyperlink{classCost_ab05daee6845a9cddf35e8efc48ff5f50}{setCost}(\hyperlink{classCost_a141bf2e958ee9145ef5323c9872d9387}{cost});
+162 \}
+\end{DoxyCode}
+\index{Cost@{Cost}!Cost@{Cost}}
+\index{Cost@{Cost}!Cost@{Cost}}
+\subsubsection[{\texorpdfstring{Cost()}{Cost()}}]{\setlength{\rightskip}{0pt plus 5cm}Cost\+::\+Cost (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classCost_a279e7aa24cfc7c619df593b37061843d}{}\label{classCost_a279e7aa24cfc7c619df593b37061843d}
+
+
+Construtor sem parâmetro do Custo. 
+
+Assinatura para lançar exceção caso nenhum parâmetro seja passado. 
+\begin{DoxyCode}
+437 \{\textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INCOMPLETA. Passe o custo."});\};
+\end{DoxyCode}
+
+
+\subsection{Métodos}
+\index{Cost@{Cost}!get\+Cost@{get\+Cost}}
+\index{get\+Cost@{get\+Cost}!Cost@{Cost}}
+\subsubsection[{\texorpdfstring{get\+Cost() const }{getCost() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Cost\+::get\+Cost (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classCost_a6d619a5f49a659ae9f21bb2fd5df0cc3}{}\label{classCost_a6d619a5f49a659ae9f21bb2fd5df0cc3}
+
+
+Método getter do domínio de Custo. 
+
+\begin{DoxyReturn}{Retorna}
+o custo validado. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+449 \{\textcolor{keywordflow}{return} this->\hyperlink{classCost_a141bf2e958ee9145ef5323c9872d9387}{cost};\};
+\end{DoxyCode}
+\index{Cost@{Cost}!set\+Cost@{set\+Cost}}
+\index{set\+Cost@{set\+Cost}!Cost@{Cost}}
+\subsubsection[{\texorpdfstring{set\+Cost(string cost)}{setCost(string cost)}}]{\setlength{\rightskip}{0pt plus 5cm}void Cost\+::set\+Cost (
+\begin{DoxyParamCaption}
+\item[{string}]{cost}
+\end{DoxyParamCaption}
+)}\hypertarget{classCost_ab05daee6845a9cddf35e8efc48ff5f50}{}\label{classCost_ab05daee6845a9cddf35e8efc48ff5f50}
+
+
+Método setter do domínio de Custo. 
+
+Ele valida o valor recebido e atribui se for correto. 
+\begin{DoxyParams}{Parâmetros}
+{\em cost} & uma string que recebe o custo. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+165 \{
+166     \textcolor{keywordtype}{bool} valid\_cost = regex\_match(\hyperlink{classCost_a141bf2e958ee9145ef5323c9872d9387}{cost},
+167     regex(\textcolor{stringliteral}{"^[+-]?(?=[.]?[0-9])[0-9]*(?:[.][0-9]*)?(?:[Ee][+-]?[0-9]+)?$"}) );
+168 
+169     \textcolor{keywordflow}{if}(valid\_cost) this->\hyperlink{classCost_a141bf2e958ee9145ef5323c9872d9387}{cost}=\hyperlink{classCost_a141bf2e958ee9145ef5323c9872d9387}{cost};
+170     \textcolor{keywordflow}{else} \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INVALIDA. Tente algum custo"}
+171         \textcolor{stringliteral}{" do formato 0.00 ."});
+172 \}
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}

@@ -2,26 +2,127 @@
 \label{classDate}\index{Date@{Date}}
 
 
+Domínio de Data.  
+
+
+
+
+{\ttfamily \#include $<$Domain.\+hpp$>$}
+
+
+
 Diagrama de colaboração para Date\+:
 % FIG 0
 \subsection*{Métodos Públicos}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Date} (string date=\char`\"{}\char`\"{})\hypertarget{classDate_ae1cc6ea206e77eb384dd940b4f4bafb1}{}\label{classDate_ae1cc6ea206e77eb384dd940b4f4bafb1}
-
-\item 
-void {\bfseries set\+Date} (string date)\hypertarget{classDate_abbd3c22e63d9fb3fbb1a34e5614aab22}{}\label{classDate_abbd3c22e63d9fb3fbb1a34e5614aab22}
-
-\item 
-string {\bfseries get\+Date} () const \hypertarget{classDate_a5d6497b6ae42071efff693e6ff3881a1}{}\label{classDate_a5d6497b6ae42071efff693e6ff3881a1}
-
-\end{DoxyCompactItemize}
+\hyperlink{classDate_a5532efafed41fd5f8e013a61313200dc}{Date} (string \hyperlink{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}{date})
+\begin{DoxyCompactList}\small\item\em Construtor com parâmetro da Data. \end{DoxyCompactList}\item 
+\hyperlink{classDate_a4e59ed4ba66eec61c27460c5d09fa1bd}{Date} ()
+\begin{DoxyCompactList}\small\item\em Construtor sem parâmetro da Data. \end{DoxyCompactList}\item 
+void \hyperlink{classDate_abbd3c22e63d9fb3fbb1a34e5614aab22}{set\+Date} (string \hyperlink{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}{date})
+\begin{DoxyCompactList}\small\item\em Método setter do domínio da Data. \end{DoxyCompactList}\item 
+string \hyperlink{classDate_a5d6497b6ae42071efff693e6ff3881a1}{get\+Date} () const 
+\begin{DoxyCompactList}\small\item\em Método getter do domínio da Data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Atributos Privados}
 \begin{DoxyCompactItemize}
 \item 
-string {\bfseries date}\hypertarget{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}{}\label{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}
+string \hyperlink{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}{date}\hypertarget{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}{}\label{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Variavel para armazenar a data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição Detalhada}
+Domínio de Data. 
+
+Este domínio só permite entradas nos formatos (01-\/31)/(01-\/12)/(2016-\/2050), (01-\/31)-\/(01-\/12)-\/(2016-\/2050), (01-\/31).(01-\/12).(2016-\/2050), (01-\/31) (01-\/12) (2016-\/2050). Ele é utilizado nas entidades para data de início de projeto/fase e data de término de projeto/fase. 
+
+\subsection{Construtores \& Destrutores}
+\index{Date@{Date}!Date@{Date}}
+\index{Date@{Date}!Date@{Date}}
+\subsubsection[{\texorpdfstring{Date(string date)}{Date(string date)}}]{\setlength{\rightskip}{0pt plus 5cm}Date\+::\+Date (
+\begin{DoxyParamCaption}
+\item[{string}]{date}
+\end{DoxyParamCaption}
+)}\hypertarget{classDate_a5532efafed41fd5f8e013a61313200dc}{}\label{classDate_a5532efafed41fd5f8e013a61313200dc}
+
+
+Construtor com parâmetro da Data. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em date} & uma string que recebe a data. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+90 \{
+91   \hyperlink{classDate_abbd3c22e63d9fb3fbb1a34e5614aab22}{setDate}(\hyperlink{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}{date});
+92 \}
+\end{DoxyCode}
+\index{Date@{Date}!Date@{Date}}
+\index{Date@{Date}!Date@{Date}}
+\subsubsection[{\texorpdfstring{Date()}{Date()}}]{\setlength{\rightskip}{0pt plus 5cm}Date\+::\+Date (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classDate_a4e59ed4ba66eec61c27460c5d09fa1bd}{}\label{classDate_a4e59ed4ba66eec61c27460c5d09fa1bd}
+
+
+Construtor sem parâmetro da Data. 
+
+Assinatura para lançar exceção caso nenhum parâmetro seja passado. 
+\begin{DoxyCode}
+276 \{\textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INCOMPLETA. Passe a data."});\};
+\end{DoxyCode}
+
+
+\subsection{Métodos}
+\index{Date@{Date}!get\+Date@{get\+Date}}
+\index{get\+Date@{get\+Date}!Date@{Date}}
+\subsubsection[{\texorpdfstring{get\+Date() const }{getDate() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Date\+::get\+Date (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classDate_a5d6497b6ae42071efff693e6ff3881a1}{}\label{classDate_a5d6497b6ae42071efff693e6ff3881a1}
+
+
+Método getter do domínio da Data. 
+
+\begin{DoxyReturn}{Retorna}
+a data validada. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+288 \{\textcolor{keywordflow}{return} this->\hyperlink{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}{date};\};
+\end{DoxyCode}
+\index{Date@{Date}!set\+Date@{set\+Date}}
+\index{set\+Date@{set\+Date}!Date@{Date}}
+\subsubsection[{\texorpdfstring{set\+Date(string date)}{setDate(string date)}}]{\setlength{\rightskip}{0pt plus 5cm}void Date\+::set\+Date (
+\begin{DoxyParamCaption}
+\item[{string}]{date}
+\end{DoxyParamCaption}
+)}\hypertarget{classDate_abbd3c22e63d9fb3fbb1a34e5614aab22}{}\label{classDate_abbd3c22e63d9fb3fbb1a34e5614aab22}
+
+
+Método setter do domínio da Data. 
+
+Ele valida o valor recebido e atribui se for correto. 
+\begin{DoxyParams}{Parâmetros}
+{\em date} & uma string que recebe a data. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+95 \{
+96     \textcolor{keywordtype}{bool} valid\_date = regex\_match(\hyperlink{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}{date},
+97     regex(\textcolor{stringliteral}{"^(0[1-9]|[12][0-9]|3[01])([- /.])(0[1-9]|1[012])([- /.])(201[6-9]|20[234][0-9]|2050)$"}) );
+98 
+99     \textcolor{keywordflow}{if}(valid\_date) this->\hyperlink{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}{date}=\hyperlink{classDate_a8ffcd034623f1a4eac1b86aadfa3133d}{date};
+100     \textcolor{keywordflow}{else} \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"ERRO: ENTRADA INVALIDA. Tente alguma data"}
+101     \textcolor{stringliteral}{" no formato 1-31/1-12/2016-2050."});
+102 \}
+\end{DoxyCode}
 
 
 A documentação para esta classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
