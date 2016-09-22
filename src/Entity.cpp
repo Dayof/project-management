@@ -11,6 +11,11 @@
 #include "Entity.hpp"
 #include "Domain.hpp"
 
+/**
+ * Este é um método construtor de gerente de sistema
+ *  que passa os valores recebido para os métodos setters
+ *  dos domínios.
+ */
 SysManager::SysManager(string name,
                     string registration,
                     string password)
@@ -47,6 +52,11 @@ void SysManager::setPassword(string pass_str)
 
 }
 
+/**
+ * Este é um método construtor de gerente de projeto
+ *  que passa os valores recebido para os métodos setters
+ *  dos domínios.
+ */
 ProjectManager::ProjectManager(string name,
                               string registration,
                               string password)
@@ -90,6 +100,11 @@ void ProjectManager::setPhone(string phone_str)
     this->phone = phone->getPhone();
 }
 
+/**
+ * Este é um método construtor de desenvolvedor
+ *  que passa os valores recebido para os métodos setters
+ *  dos domínios.
+ */
 Developer::Developer(string name,
                       string registration,
                       string password,
@@ -143,6 +158,11 @@ void Developer::setEmail(string email_str)
     this->email = email->getEmail();
 }
 
+/**
+ * Este é um método construtor de projeto
+ *  que passa os valores recebido para os métodos setters
+ *  dos domínios.
+ */
 Project::Project(string name,
                 string code,
                 ProjectManager* projectManager,
@@ -198,6 +218,11 @@ void Project::setState(int state_int)
     this->state = state->getProjectState();
 }
 
+/**
+ * Este é um método construtor de fase
+ *  que passa os valores recebido para os métodos setters
+ *  dos domínios.
+ */
 Phase::Phase(string init_date, int phase)
 {
     setInitDate(init_date);
@@ -227,30 +252,3 @@ void Phase::setPhase(int phase_int)
     catch (exception& err) { throw err.what(); }
     this->phase = projectPhase->getProjectPhase();
 }
-
-// //TODO
-// Project::Project(string name,
-//                 string cod,
-//                 string init_date,
-//                 string end_date,
-//                 char phase)
-// {
-//   this->name = name;
-//   this->cod = cod;
-//   this->init_date = init_date;
-//   this->end_date = end_date;
-//   this->phase = phase;
-// }
-
-// //TODO
-// void Project::addDev(Developer dev)
-// {
-//
-// };
-//
-// //TODO
-// vector<Developer> Project::getDev()
-// {
-//
-// }
-

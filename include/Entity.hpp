@@ -13,6 +13,14 @@
 
 #include "Headers.hpp"
 
+/**
+ * \class SysManager
+ *
+ * \brief Entidade de Gerente de Sistema
+ *
+ * Esta entidade possui domínios de nome, matríćula
+ *  e senha.
+ */
 class SysManager {
 private:
     string name, registration, password;
@@ -31,6 +39,14 @@ public:
   string getPassword() const {return this->password;};
 };
 
+/**
+ * \class ProjectManager
+ *
+ * \brief Entidade de Gerente de Projeto
+ *
+ * Esta entidade possui domínios de nome, matríćula,
+ *  senha e telefone.
+ */
 class ProjectManager {
 private:
   string name, registration, password, phone;
@@ -54,6 +70,15 @@ public:
   string getPhone() const {return this->phone;};
 };
 
+/**
+ * \class Developer
+ *
+ * \brief Entidade de Desenvolvedor
+ *
+ * Esta entidade possui domínios de nome, matríćula,
+ *  senha, e-mail e função, e.g. Analista, Projetista
+ *  ou Programador.
+ */
 class Developer {
 private:
     string name, registration, password, email;
@@ -82,6 +107,16 @@ public:
   char getRole() const {return this->role;};
 };
 
+/**
+ * \class Project
+ *
+ * \brief Entidade de Projeto
+ *
+ * Esta entidade possui domínios de nome, código de projeto,
+ *  data de início, data de término, custo atual, custo previsto
+ *  estado do projeto, e.g. ativo ou inativo e entidades de
+ *  de gerente de projeto e desenvolvedores.
+ */
 class Project {
 private:
     string name, code, init_date, end_date, current_cost, estimate_cost;
@@ -126,6 +161,15 @@ public:
   vector<Developer> getAllDevelopers();
 };
 
+/**
+ * \class Phase
+ *
+ * \brief Entidade de Fase
+ *
+ * Esta entidade possui domínios de data de início,
+ *  data de término e código de fase para indicar fase de
+ *  Iniciação, Preparação, Execução e Encerramento.
+ */
 class Phase {
 private:
     string init_date, end_date;
