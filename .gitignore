@@ -4,3 +4,4 @@ obj/*
 html/
 latex/
 *.exe
+*.gch
