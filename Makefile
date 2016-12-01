@@ -18,7 +18,7 @@ else
 	endif
 endif
 
-_DEPS=catch.hpp Domain.hpp Entity.hpp Headers.hpp
+_DEPS=catch.hpp Domain.hpp Entity.hpp
 DEPS=$(patsubst %,$(DIR_INC)%,$(_DEPS))
 
 _OBJ=Main.o Domain.o Entity.o Test.o

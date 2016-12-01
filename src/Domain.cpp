@@ -126,7 +126,6 @@ Name::Name(string name)
  */
 void Name::setName(string name)
 {
-
     bool valid_name = regex_match(name,
     regex("^[a-zA-Z ]*$") );
 

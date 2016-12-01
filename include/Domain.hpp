@@ -11,7 +11,7 @@
 #ifndef DOMAIN_HPP_INCLUDED
 #define DOMAIN_HPP_INCLUDED
 
-#include "Headers.hpp"
+#include "Headers.inl"
 
 /**
  * \class ProjectCode

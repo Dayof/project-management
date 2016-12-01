@@ -11,7 +11,7 @@
 #ifndef ENTITY_HPP_INCLUDED
 #define ENTITY_HPP_INCLUDED
 
-#include "Headers.hpp"
+#include "Headers.inl"
 #include "Domain.hpp"
 
 /**
@@ -60,8 +60,7 @@ public:
     ProjectManager (string name,
                 string registration,
                 string password);
-    ProjectManager(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome,"
-    " matricula e senha do gerente de projeto.");};
+    ProjectManager(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome, matricula e senha do gerente de projeto.");};
 
   void setName(string name);
   string getName() const {return this->name->getName();};
