@@ -12,6 +12,7 @@
 #define ENTITY_HPP_INCLUDED
 
 #include "Headers.hpp"
+#include "Domain.hpp"
 
 /**
  * \class SysManager
@@ -23,20 +24,22 @@
  */
 class SysManager {
 private:
-    string name, registration, password;
+    Name *name;
+    Registration *registration;
+    Password *password;
 public:
   SysManager(string name, string registration, string password);
   SysManager(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome,"
     " matricula e senha do gerente de sistema.");};
 
   void setName(string name);
-  string getName() const {return this->name;};
+  string getName() const {return this->name->getName();};
 
   void setRegistration(string registration);
-  string getRegistration() const {return this->registration;};
+  string getRegistration() const {return this->registration->getRegistration();};
 
   void setPassword(string password);
-  string getPassword() const {return this->password;};
+  string getPassword() const {return this->password->getPassword();};
 };
 
 /**
@@ -49,7 +52,10 @@ public:
  */
 class ProjectManager {
 private:
-  string name, registration, password, phone;
+    Name *name;
+    Registration *registration;
+    Password *password;
+    Phone *phone;
 public:
     ProjectManager (string name,
                 string registration,
@@ -58,16 +64,16 @@ public:
     " matricula e senha do gerente de projeto.");};
 
   void setName(string name);
-  string getName() const {return this->name;};
+  string getName() const {return this->name->getName();};
 
   void setRegistration(string registration);
-  string getRegistration() const {return this->registration;};
+  string getRegistration() const {return this->registration->getRegistration();};
 
   void setPassword(string password);
-  string getPassword() const {return this->password;};
+  string getPassword() const {return this->password->getPassword();};
 
   void setPhone(string phone);
-  string getPhone() const {return this->phone;};
+  string getPhone() const {return this->phone->getPhone();};
 };
 
 /**
@@ -81,8 +87,11 @@ public:
  */
 class Developer {
 private:
-    string name, registration, password, email;
-    int role;
+    Name *name;
+    Registration *registration;
+    Password *password;
+    Email *email;
+    Role *role;
 public:
   Developer (string name,
             string registration,
@@ -92,19 +101,19 @@ public:
     " matricula, senha e funcao do desenvolvedor.");};
 
   void setName(string name);
-  string getName() const {return this->name;};
+  string getName() const {return this->name->getName();};
 
   void setRegistration(string registration);
-  string getRegistration() const {return this->registration;};
+  string getRegistration() const {return this->registration->getRegistration();};
 
   void setPassword(string password);
-  string getPassword() const {return this->password;};
+  string getPassword() const {return this->password->getPassword();};
 
   void setEmail(string email);
-  string getEmail() const {return this->email;};
+  string getEmail() const {return this->email->getEmail();};
 
   void setRole(int role);
-  char getRole() const {return this->role;};
+  char getRole() const {return this->role->getRole();};
 };
 
 /**
@@ -119,10 +128,13 @@ public:
  */
 class Project {
 private:
-    string name, code, init_date, end_date, current_cost, estimate_cost;
+    Name *name;
+    ProjectCode *code;
+    Date *init_date, *end_date;
+    Cost *current_cost, *estimate_cost;
     vector<Developer> developers;
-    ProjectManager* projectManager;
-    int state;
+    ProjectManager *projectManager;
+    ProjectState *state;
 public:
     Project (string name,
             string code,
@@ -133,25 +145,25 @@ public:
     " codigo, gerente de projeto, data de inicio e estado do projeto.");};
 
   void setName(string name);
-  string getName() const {return this->name;};
+  string getName() const {return this->name->getName();};
 
   void setCode(string code);
-  string getCode() const {return this->code;};
+  string getCode() const {return this->code->getCodProject();};
 
   void setInitDate(string init_date);
-  string getInitDate() const {return this->init_date;};
+  string getInitDate() const {return this->init_date->getDate();};
 
   void setEndDate(string end_date);
-  string getEndDate() const {return this->end_date;};
+  string getEndDate() const {return this->end_date->getDate();};
 
     void setCurrCost(string current_cost);
-  string getCurrCost() const {return this->current_cost;};
+  string getCurrCost() const {return this->current_cost->getCost();};
 
   void setEstimateCost(string estimate_cost);
-  string getEstimateCost() const {return this->estimate_cost;};
+  string getEstimateCost() const {return this->estimate_cost->getCost();};
 
    void setState(int state);
-  int getState() const {return this->state;};
+  int getState() const {return this->state->getProjectState();};
 
   void setProjectManager(ProjectManager* projectManager) {this->projectManager = projectManager;};
   ProjectManager* getProjectManager() const {return this->projectManager;};
@@ -172,21 +184,21 @@ public:
  */
 class Phase {
 private:
-    string init_date, end_date;
-    int phase;
+    Date *init_date, *end_date;
+    ProjectPhase *phase;
 public:
   Phase (string init_date, int phase);
   Phase(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe  data de inicio "
     " e codigo da fase.");};
 
   void setInitDate(string init_date);
-  string getInitDate() const {return this->init_date;};
+  string getInitDate() const {return this->init_date->getDate();};
 
   void setEndDate(string end_date);
-  string getEndDate() const {return this->end_date;};
+  string getEndDate() const {return this->end_date->getDate();};
 
     void setPhase(int phase);
-  int getPhase() const {return this->phase;};
+  int getPhase() const {return this->phase->getProjectPhase();};
 
 };
 

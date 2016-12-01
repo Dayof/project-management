@@ -131,8 +131,8 @@ void Name::setName(string name)
     regex("^[a-zA-Z ]*$") );
 
     if(valid_name && name.length() <= 20 && name.length()>0) this->name=name;
-    else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum nome com no"
-        " maximo 20 caracteres.");
+    else throw invalid_argument("ERRO: ENTRADA INVALIDA."
+    " Tente algum nome com no maximo 20 caracteres.");
 }
 
 /**
@@ -297,4 +297,3 @@ void Cost::setCost(string cost)
     else throw invalid_argument("ERRO: ENTRADA INVALIDA. Tente algum custo"
         " do formato 0.00 .");
 }
-
