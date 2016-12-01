@@ -21,7 +21,7 @@ endif
 _DEPS=catch.hpp Domain.hpp Entity.hpp Headers.hpp
 DEPS=$(patsubst %,$(DIR_INC)%,$(_DEPS))
 
-_OBJ=Main.o Domain.o Entity.o
+_OBJ=Main.o Domain.o Entity.o Test.o
 OBJ = $(patsubst %,$(DIR_OBJ)%,$(_OBJ))
 
 CFLAGS=g++ -std=gnu++11
