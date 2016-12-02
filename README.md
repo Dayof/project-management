@@ -67,10 +67,6 @@ Biblioteca Sqlte3 como SGBD.
 - Métodos: camelCase.fooMethod();
 - Métodos estáticos: CamelCase::justLikeRegularMethod().
 
-### Executar (Via Code::Blocks)
-
-Abrir arquivo project-management.cbp no Code::Blocks.
-
 ### Executar (Via terminal de comando)
 
 ``` bash
