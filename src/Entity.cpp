@@ -221,17 +221,21 @@ void Project::setState(int state_int)
 void Project::setCurrCost(string currCost)
 {
     Cost* cost;
-    try{ cost = new Cost(currCost); }
+    try{
+        cost = new Cost(currCost);
+        this->current_cost = cost;
+    }
     catch (exception& err) { throw err.what(); }
-    this->current_cost = currCost;
 }
 
 void Project::setEstimateCost(string estimateCost)
 {
     Cost* cost;
-    try{ cost = new Cost(estimateCost); }
+    try{
+        cost = new Cost(estimateCost);
+        this->estimate_cost = cost;
+    }
     catch (exception& err) { throw err.what(); }
-    this->estimate_cost = estimate_cost;
 }
 
 /**

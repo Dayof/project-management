@@ -1,20 +1,21 @@
 #include <string>
 #include <map>
 #include <sstream>
+#include <vector>
 
 #include "sqlite3.h"
 
 using namespace std;
 
-map<string, string> returnMap;
-
-int digestData(void* X, int argc, char** argv, char** colName)
+struct Result
 {
-    for(int i=0; i<argc; ++i)
-        returnMap[colName[i]] = argv[i];
+    map<string, string> set;
+    vector<string> list;
+    int digest(void* X, int argc, char** argv, char** colName);
+    int filter(void* X, int argc, char** argv, char** colName);
 
-    return 0;
-}
+    int (forwarder)(void* X, int argc, char** argv, char** colName);
+};
 
 /** Classe de exceção para erro de persistência */
 class PersistenceError
@@ -45,6 +46,8 @@ private:
     int returnCode;
 
 protected:
+    static map<string, string> resultSet;
+    static vector<string> resultList;
     stringstream SQLquery;
 
     void connect() throw (PersistenceError)
@@ -52,6 +55,22 @@ protected:
         this->returnCode = sqlite3_open(databaseName.c_str(), &(this->db));
         if(this->returnCode != SQLITE_OK)
             throw PersistenceError("Erro na conexão com o banco de dados.");
+    }
+
+    static int digest(void* X, int argc, char** argv, char** colName)
+    {
+        for(int i=0; i<argc; ++i)
+            resultSet[colName[i]] = argv[i];
+
+        return 0;
+    }
+
+    static int filter(void* X, int argc, char** argv, char** colName)
+    {
+        for(int i=0; i<argc; ++i)
+            resultList[i] = argv[i];
+
+        return 0;
     }
 
     void disconnect() throw (PersistenceError)
@@ -66,8 +85,22 @@ protected:
         this->returnCode = sqlite3_exec(
             this->db,
             this->SQLquery.str().c_str(),
-            digestData,
+            digest,
             0, &(this->message));
+
+        if(this->returnCode != SQLITE_OK)
+            throw PersistenceError("Erro ao executar SQL");
+    }
+    void filter()
+    {
+        this->returnCode = sqlite3_exec(
+            this->db,
+            this->SQLquery.str().c_str(),
+            filter,
+            0, &(this->message));
+
+            if(this->returnCode != SQLITE_OK)
+                throw PersistenceError("Erro ao executar SQL");
     }
 
 public:

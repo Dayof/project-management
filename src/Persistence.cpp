@@ -26,23 +26,23 @@ Project* GetProject::operator()(ProjectCode& pc) throw (PersistenceError, except
 
     this->run();
 
-    Registration r(returnMap["manager"]);
+    Registration r(resultSet["manager"]);
 
-    if(returnMap.empty())
+    if(resultSet.empty())
         throw PersistenceError("O projeto não existe.");
 
     getUser(r, *pm);
 
     p = new Project(
-        returnMap["name"],
-        returnMap["code"],
+        resultSet["name"],
+        resultSet["code"],
         pm,
-        returnMap["initDate"],
-        stoi(returnMap["state"])
+        resultSet["initDate"],
+        stoi(resultSet["state"])
     );
-    p->setEndDate(returnMap["endDate"]);
-    p->setCurrCost(returnMap["currCost"]);
-    p->setEstimateCost(returnMap["estCost"]);
+    p->setEndDate(resultSet["endDate"]);
+    p->setCurrCost(resultSet["currCost"]);
+    p->setEstimateCost(resultSet["estCost"]);
 
     return p;
 }
@@ -114,59 +114,67 @@ void RemoveFromProject::operator()(ProjectCode& p, Developer& d) throw (Persiste
 
 int CountDevelopers::operator()(ProjectCode& p) throw (PersistenceError)
 {
+    int result;
+
     this->SQLquery << "select count(*) from Project where code='" << p.getCodProject() << "'";
     this->run();
 
-    if(returnMap.empty())
+    if(resultSet.empty())
         throw PersistenceError();
 
-    return stoi(returnMap["count(*)"]);
+    return stoi(resultSet["count(*)"]);
 }
 
 void GetUser::operator()(Registration& r, Developer& d) throw (PersistenceError)
 {
     this->SQLquery << "select from Developer where registration='" << r.getRegistration() << "'";
 
-    if(returnMap.empty())
+    this->run();
+
+    if(resultSet.empty())
         throw PersistenceError("O desenvolvedor não existe");
 
     d = Developer(
-        returnMap["name"],
-        returnMap["registration"],
-        returnMap["password"],
-        stoi(returnMap["role"])
+        resultSet["name"],
+        resultSet["registration"],
+        resultSet["password"],
+        stoi(resultSet["role"])
     );
 
-    d.setEmail(returnMap["email"]);
+    d.setEmail(resultSet["email"]);
 }
 
 void GetUser::operator()(Registration& r, ProjectManager& d) throw (PersistenceError)
 {
     this->SQLquery << "select from ProjectManager where registration='" << r.getRegistration() << "'";
 
-    if(returnMap.empty())
+    this->run();
+
+    if(resultSet.empty())
         throw PersistenceError("O gerente não existe");
 
     d = ProjectManager(
-        returnMap["name"],
-        returnMap["registration"],
-        returnMap["password"]
+        resultSet["name"],
+        resultSet["registration"],
+        resultSet["password"]
     );
 
-    d.setPhone(returnMap["phone"]);
+    d.setPhone(resultSet["phone"]);
 }
 
 void GetUser::operator()(Registration& r, SysManager& d) throw (PersistenceError)
 {
-    this->SQLquery << "select from SysManager where registration='" << r.getRegistration() << "'";
+    this->SQLquery << "select * from SysManager where registration='" << r.getRegistration() << "'";
 
-    if(returnMap.empty())
+    this->run();
+
+    if(resultSet.empty())
         throw PersistenceError("O gerente não existe");
 
     d = SysManager(
-        returnMap["name"],
-        returnMap["registration"],
-        returnMap["password"]
+        resultSet["name"],
+        resultSet["registration"],
+        resultSet["password"]
     );
 }
 
@@ -199,10 +207,10 @@ CheckType::TYPE CheckType::operator()(Registration& r) throw (PersistenceError)
 
     this->run();
 
-    if(returnMap.empty())
+    if(resultSet.empty())
         throw PersistenceError("Usuario nao existe.");
 
-    switch(stoi(returnMap["type"]))
+    switch(stoi(resultSet["type"]))
     {
         case CheckType::DEV:
             return CheckType::DEV;
@@ -247,4 +255,30 @@ void DeleteUser::operator()(Registration& r) throw (PersistenceError)
         this->SQLquery << "remove from ProjectManager";
     else
         this->SQLquery << "remove from SystemManager";
+
+    this->SQLquery << " where registration='" << r.getRegistration() << "'";
+
+    this->run();
+}
+
+list<ProjectCode> ProjectsFrom::operator()(Registration& r) throw (PersistenceError)
+{
+    list<ProjectCode> lr;
+    CheckType ct;
+
+    if(ct(r) == CheckType::DEV)
+        this->SQLquery << "select code from Jobs where dev='";
+    else
+        this->SQLquery  << "select code from Project where manager='";
+
+    this->SQLquery << r.getRegistration() << "'";
+    this->filter();
+
+    for(int i=0; i<resultList.size(); ++i)
+    {
+        ProjectCode nr(resultList[i]);
+        lr.push_back(nr);
+    }
+
+    return lr;
 }
