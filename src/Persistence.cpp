@@ -112,6 +112,15 @@ void RemoveFromProject::operator()(ProjectCode& p, Developer& d) throw (Persiste
     this->run();
 }
 
+void RemoveFromProject::operator()(ProjectCode& p, ProjectManager p) throw (PersistenceError)
+{
+    this->SQLquery  << "update Projects set "
+                    << "manager=NULL "
+                    << "where code='" << p.getCodProject() << "''";
+
+    this->run();            
+}
+
 int CountDevelopers::operator()(ProjectCode& p) throw (PersistenceError)
 {
     int result;
