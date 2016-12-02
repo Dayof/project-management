@@ -1,6 +1,4 @@
-#include <string>
-
-#include "../include/Persistence.hpp"
+#include "Persistence.hpp"
 
 PersistenceError::PersistenceError()
 {

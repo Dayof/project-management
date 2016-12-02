@@ -18,13 +18,16 @@ else
 	endif
 endif
 
-_DEPS=catch.hpp Domain.hpp Entity.hpp
+_DEPS=catch.hpp Persistence.hpp Domain.hpp Entity.hpp sqlite3.h
 DEPS=$(patsubst %,$(DIR_INC)%,$(_DEPS))
 
-_OBJ=Main.o Domain.o Entity.o Test.o
+_OBJ=Main.o Persistence.o Entity.o Domain.o Test.o sqlite3.o
 OBJ = $(patsubst %,$(DIR_OBJ)%,$(_OBJ))
 
 CFLAGS=g++ -std=gnu++11
+
+obj/sqlite3.o: include/sqlite3.c
+	gcc include/sqlite3.c -o obj/sqlite3.o -c
 
 $(DIR_OBJ)%.o: $(DIR_SRC)%.cpp $(DEPS)
 	$(CFLAGS) -c -o $@ $< -I$(DIR_INC)

@@ -6,6 +6,16 @@
 
 using namespace std;
 
+map<string, string> returnMap;
+
+int digestData(void* X, int argc, char** argv, char** colName)
+{
+    for(int i=0; i<argc; ++i)
+        returnMap[colName[i]] = argv[i];
+
+    return 0;
+}
+
 /** Classe de exceção para erro de persistência */
 class PersistenceError
 {
@@ -35,7 +45,6 @@ private:
     int returnCode;
 
 protected:
-    static map<string, string> returnMap;
     stringstream SQLquery;
 
     void connect() throw (PersistenceError)
@@ -52,20 +61,12 @@ protected:
             throw PersistenceError("Erro ao fechar a conexão com o banco de dados.");
     }
 
-    static int digestData(void* X, int argc, char** argv, char** colName)
-    {
-        for(int i=0; i<argc; ++i)
-            returnMap[colName[i]] = argv[i];
-
-        return 0;
-    }
-
     void run()
     {
         this->returnCode = sqlite3_exec(
             this->db,
             this->SQLquery.str().c_str(),
-            this->digestData,
+            digestData,
             0, &(this->message));
     }
 
