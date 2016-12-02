@@ -14,21 +14,30 @@
 #include "Persistence.hpp"
 
 #include <cstdio>
+#include <iostream>
 
 int main( int argc, char* const argv[] )
 {
-    GetProject gp;
-    Project* p;
-    ProjectCode pc("00001");
+    try
+    {
+        GetProject gp;
+        Project* p;
+        ProjectCode pc;
 
-    p = gp(pc);
+        p = gp(pc);
 
-    printf("%s\n", p->getName().c_str());
-    printf("%s\n", p->getCode().c_str());
-    printf("%s\n", p->getInitDate().c_str());
-    printf("%s\n", p->getEndDate().c_str());
-    printf("%s\n", p->getCurrCost().c_str());
-    printf("%s\n", p->getEstimateCost().c_str());
-    printf("%d\n", p->getState());
-    printf("%s\n", p->getProjectManager()->getName().c_str());
+        printf("%s\n", p->getName().c_str());
+        printf("%s\n", p->getCode().c_str());
+        printf("%s\n", p->getInitDate().c_str());
+        printf("%s\n", p->getEndDate().c_str());
+        printf("%s\n", p->getCurrCost().c_str());
+        printf("%s\n", p->getEstimateCost().c_str());
+        printf("%d\n", p->getState());
+        printf("%s\n", p->getProjectManager()->getName().c_str());
+    }
+    catch(PersistenceError& per_err)
+    {
+        cout << per_err.what() << endl;
+    }
+
 }
