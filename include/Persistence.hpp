@@ -26,7 +26,7 @@ using namespace std;
 class GetProject : public IPersistence
 {
 public:
-    Project* operator()(ProjectCode&) throw (PersistenceError);
+    Project* operator()(ProjectCode&) throw (PersistenceError, exception);
 };
 
 class EditProject : public IPersistence
@@ -58,7 +58,12 @@ class RemoveFromProject : public IPersistence
 {
 public:
     void operator()(ProjectCode&, Developer&) throw (PersistenceError);
-    void operator()(ProjectCode&, ProjectManager&) throw (PersistenceError);
+};
+
+class CountDevelopers : public IPersistence
+{
+public:
+    int operator()(ProjectCode&) throw (PersistenceError);
 };
 
 class GetUser : public IPersistence
@@ -73,7 +78,7 @@ class EditUser : public IPersistence
 {
 public:
     void operator()(Developer&) throw (PersistenceError);
-    void operator()(ProjectManager) throw (PersistenceError);
+    void operator()(ProjectManager&) throw (PersistenceError);
 };
 
 class CheckType : public IPersistence
@@ -86,25 +91,14 @@ public:
     TYPE operator()(Registration&) throw (PersistenceError);
 };
 
-class CreateProjManager : public IPersistence
+class CreateUser : public IPersistence
 {
 public:
     void operator()(ProjectManager&) throw (PersistenceError);
-};
-
-class CreateDeveloper : public IPersistence
-{
-public:
     void operator()(Developer&) throw (PersistenceError);
 };
 
-class DeleteProjManager : public IPersistence
-{
-public:
-    void operator()(Registration&) throw (PersistenceError);
-};
-
-class DeleteDeveloper : public IPersistence
+class DeleteUser : public IPersistence
 {
 public:
     void operator()(Registration&) throw (PersistenceError);
