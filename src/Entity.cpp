@@ -218,6 +218,22 @@ void Project::setState(int state_int)
     this->state = state;
 }
 
+void Project::setCurrCost(string currCost)
+{
+    Cost* cost;
+    try{ cost = new Cost(currCost); }
+    catch (exception& err) { throw err.what(); }
+    this->current_cost = currCost;
+}
+
+void Project::setEstimateCost(string estimateCost)
+{
+    Cost* cost;
+    try{ cost = new Cost(estimateCost); }
+    catch (exception& err) { throw err.what(); }
+    this->estimate_cost = estimate_cost;
+}
+
 /**
  * Este é um método construtor de fase
  *  que passa os valores recebido para os métodos setters
