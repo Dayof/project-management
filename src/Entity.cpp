@@ -28,16 +28,14 @@ SysManager::SysManager(string name,
 void SysManager::setName(string name_str)
 {
     Name* name;
-    try{ name = new Name(name_str); }
-    catch (exception& err) { throw err.what(); return; }
+    name = new Name(name_str);
     this->name = name;
 }
 
 void SysManager::setRegistration(string reg_str)
 {
     Registration* registration;
-    try{ registration = new Registration(reg_str); }
-    catch (exception& err) { throw err.what(); }
+    registration = new Registration(reg_str);
     this->registration = registration;
 
 }
@@ -45,8 +43,7 @@ void SysManager::setRegistration(string reg_str)
 void SysManager::setPassword(string pass_str)
 {
     Password* pass;
-    try{ pass = new Password(pass_str); }
-    catch (exception& err) { throw err.what(); }
+    pass = new Password(pass_str);
     this->password = pass;
 
 }
@@ -68,8 +65,7 @@ ProjectManager::ProjectManager(string name,
 void ProjectManager::setName(string name_str)
 {
     Name* name;
-    try{ name = new Name(name_str); }
-    catch (exception& err) { throw err.what(); }
+    name = new Name(name_str);
     this->name = name;
 
 }
@@ -77,8 +73,7 @@ void ProjectManager::setName(string name_str)
 void ProjectManager::setRegistration(string reg_str)
 {
     Registration* registration;
-    try{ registration = new Registration(reg_str); }
-    catch (exception& err) { throw err.what(); }
+    registration = new Registration(reg_str);
     this->registration = registration;
 
 }
@@ -86,16 +81,14 @@ void ProjectManager::setRegistration(string reg_str)
 void ProjectManager::setPassword(string pass_str)
 {
     Password* pass;
-    try{ pass = new Password(pass_str); }
-    catch (exception& err) { throw err.what(); }
+    pass = new Password(pass_str);
     this->password = pass;
 }
 
 void ProjectManager::setPhone(string phone_str)
 {
     Phone* phone;
-    try{ phone = new Phone(phone_str); }
-    catch (exception& err) { throw err.what(); }
+    phone = new Phone(phone_str);
     this->phone = phone;
 }
 
@@ -118,8 +111,7 @@ Developer::Developer(string name,
 void Developer::setName(string name_str)
 {
     Name* name;
-    try{ name = new Name(name_str); }
-    catch (exception& err) { throw err.what(); }
+    name = new Name(name_str);
     this->name = name;
 
 }
@@ -127,8 +119,7 @@ void Developer::setName(string name_str)
 void Developer::setRegistration(string reg_str)
 {
     Registration* registration;
-    try{ registration = new Registration(reg_str); }
-    catch (exception& err) { throw err.what(); }
+    registration = new Registration(reg_str);
     this->registration = registration;
 
 }
@@ -136,24 +127,21 @@ void Developer::setRegistration(string reg_str)
 void Developer::setPassword(string pass_str)
 {
     Password* pass;
-    try{ pass = new Password(pass_str); }
-    catch (exception& err) { throw err.what(); }
+    pass = new Password(pass_str);
     this->password = pass;
 }
 
 void Developer::setRole(int role_int)
 {
     Role* role;
-    try{ role = new Role(role_int); }
-    catch (exception& err) { throw err.what(); }
+    role = new Role(role_int);
     this->role = role;
 }
 
 void Developer::setEmail(string email_str)
 {
     Email* email;
-    try{ email = new Email(email_str); }
-    catch (exception& err) { throw err.what(); }
+    email = new Email(email_str);
     this->email = email;
 }
 
@@ -182,65 +170,59 @@ Project::Project(string name,
 void Project::setName(string name_str)
 {
     Name* name;
-    try{ name = new Name(name_str); }
-    catch (exception& err) { throw err.what(); }
-    this->name = name;
 
+    name = new Name(name_str);
+    this->name = name;
 }
 
 void Project::setCode(string code_str)
 {
     ProjectCode* code;
-    try{ code = new ProjectCode(code_str); }
-    catch (exception& err) { throw err.what(); }
-    this->code = code;
 
+    code = new ProjectCode(code_str);
+    this->code = code;
 }
 
 void Project::setInitDate(string init_date_str)
 {
     Date* init_date;
-    try{ init_date = new Date(init_date_str); }
-    catch (exception& err) { throw err.what(); }
+
+    init_date = new Date(init_date_str);
     this->init_date = init_date;
 }
 
 void Project::setEndDate(string end_date_str)
 {
     Date* end_date;
-    try{ end_date = new Date(end_date_str); }
-    catch (exception& err) { throw err.what(); }
+
+    end_date = new Date(end_date_str);
     this->end_date = end_date;
 }
 
 void Project::setState(int state_int)
 {
     ProjectState* state;
-    try{ state = new ProjectState(state_int); }
-    catch (exception& err) { throw err.what(); }
+
+    state = new ProjectState(state_int);
     this->state = state;
 }
 
 void Project::setCurrCost(string currCost)
 {
     Cost* cost;
-    try{
-        if(stof(currCost) <= stof(this->estimate_cost->getCost()))
-            cost = new Cost(currCost);
-        else throw "ERRO: Custo atual maior que o custo estimado;";
-        this->current_cost = cost;
-    }
-    catch (exception& err) { throw err.what(); }
+
+    if(stof(currCost) <= stof(this->estimate_cost->getCost()))
+        cost = new Cost(currCost);
+    else throw invalid_argument("ERRO: Custo atual maior que o custo estimado;");
+    this->current_cost = cost;
 }
 
 void Project::setEstimateCost(string estimateCost)
 {
     Cost* cost;
-    try{
-        cost = new Cost(estimateCost);
-        this->estimate_cost = cost;
-    }
-    catch (exception& err) { throw err.what(); }
+
+    cost = new Cost(estimateCost);
+    this->estimate_cost = cost;
 }
 
 /**
@@ -257,23 +239,20 @@ Phase::Phase(string init_date, int phase)
 void Phase::setInitDate(string init_date_str)
 {
     Date* init_date;
-    try{ init_date = new Date(init_date_str); }
-    catch (exception& err) { throw err.what(); }
+    init_date = new Date(init_date_str);
     this->init_date = init_date;
 }
 
 void Phase::setEndDate(string end_date_str)
 {
     Date* end_date;
-    try{ end_date = new Date(end_date_str); }
-    catch (exception& err) { throw err.what(); }
+    end_date = new Date(end_date_str);
     this->end_date = end_date;
 }
 
 void Phase::setPhase(int phase_int)
 {
     ProjectPhase* projectPhase;
-    try{ projectPhase = new ProjectPhase(phase_int); }
-    catch (exception& err) { throw err.what(); }
+    projectPhase = new ProjectPhase(phase_int);
     this->phase = projectPhase;
 }

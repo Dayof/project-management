@@ -62,7 +62,8 @@ public:
     ProjectManager(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome, matricula e senha do gerente de projeto.");};
 
   void setName(string name);
-  string getName() const {return this->name->getName();};
+  string getName() const {   
+      return this->name->getName();};
 
   void setRegistration(string registration);
   string getRegistration() const {return this->registration->getRegistration();};

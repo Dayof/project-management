@@ -24,6 +24,7 @@
 #include <regex>
 #include <map>
 #include <sstream>
+#include <cstdio>
 
 /* -- Definições -- */
 

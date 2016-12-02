@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "sqlite3.h"
+#include <cstdio>
 
 using namespace std;
 
@@ -80,7 +81,7 @@ protected:
             0, &(this->message));
 
         if(this->returnCode != SQLITE_OK)
-            throw PersistenceError("Erro ao executar SQL: " + this->SQLquery.str());
+            throw PersistenceError("Erro ao executar SQL: " + this->SQLquery.str() + "\n" + this->message);
     }
     void filter()
     {
@@ -91,13 +92,13 @@ protected:
             0, &(this->message));
 
             if(this->returnCode != SQLITE_OK)
-                throw PersistenceError("Erro ao executar SQL: " + this->SQLquery.str());
+                throw PersistenceError("Erro ao executar SQL: " + this->SQLquery.str() + "\n" + this->message);
     }
 
 public:
     IPersistence() throw (PersistenceError)
     {
-        this->databaseName = "../manager.db";
+        this->databaseName = "manager.db";
         this->connect();
     }
 

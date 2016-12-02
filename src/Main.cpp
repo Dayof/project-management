@@ -26,18 +26,26 @@ int main( int argc, char* const argv[] )
 
         p = gp(pc);
 
-        printf("%s\n", p->getName().c_str());
-        printf("%s\n", p->getCode().c_str());
-        printf("%s\n", p->getInitDate().c_str());
-        printf("%s\n", p->getEndDate().c_str());
-        printf("%s\n", p->getCurrCost().c_str());
-        printf("%s\n", p->getEstimateCost().c_str());
-        printf("%d\n", p->getState());
-        printf("%s\n", p->getProjectManager()->getName().c_str());
+        if( p != NULL )
+        {
+            printf("%s\n", p->getProjectManager()->getName().c_str());
+            printf("%s\n", p->getName().c_str());
+            printf("%s\n", p->getCode().c_str());
+            printf("%s\n", p->getInitDate().c_str());
+            printf("%s\n", p->getEndDate().c_str());
+            printf("%s\n", p->getCurrCost().c_str());
+            printf("%s\n", p->getEstimateCost().c_str());
+            printf("%d\n", p->getState());
+
+        }
+
     }
     catch(PersistenceError& per_err)
     {
         cout << per_err.what() << endl;
     }
-
+    catch(exception& domain_err)
+    {
+        cout << domain_err.what() << "potatp" <<  endl;
+    }
 }

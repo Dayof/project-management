@@ -24,8 +24,8 @@ Project* GetProject::operator()(ProjectCode& pc) throw (PersistenceError, except
     ProjectManager* pm;
     GetUser getUser;
 
-    this->SQLquery << "select * from Project where code=";
-    this->SQLquery << pc.getCodProject();
+    this->SQLquery << "select * from Project where code='";
+    this->SQLquery << pc.getCodProject() << "';";
 
     this->run();
 
@@ -36,16 +36,34 @@ Project* GetProject::operator()(ProjectCode& pc) throw (PersistenceError, except
 
     getUser(r, *pm);
 
-    p = new Project(
-        resultSet["name"],
-        resultSet["code"],
-        pm,
-        resultSet["initDate"],
-        stoi(resultSet["state"])
-    );
-    p->setEndDate(resultSet["endDate"]);
-    p->setCurrCost(resultSet["currCost"]);
-    p->setEstimateCost(resultSet["estCost"]);
+    for(auto& i : resultSet)
+    {
+    //    cout << i.first << " : " << i.second << endl;
+    }
+
+    try{
+        p = new Project(
+            resultSet["name"],
+            resultSet["code"],
+            pm,
+            resultSet["initDate"],
+            stoi(resultSet["state"]),
+            resultSet["currCost"],
+            resultSet["estCost"]
+        );
+        p->setEndDate(resultSet["endDate"]);
+    }
+    catch(PersistenceError& pers_err)
+    {
+        cout << pers_err.what() << endl;
+        cout << "HERE" << endl;
+        p = NULL;
+    }
+    catch(invalid_argument& err)
+    {
+        cout << err.what() << endl;
+        p = NULL;
+    }
 
     return p;
 }
@@ -139,7 +157,7 @@ int CountDevelopers::operator()(ProjectCode& p) throw (PersistenceError)
 
 void GetUser::operator()(Registration& r, Developer& d) throw (PersistenceError)
 {
-    this->SQLquery << "select from Developer where registration='" << r.getRegistration() << "'";
+    this->SQLquery << "select * from Developer where registration='" << r.getRegistration() << "'";
 
     this->run();
 
@@ -158,7 +176,7 @@ void GetUser::operator()(Registration& r, Developer& d) throw (PersistenceError)
 
 void GetUser::operator()(Registration& r, ProjectManager& d) throw (PersistenceError)
 {
-    this->SQLquery << "select from ProjectManager where registration='" << r.getRegistration() << "'";
+    this->SQLquery << "select * from ProjectManager where registration='" << r.getRegistration() << "'";
 
     this->run();
 
