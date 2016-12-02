@@ -8,22 +8,21 @@
 	- Fase [OK]
  - Testes de unidade [OK]
  - Controladores
-	- Controle de UI (TUI, GUI) + Stub
-	- Controle de lógica de negócio + Stub
-	- Controle de persistência + Stub
- - Telas
- - Builders
+	- Controle de UI (TUI, GUI) + Stub [DEV]
+	- Controle de lógica de negócio + Stub [OK]
+	- Controle de persistência + Stub [OK]
+ - Telas [DEV]
+ - Builders [OK]
 
 -> Apresentação :
-	- UI (Apt, navegação)
-	- Validação (Formato)
+	- UI (Apt, navegação) [DEV]
+	- Validação (Formato) [DEV]
 
 -> Negócio :
-	- Regras de negócio
+	- Regras de negócio [DEV]
 
 -> Persistência :
-	- Persistir dados
+	- Persistir dados [OK]
 
-- Testes de devs no projeto;
-- Testes de outros atributos nao necessarios do projeto.
-
+- Testes de devs no projeto; [DEV]
+- Testes de outros atributos nao necessarios do projeto. [DEV]
