@@ -138,7 +138,9 @@ public:
             string code,
             ProjectManager* projectManager,
             string init_date,
-            int state);
+            int state,
+            string currCost="0.00",
+            string estimateCost="1.00");
     Project(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome,"
     " codigo, gerente de projeto, data de inicio e estado do projeto.");};
 
@@ -168,7 +170,7 @@ public:
 
   void addDev(string reg);
   void removeDev(string reg);
-  vector<Developer> getAllDevelopers();
+  vector<Developer> getAllDevelopers(){ return this->developers; };
 };
 
 /**
