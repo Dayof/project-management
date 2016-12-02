@@ -31,7 +31,6 @@ void SysManager::setName(string name_str)
     try{ name = new Name(name_str); }
     catch (exception& err) { throw err.what(); return; }
     this->name = name;
-
 }
 
 void SysManager::setRegistration(string reg_str)
@@ -168,8 +167,8 @@ Project::Project(string name,
                 ProjectManager* projectManager,
                 string init_date,
                 int state,
-                string currCost="0.00",
-                string estimateCost="1.00")
+                string currCost,
+                string estimateCost)
 {
     setName(name);
     setCode(code);

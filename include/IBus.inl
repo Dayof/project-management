@@ -9,6 +9,9 @@
 #define IBUS_HPP_INCLUDED
 
 #include "Headers.inl"
+#include "Domain.hpp"
+#include "Entity.hpp"
+#include "Persistence.hpp"
 
 /**
  * \class IBus
@@ -37,15 +40,13 @@ public:
     virtual string editPersonalInfo(Registration *reg, Role *role);
 
     virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Name *name);
-    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Date *init_date);
-    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Date *end_date);
-    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *current_cost);
-    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *estimate_cost);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Date *date, string init_end_date);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *projCost, string curr_estimate_cost);
     virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Developer *dev, Registration *oldDev);
     virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, ProjectManager *projManager, Registration *oldProjManager);
     virtual string editProjectInfo(Registration *reg, ProjectCode *projCode,  ProjectState *state);
 
-    virtual map<string, string> showPersonalInfo(Registration *reg);
+    virtual map<string, string> showPersonalInfo(Registration *reqReg, Registration *viewReg);;
 
     virtual map<string, string> showProjectInfo(ProjectCode *projCode);
 };

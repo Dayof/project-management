@@ -10,7 +10,6 @@
  */
 
 #include "StubBus.hpp"
-#include "Persistence.hpp"
 
 string StubBus::regPM(Registration *reg, ProjectManager *projManager){
     try{
@@ -33,23 +32,24 @@ string StubBus::delPM(Registration *reg, ProjectManager *projManager){
         CheckType checkType;
         DeleteUser delProjManager;
         ProjectsFrom projsFromProjManager;
-        list<Registration> regs;
+        list<ProjectCode> projsCode;
         Registration regPM;
+        GetProject proj;
+        Project *tempProj;
 
         regPM.setRegistration(projManager->getRegistration());
+        projsCode = projsFromProjManager(regPM);
 
-        regs = projsFromProjManager(regPM);
-
-        for(auto i : regs)
+        for(auto i : projsCode)
         {
-            if(i.getState() == ACTIVE)
+            tempProj = proj(i);
+            if(tempProj->getState() == ACTIVE)
                 return "ERRO: Existe projeto ativo vinculado ao Gerente de Projeto, logo, não é possível descartá-lo do sistema.";
         }
 
         if(checkType(*reg) == CheckType::SYS)
         {
-            if(proj)
-                delProjManager(*projManager->getRegistration());
+            delProjManager(regPM);
         }
         else return "ERRO: Somente Gerenciador de Sistema pode remover Gerente de Projeto.";
     }
@@ -67,17 +67,19 @@ string StubBus::regP(Registration *reg, Project *proj){
         ProjectManager projManager;
         GetUser getUser;
         ProjectsFrom projsFromProjManager;
-        list<Registration> regs;
+        list<ProjectCode> projsCode;
 
         if(checkType(*reg) == CheckType::PRJ)
-            if(regs.size() < 5)
+        {
+            projsCode = projsFromProjManager(*reg);
+            if(projsCode.size() < 5)
             {
-                regs = projsFromProjManager(*reg);
                 getUser(*reg, projManager);
                 proj->setProjectManager(&projManager);
                 addProj(*proj);
             }
             else return "ERRO: Gerenciador de Projeto já gerencia 5 projetos, não é possível adicionar mais um projeto para este gerente auxiliar.";
+        }
         else return "ERRO: Somente Gerenciador de Projeto pode registrar Projeto.";
     }
     catch (PersistenceError per_err) {
@@ -91,9 +93,12 @@ string StubBus::delP(Registration *reg, Project *proj){
     try{
         CheckType checkType;
         DeleteProject dellProj;
+        ProjectCode projCode;
+
+        projCode.setCodProject(proj->getCode());
 
         if(checkType(*reg) == CheckType::PRJ)
-            dellProj(*proj->getCode());
+            dellProj(projCode);
         else return "ERRO: Somente Gerenciador de Projeto pode remover Projeto.";
     }
     catch (PersistenceError per_err) {
@@ -123,10 +128,13 @@ string StubBus::delD(Registration *reg, Developer *dev){
     try{
         CheckType checkType;
         DeleteUser delDev;
+        Registration regDev;
+
+        regDev.setRegistration(dev->getRegistration());
 
         if(checkType(*reg) == CheckType::PRJ)
-            createDev(*dev->getRegistration());
-        else return "ERRO: Somente Gerenciador de Projeto pode registrar Projeto.";
+            delDev(regDev);
+        else return "ERRO: Somente Gerenciador de Projeto pode remover Desenvolvedor.";
     }
     catch (PersistenceError per_err) {
         return per_err.what();
@@ -283,7 +291,7 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Name *
         CheckType checkType;
         GetProject getProj;
         EditProject editProj;
-        Project newProj;
+        Project* newProj;
 
         if(checkType(*reg) == CheckType::PRJ)
         {
@@ -292,7 +300,7 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Name *
             if(newProj->getProjectManager()->getRegistration() == reg->getRegistration())
             {
                 newProj->setName(name->getName());
-                editProj(newProj);
+                editProj(*newProj);
             }
             else return "ERRO: O Gerente de Projeto só pode alterar projetos que ele gerencia.";
         }
@@ -309,12 +317,12 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Name *
     return "OK";
 }
 
-string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Date *init_date){
+string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Date *date, string init_end_date){
     try{
         CheckType checkType;
         GetProject getProj;
         EditProject editProj;
-        Project newProj;
+        Project *newProj;
 
         if(checkType(*reg) == CheckType::PRJ)
         {
@@ -322,40 +330,13 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Date *
 
             if(newProj->getProjectManager()->getRegistration() == reg->getRegistration())
             {
-                newProj->setInitDate(init_date->getDate());
-                editProj(newProj);
-            }
-            else return "ERRO: O Gerente de Projeto só pode alterar projetos que ele gerencia.";
+                if(init_end_date == "init")
+                    newProj->setInitDate(date->getDate());
+                else if(init_end_date == "end")
+                    newProj->setEndDate(date->getDate());
+                else return "ERRO: Indicar se data representa 'init' : início do projeto ou 'end' : término do projeto.";
 
-        }
-        else return "ERRO: Somente Gerente de Projeto pode editar dados de projeto.";
-
-    }
-    catch (PersistenceError per_err) {
-        return per_err.what();
-    }
-    catch (exception& domain_err) {
-        return domain_err.what();
-    }
-
-    return "OK";
-}
-
-string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Date *end_date){
-    try{
-        CheckType checkType;
-        GetProject getProj;
-        EditProject editProj;
-        Project newProj;
-
-        if(checkType(*reg) == CheckType::PRJ)
-        {
-            newProj = getProj(*projCode);
-
-            if(newProj->getProjectManager()->getRegistration() == reg->getRegistration())
-            {
-                newProj->setEndDate(end_date->getDate());
-                editProj(newProj);
+                editProj(*newProj);
             }
             else return "ERRO: O Gerente de Projeto só pode alterar projetos que ele gerencia.";
 
@@ -373,12 +354,12 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Date *
     return "OK";
 }
 
-string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *current_cost){
+string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *projCost, string curr_estimate_cost){
     try{
         CheckType checkType;
         GetProject getProj;
         EditProject editProj;
-        Project newProj;
+        Project *newProj;
 
         if(checkType(*reg) == CheckType::PRJ)
         {
@@ -386,40 +367,13 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *
 
             if(newProj->getProjectManager()->getRegistration() == reg->getRegistration())
             {
-                newProj->setCurrCost(current_cost->getCost());
-                editProj(newProj);
-            }
-            else return "ERRO: O Gerente de Projeto só pode alterar projetos que ele gerencia.";
+                if(curr_estimate_cost == "curr")
+                    newProj->setCurrCost(projCost->getCost());
+                else if(curr_estimate_cost == "estimate")
+                    newProj->setEstimateCost(projCost->getCost());
+                else return "ERRO: Indicar se custo representa 'curr' : custo atual do projeto ou 'estimate' : custo estimado do projeto.";
 
-        }
-        else return "ERRO: Somente Gerente de Projeto pode editar dados de projeto.";
-
-    }
-    catch (PersistenceError per_err) {
-        return per_err.what();
-    }
-    catch (exception& domain_err) {
-        return domain_err.what();
-    }
-
-    return "OK";
-}
-
-string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *estimate_cost){
-    try{
-        CheckType checkType;
-        GetProject getProj;
-        EditProject editProj;
-        Project newProj;
-
-        if(checkType(*reg) == CheckType::PRJ)
-        {
-            newProj = getProj(*projCode);
-
-            if(newProj->getProjectManager()->getRegistration() == reg->getRegistration())
-            {
-                newProj->setEstimateCost(estimate_cost->getEstimateCost());
-                editProj(newProj);
+                editProj(*newProj);
             }
             else return "ERRO: O Gerente de Projeto só pode alterar projetos que ele gerencia.";
 
@@ -441,7 +395,7 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Develo
     try{
         CheckType checkType;
         GetProject getProj;
-        Project newProj;
+        Project *newProj;
         AddToProject addToProject;
         RemoveFromProject delFromProj;
         ProjectCode oldCode, newCode;
@@ -478,7 +432,7 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Projec
     try{
         CheckType checkType;
         GetProject getProj;
-        Project newProj;
+        Project *newProj;
         AddToProject addToProject;
         RemoveFromProject delFromProj;
         GetUser getUser;
@@ -515,7 +469,7 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode,  Proje
         CheckType checkType;
         GetProject getProj;
         EditProject editProj;
-        Project newProj;
+        Project *newProj;
 
         if(checkType(*reg) == CheckType::PRJ)
         {
@@ -523,8 +477,8 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode,  Proje
 
             if(newProj->getProjectManager()->getRegistration() == reg->getRegistration())
             {
-                newProj->setState(state->getState());
-                editProj(newProj);
+                newProj->setState(state->getProjectState());
+                editProj(*newProj);
             }
             else return "ERRO: O Gerente de Projeto só pode alterar projetos que ele gerencia.";
 
@@ -544,6 +498,7 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode,  Proje
 
 map<string, string> StubBus::showPersonalInfo(Registration *reqReg, Registration *viewReg){
     try{
+        CheckType checkType;
         GetUser getUser;
         Developer dev;
         ProjectManager projManager;
@@ -553,41 +508,41 @@ map<string, string> StubBus::showPersonalInfo(Registration *reqReg, Registration
         if(checkType(*viewReg) == CheckType::SYS)
         {
             getUser(*viewReg, sysManager);
-            info['name']=sysManager.getName();
-            info['reg']=sysManager.getRegistration();
+            info["name"]=sysManager.getName();
+            info["reg"]=sysManager.getRegistration();
         }
         else if(checkType(*viewReg) == CheckType::PRJ)
         {
             getUser(*viewReg, projManager);
-            info['name']=projManager.getName();
-            info['reg']=projManager.getRegistration();
-            info['phone']=projManager.getPhone();
+            info["name"]=projManager.getName();
+            info["reg"]=projManager.getRegistration();
+            info["phone"]=projManager.getPhone();
         }
         else if(checkType(*reg) == CheckType::DEV)
         {
             getUser(*viewReg, dev);
-            info['name']=dev.getName();
-            info['reg']=dev.getRegistration();
-            info['email']=dev.getEmail();
-            info['role']=dev.getRole();
+            info["name"]=dev.getName();
+            info["reg"]=dev.getRegistration();
+            info["email"]=dev.getEmail();
+            info["role"]=dev.getRole();
         }
         else return "ERRO: Tipo de entidade incorreta.";
 
         if(reqReg->getRegistration() == viewReg->getRegistration())
         {
                 if(checkType(*viewReg) == CheckType::SYS)
-                    info['pass']=sysManager.getPassword();
+                    info["pass"]=sysManager.getPassword();
                 if(checkType(*viewReg) == CheckType::PRJ)
-                    info['pass']=projManager.getPassword();
+                    info["pass"]=projManager.getPassword();
                 if(checkType(*reg) == CheckType::DEV)
-                    info['pass']=dev.getPassword();
+                    info["pass"]=dev.getPassword();
         }
     }
     catch (PersistenceError per_err) {
-        return info['error'] = per_err.what();
+        return info["error"] = per_err.what();
     }
     catch (exception& domain_err) {
-        return info['error'] = domain_err.what();
+        return info["error"] = domain_err.what();
     }
 
     return info;
@@ -595,7 +550,7 @@ map<string, string> StubBus::showPersonalInfo(Registration *reqReg, Registration
 
 map<string, string> StubBus::showProjectInfo(ProjectCode *projCode){
     try{
-        Project proj;
+        Project *proj;
         GetProject getProj;
         map<string, string> info;
         vector<Developer> allDevs;
@@ -603,29 +558,29 @@ map<string, string> StubBus::showProjectInfo(ProjectCode *projCode){
         string devs;
 
         proj = getProj(*projCode);
-        info['name']=projCode.getName();
-        info['projcode']=projCode.getCode();
-        info['initdate']=projCode.getInitDate();
-        info['enddate']=projCode.getEndDate();
-        info['currentcost']=projCode.getCurrCost();
-        info['estimatecost']=projCode.getEstimateCost();
+        info["name"]=proj->getName();
+        info["projcode"]=proj->getCode();
+        info["initdate"]=proj->getInitDate();
+        info["enddate"]=proj->getEndDate();
+        info["currentcost"]=proj->getCurrCost();
+        info["estimatecost"]=proj->getEstimateCost();
 
-        allDevs = projCode.getAllDevelopers();
+        allDevs = projCode->getAllDevelopers();
         for(auto i : allDevs)
             dev << i.getRegistration() << " ";
         }
         devs = dev.str();
 
-        info['developers']=devs;
-        info['projmanager']=projCode.getProjectManager()->getRegistration;
-        info['state']=projCode.getState();
+        info["developers"]=devs;
+        info["projmanager"]=proj->getProjectManager()->getRegistration();
+        info["state"]=proj->getState();
 
     }
     catch (PersistenceError per_err) {
-        return info['error'] = per_err.what();
+        return info["error"] = per_err.what();
     }
     catch (exception& domain_err) {
-        return info['error'] = domain_err.what();
+        return info["error"] = domain_err.what();
     }
 
     return info;
@@ -638,15 +593,13 @@ string StubBus::addDevToProject(Registration *reg, ProjectCode *projCode, Develo
         CountDevelopers qtDev;
         Registration regDev;
         ProjectsFrom projsFromDev;
-        list<Registration> regs;
+        list<ProjectCode> projsCode;
 
-        regs = projsFromDev(*reg);
-
-        regDev.setRegistration = dev->getRegistration();
+        projsCode = projsFromDev(*reg);
 
         if(qtDev(*projCode) < 10)
         {
-            if(regs.size() < 10)
+            if(projsCode.size() < 10)
             {
                 if(checkType(*reg) == CheckType::PRJ)
                     AddToProject(*projCode, *dev);
@@ -669,16 +622,18 @@ string StubBus::delDevFromProject(Registration *reg, ProjectCode *projCode, Deve
         RemoveFromProject delFromProj;
         CountDevelopers qtDev;
         ProjectsFrom projsFromDev;
-        list<Registration> regs;
+        list<ProjectCode> projsCode;
         Registration regDev;
+        GetProject proj;
+        Project tempProj;
 
         regDev.setRegistration(dev->getRegistration());
+        projsCode = projsFromDev(regDev);
 
-        regs = projsFromDev(regDev);
-
-        for(auto i : regs)
+        for(auto i : projsCode)
         {
-            if(i.getState() == ACTIVE)
+            tempProj = proj(i);
+            if(tempProj.getState() == ACTIVE)
                 return "ERRO: Existe projeto ativo vinculado ao desenvolvedor, logo, não é possível descartá-lo do sistema.";
         }
 
