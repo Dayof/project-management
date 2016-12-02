@@ -31,7 +31,6 @@ void SysManager::setName(string name_str)
     try{ name = new Name(name_str); }
     catch (exception& err) { throw err.what(); return; }
     this->name = name;
-
 }
 
 void SysManager::setRegistration(string reg_str)

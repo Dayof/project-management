@@ -18,10 +18,10 @@ else
 	endif
 endif
 
-_DEPS=catch.hpp Persistence.hpp Domain.hpp Entity.hpp sqlite3.h
+_DEPS=catch.hpp StubBus.hpp Persistence.hpp Domain.hpp Entity.hpp sqlite3.h
 DEPS=$(patsubst %,$(DIR_INC)%,$(_DEPS))
 
-_OBJ=Main.o Persistence.o Entity.o Domain.o Test.o sqlite3.o
+_OBJ=Main.o StubBus.o Persistence.o Entity.o Domain.o Test.o sqlite3.o
 OBJ = $(patsubst %,$(DIR_OBJ)%,$(_OBJ))
 
 CFLAGS=g++ -std=gnu++11
