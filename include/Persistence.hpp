@@ -79,4 +79,28 @@ public:
     TYPE operator()(Registration&) throw (PersistenceError);
 };
 
+class CreateManager : public IPersistence
+{
+public:
+    void operator()(ProjectManager&) throw (PersistenceError);
+};
+
+class CreateDeveloper : public IPersistence
+{
+public:
+    void operator()(Developer&) throw (PersistenceError);
+};
+
+class DeleteManager : public IPersistence
+{
+public:
+    void operator()(Developer&) throw (PersistenceError);
+};
+
+class DeleteDeveloper : public IPersistence
+{
+public:
+    void operator()(Developer&) throw (PersistenceError);
+};
+
 #endif
