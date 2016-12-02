@@ -69,6 +69,13 @@ public:
     void operator()(Registration&, SysManager&) throw (PersistenceError);
 };
 
+class EditUser : public IPersistence
+{
+public:
+    void operator()(Developer&) throw (PersistenceError);
+    void operator()(ProjectManager) throw (PersistenceError);
+};
+
 class CheckType : public IPersistence
 {
 public:
