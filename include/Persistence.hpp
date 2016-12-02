@@ -15,6 +15,8 @@
 #include <string>
 #include <list>
 #include <sstream>
+#include <map>
+#include <vector>
 
 #include "Domain.hpp"
 #include "Entity.hpp"
@@ -58,6 +60,7 @@ class RemoveFromProject : public IPersistence
 {
 public:
     void operator()(ProjectCode&, Developer&) throw (PersistenceError);
+    void operator()(ProjectCode&, ProjectManager&) throw (PersistenceError);
 };
 
 class CountDevelopers : public IPersistence
@@ -102,6 +105,12 @@ class DeleteUser : public IPersistence
 {
 public:
     void operator()(Registration&) throw (PersistenceError);
+};
+
+class ProjectsFrom : public IPersistence
+{
+public:
+    list<ProjectCode> operator()(Registration&) throw (PersistenceError);
 };
 
 #endif

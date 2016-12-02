@@ -228,17 +228,19 @@ void Project::setCurrCost(string currCost)
         if(stof(currCost) <= stof(this->estimate_cost->getCost()))
             cost = new Cost(currCost);
         else throw "ERRO: Custo atual maior que o custo estimado;";
+        this->current_cost = cost;
     }
     catch (exception& err) { throw err.what(); }
-    this->current_cost = cost;
 }
 
 void Project::setEstimateCost(string estimateCost)
 {
     Cost* cost;
-    try{ cost = new Cost(estimateCost); }
+    try{
+        cost = new Cost(estimateCost);
+        this->estimate_cost = cost;
+    }
     catch (exception& err) { throw err.what(); }
-    this->estimate_cost = cost;
 }
 
 /**
