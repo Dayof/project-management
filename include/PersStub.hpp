@@ -1,12 +1,10 @@
-/** @file Persistence.hpp
- *  @brief Arquivo de configuração da camada de persistência.
+/** @file PersStub.hpp
+ *  @brief Arquivo de stub de configuração da camada de persistência.
  *
- *  Este arquivo contém toda a lógica de acesso
- *  ao banco de dados, tornando transparente suas
+ *  Este arquivo contém stubs das
  *  transações para a camada de negócio.
  *
  *  @author Dayanne Fernandes
- *  @bug Sem bug conhecido.
  */
 
 #ifndef PERSISTENCE_STUB_INCLUDED

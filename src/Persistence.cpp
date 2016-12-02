@@ -1,3 +1,14 @@
+/** @file Persistence.cpp
+ *  @brief Implementação da Camada de Persisência do sistema.
+ *
+ *  Neste arquivo contém as implementações das
+ *  assinaturas dos métodos abstratos da Interface
+ *  de Persistência. Serve como ponto entre Camada de Negócio
+ *  e o Banco de Dados.
+ *
+ *  @author Dayanne Fernandes
+ */
+
 #include "Persistence.hpp"
 
 map<string, string> IPersistence::resultSet;

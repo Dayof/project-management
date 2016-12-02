@@ -1,8 +1,10 @@
-/** @file StubBus.hpp
+/** @file BusStub.hpp
  *  @brief Stub da camada de negócio.
  *
+ *  Neste arquivo contém as assinaturas das classes
+ *  de Stub da Camada de Negócio.
+ *
  *  @author Dayanne Fernandes
- *  @bug Sem bug conhecido.
  */
 
 #ifndef STUB_BUS_HPP_INCLUDED

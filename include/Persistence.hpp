@@ -6,7 +6,6 @@
  *  transações para a camada de negócio.
  *
  *  @author Dayanne Fernandes
- *  @bug Sem bug conhecido.
  */
 
 #ifndef PERSISTENCE_INCLUDED

@@ -1,12 +1,12 @@
-/** @file StubBus.cpp
- *  @brief Implementação do stub da camada de negócio.
+/** @file Business.cpp
+ *  @brief Implementação da Camada de Nogócio do sistema.
  *
  *  Neste arquivo contém as implementações das
- *  assinaturas dos métodos abstratos da interface
- *  de negócio.
+ *  assinaturas dos métodos abstratos da Interface
+ *  de negócio. Serve como ponto entre Camada de Apresentação
+ *  e Camada de Persistência.
  *
  *  @author Dayanne Fernandes
- *  @bug Sem bug conhecido.
  */
 
 #include "Business.hpp"

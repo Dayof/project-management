@@ -1,3 +1,9 @@
+/** @file IPers.hpp
+ *  @brief Interface abstrata da Camada de Persistência.
+ *
+ *  @author Dayanne Fernandes
+ */
+
 #include <string>
 #include <map>
 #include <sstream>

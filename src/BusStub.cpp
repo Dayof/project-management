@@ -1,3 +1,13 @@
+/** @file BusStub.cpp
+ *  @brief Implementação do Stub da parte de negócio.
+ *
+ *  Neste arquivo contém os stubs das
+ *  assinaturas dos métodos abstratos da interface de
+ *  negócio.
+ *
+ *  @author Dayanne Fernandes
+ */
+
 #include "BusStub.hpp"
 
 string BusStubManageManager::regPM(Registration *reg, ProjectManager *projManager){

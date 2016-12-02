@@ -1,3 +1,15 @@
+/** @file PersStub.cpp
+ *  @brief Implementação da Classe de Stub da Persisência do sistema.
+ *
+ *  Neste arquivo contém as implementações dos
+ *  stubs da Interface de Persistência.
+ *  Serve para simular a persistência dos dados para
+ *  para que o sistema possa continuar o fluxo sem
+ *  necessariamente conter uma conexão com um banco de dados.
+ *
+ *  @author Dayanne Fernandes
+ */
+
 #include "PersStub.hpp"
 
 PersistenceError::PersistenceError()
