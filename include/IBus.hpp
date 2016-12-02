@@ -18,29 +18,36 @@
  */
 class IBus {
 public:
-    virtual bool regPM(Registration *reg, ProjectManager *projManager);
-    virtual bool delPM(Registration *reg, ProjectManager *projManager);
+    virtual string regPM(Registration *reg, ProjectManager *projManager);
+    virtual string delPM(Registration *reg, ProjectManager *projManager);
 
-    virtual bool regP(Registration *reg, Project *proj);
-    virtual bool delP(Registration *reg, Project *proj);
+    virtual string regP(Registration *reg, Project *proj);
+    virtual string delP(Registration *reg, Project *proj);
 
-    virtual bool regD(Registration *reg, Developer *dev);
-    virtual bool delD(Registration *reg, Developer *dev);
+    virtual string regD(Registration *reg, Developer *dev);
+    virtual string delD(Registration *reg, Developer *dev);
 
-    virtual bool editPersonalInfo(ProjectManager *projManager, Name *name);
-    virtual bool editPersonalInfo(ProjectManager *projManager, Password *pass);
-    virtual bool editPersonalInfo(ProjectManager *projManager, Phone *phone);
+    virtual string addDevToProject(Registration *reg, ProjectCode *projCode, Developer *dev);
+    virtual string delDevFromProject(Registration *reg, ProjectCode *projCode, Developer *dev);
 
-    virtual bool editPersonalInfo(Developer *dev, Name *name);
-    virtual bool editPersonalInfo(Developer *dev, Password *pass);
-    virtual bool editPersonalInfo(Developer *dev, Email *email);
-    virtual bool editPersonalInfo(Developer *dev, Role *role);
+    virtual string editPersonalInfo(Registration *reg, Name *name);
+    virtual string editPersonalInfo(Registration *reg, Password *pass);
+    virtual string editPersonalInfo(Registration *reg, Phone *phone);
+    virtual string editPersonalInfo(Registration *reg, Email *email);
+    virtual string editPersonalInfo(Registration *reg, Role *role);
 
-    virtual bool editProjectInfo(Registration *reg, Project *proj);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Name *name);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Date *init_date);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Date *end_date);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *current_cost);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *estimate_cost);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Developer *dev, Registration *oldDev);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, ProjectManager *projManager, Registration *oldProjManager);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode,  ProjectState *state);
 
-    virtual bool showPersonalInfo(Registration *reg);
+    virtual map<string, string> showPersonalInfo(Registration *reg);
 
-    virtual bool showProjectInfo(ProjectCode *projCode);
+    virtual map<string, string> showProjectInfo(ProjectCode *projCode);
 };
 
 #endif // IBUS_HPP_INCLUDED
