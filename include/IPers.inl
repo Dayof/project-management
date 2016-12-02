@@ -1,5 +1,5 @@
 #include <string>
-#include <list>
+#include <map>
 #include <sstream>
 
 #include "sqlite3.h"
@@ -21,12 +21,6 @@ public:
     string what();
 };
 
-class Record {
-public:
-    string col;
-    string value;
-};
-
 class Table {
 public:
     string name;
@@ -41,7 +35,7 @@ private:
     int returnCode;
 
 protected:
-    static list<Record> returnList;
+    static map<string> returnMap;
     stringstream SQLquery;
 
     void connect() throw (PersistenceError)
@@ -60,14 +54,8 @@ protected:
 
     static int digestData(void* X, int argc, char** argv, char** colName)
     {
-        Record line;
-
         for(int i=0; i<argc; ++i)
-        {
-            line.col = colName[i];
-            line.value = argv[i];
-            returnList.push_back(line);
-        }
+            returnMap[colName[i]] = argv[i];
 
         return 0;
     }
