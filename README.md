@@ -1,9 +1,7 @@
 Project Management
 =============
 
-[![Build Status](https://travis-ci.org/Dayof/project-management.svg?branch=master)](https://travis-ci.org/Dayof/project-management)
-
-Este projeto foca em desenvolver um gerenciador de projetos em organizações.
+Este sistema foca na implementação de um gerenciador de projetos em organizações.
 
 ## Diretórios e Informações dos arquivos
 
@@ -14,8 +12,6 @@ Este projeto foca em desenvolver um gerenciador de projetos em organizações.
 | Diretório | [obj](obj)                  		  	     | Possui os arquivos objetos            |
 | Diretório | [html](html)                         		     | Arquivos HTML do Doxygen      	     |
 | Diretório | [latex](latex)                         		     | Arquivos Latex do Doxygen	     |
-| Arquivo   | [project-management.cbp](project-management.cbp)	     | Arquivo do software para o C::B       |
-| Arquivo   | [project-management.layout](project-management.layout) | Arquivo do software para o C::B       |
 | Arquivo   | [README.md](README.md)           			     | Instruções gerais do projeto          |
 | Arquivo   | [tests_results.xml](tests_results.xml)   		     | Resultados de todos os testes         |
 | Arquivo   | [TODO.md](TODO.md)   				     | Alguns TODO para o Trabalho 2	     |
@@ -27,8 +23,15 @@ Este projeto foca em desenvolver um gerenciador de projetos em organizações.
 
 ## Ferramenta de teste utilizada
 
-Biblioteca [Catch](https://github.com/philsquared/Catch) para C++. 
+Biblioteca [Catch](https://github.com/philsquared/Catch) para C++.
 Utiliza-se somente um header catch.hpp para utilizar essa ferramenta.
+
+Biblioteca Sqlte3 como SGBD.
+
+### Camadas
+- Apresentação
+- Negócio
+- Persistência
 
 ### Entidades
 - Gerente de Sistema
@@ -36,21 +39,22 @@ Utiliza-se somente um header catch.hpp para utilizar essa ferramenta.
 - Gerente de Projeto
 	- Domínios: Nome, matrícula, senha e telefone.
 - Desenvolvedor
-	- Domínios: Nome, matrícula, senha, e-mail e 
+	- Domínios: Nome, matrícula, senha, e-mail e
 			função (analista, projetista ou programador).
 - Projeto
-	- Domínios: Nome, código, gerente de projeto, desenvolvedores do projeto, 
-			data de início, data de término, custo atual, custo previsto e 
+	- Domínios: Nome, código, gerente de projeto, desenvolvedores do projeto,
+			data de início, data de término, custo atual, custo previsto e
 			estado.
 - Fase
 	- Domínios: Data de início, data de término e código de fase.
 
-### Features: 
+### Features:
 - Classes de domínios implemetadas;
 - Classes de entidades implemetadas;
 - Testes unitários para os domínios com por ao menos um caso válido e um caso inválido;
-- Testes unitários para as entidades com por ao menos um caso válido e um caso inválido.
-- Todos os testes estão passando!
+- Testes unitários para as entidades com por ao menos um caso válido e um caso inválido;
+- Todos os testes das entidades e domínios estão passando;
+- Camadas de Apresentação, Negócio e Persistência.
 
 ### Convenção de Codificação
 
@@ -62,9 +66,6 @@ Utiliza-se somente um header catch.hpp para utilizar essa ferramenta.
 - Constantes: ALL_CAPS_AND_UNDERSCORED;
 - Métodos: camelCase.fooMethod();
 - Métodos estáticos: CamelCase::justLikeRegularMethod().
-
-### TODO: 
-- Camadas de Apresentação, Negócio e Persistência.
 
 ### Executar (Via Code::Blocks)
 

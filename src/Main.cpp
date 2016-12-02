@@ -19,6 +19,8 @@
 
 int main( int argc, char* const argv[] )
 {
+    int result_test = Catch::Session().run( argc, argv );
+
     try
     {
         BusShared *busShared = new BusShared();
@@ -42,4 +44,6 @@ int main( int argc, char* const argv[] )
     {
         cout << domain_err.what() <<  endl;
     }
+
+    return result_test;
 }
