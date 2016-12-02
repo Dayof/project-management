@@ -36,11 +36,6 @@ Project* GetProject::operator()(ProjectCode& pc) throw (PersistenceError, except
 
     getUser(r, *pm);
 
-    for(auto& i : resultSet)
-    {
-    //    cout << i.first << " : " << i.second << endl;
-    }
-
     try{
         p = new Project(
             resultSet["name"],
@@ -56,7 +51,6 @@ Project* GetProject::operator()(ProjectCode& pc) throw (PersistenceError, except
     catch(PersistenceError& pers_err)
     {
         cout << pers_err.what() << endl;
-        cout << "HERE" << endl;
         p = NULL;
     }
     catch(invalid_argument& err)
