@@ -22,6 +22,8 @@
 #include <exception>
 #include <stdexcept>
 #include <regex>
+#include <map>
+#include <sstream>
 
 /* -- Definições -- */
 

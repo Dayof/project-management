@@ -167,13 +167,17 @@ Project::Project(string name,
                 string code,
                 ProjectManager* projectManager,
                 string init_date,
-                int state)
+                int state,
+                string currCost="0.00",
+                string estimateCost="1.00")
 {
     setName(name);
     setCode(code);
     setProjectManager(projectManager);
     setInitDate(init_date);
     setState(state);
+    setEstimateCost(estimateCost);
+    setCurrCost(currCost);
 }
 
 void Project::setName(string name_str)
@@ -221,9 +225,13 @@ void Project::setState(int state_int)
 void Project::setCurrCost(string currCost)
 {
     Cost* cost;
-    try{ cost = new Cost(currCost); }
+    try{
+        if(stof(currCost) <= stof(this->estimate_cost->getCost()))
+            cost = new Cost(currCost);
+        else throw "ERRO: Custo atual maior que o custo estimado;";
+    }
     catch (exception& err) { throw err.what(); }
-    this->current_cost = currCost;
+    this->current_cost = cost;
 }
 
 void Project::setEstimateCost(string estimateCost)
@@ -231,7 +239,7 @@ void Project::setEstimateCost(string estimateCost)
     Cost* cost;
     try{ cost = new Cost(estimateCost); }
     catch (exception& err) { throw err.what(); }
-    this->estimate_cost = estimate_cost;
+    this->estimate_cost = cost;
 }
 
 /**
