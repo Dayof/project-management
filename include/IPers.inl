@@ -27,6 +27,7 @@ public:
     string name;
 };
 
+
 class IPersistence
 {
 private:
@@ -79,7 +80,7 @@ protected:
             0, &(this->message));
 
         if(this->returnCode != SQLITE_OK)
-            throw PersistenceError("Erro ao executar SQL");
+            throw PersistenceError("Erro ao executar SQL: " + this->SQLquery.str());
     }
     void filter()
     {
@@ -90,7 +91,7 @@ protected:
             0, &(this->message));
 
             if(this->returnCode != SQLITE_OK)
-                throw PersistenceError("Erro ao executar SQL");
+                throw PersistenceError("Erro ao executar SQL: " + this->SQLquery.str());
     }
 
 public:
