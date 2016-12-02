@@ -21,34 +21,34 @@
  */
 class IBus {
 public:
-    virtual string regPM(Registration *reg, ProjectManager *projManager);
-    virtual string delPM(Registration *reg, ProjectManager *projManager);
+    virtual string regPM(Registration *reg, ProjectManager *projManager) = 0;
+    virtual string delPM(Registration *reg, ProjectManager *projManager) = 0;
 
-    virtual string regP(Registration *reg, Project *proj);
-    virtual string delP(Registration *reg, Project *proj);
+    virtual string regP(Registration *reg, Project *proj) = 0;
+    virtual string delP(Registration *reg, Project *proj) = 0;
 
-    virtual string regD(Registration *reg, Developer *dev);
-    virtual string delD(Registration *reg, Developer *dev);
+    virtual string regD(Registration *reg, Developer *dev) = 0;
+    virtual string delD(Registration *reg, Developer *dev) = 0;
 
-    virtual string addDevToProject(Registration *reg, ProjectCode *projCode, Developer *dev);
-    virtual string delDevFromProject(Registration *reg, ProjectCode *projCode, Developer *dev);
+    virtual string addDevToProject(Registration *reg, ProjectCode *projCode, Developer *dev) = 0;
+    virtual string delDevFromProject(Registration *reg, ProjectCode *projCode, Developer *dev) = 0;
 
-    virtual string editPersonalInfo(Registration *reg, Name *name);
-    virtual string editPersonalInfo(Registration *reg, Password *pass);
-    virtual string editPersonalInfo(Registration *reg, Phone *phone);
-    virtual string editPersonalInfo(Registration *reg, Email *email);
-    virtual string editPersonalInfo(Registration *reg, Role *role);
+    virtual string editPersonalInfo(Registration *reg, Name *name) = 0;
+    virtual string editPersonalInfo(Registration *reg, Password *pass) = 0;
+    virtual string editPersonalInfo(Registration *reg, Phone *phone) = 0;
+    virtual string editPersonalInfo(Registration *reg, Email *email) = 0;
+    virtual string editPersonalInfo(Registration *reg, Role *role) = 0;
 
-    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Name *name);
-    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Date *date, string init_end_date);
-    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *projCost, string curr_estimate_cost);
-    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Developer *dev, Registration *oldDev);
-    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, ProjectManager *projManager, Registration *oldProjManager);
-    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode,  ProjectState *state);
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Name *name) = 0;
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Date *date, string init_end_date) = 0;
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Cost *projCost, string curr_estimate_cost) = 0;
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, Developer *dev, Registration *oldDev) = 0;
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode, ProjectManager *projManager, Registration *oldProjManager) = 0;
+    virtual string editProjectInfo(Registration *reg, ProjectCode *projCode,  ProjectState *state) = 0;
 
-    virtual map<string, string> showPersonalInfo(Registration *reqReg, Registration *viewReg);;
+    virtual map<string, string> showPersonalInfo(Registration *reqReg, Registration *viewReg) = 0;
 
-    virtual map<string, string> showProjectInfo(ProjectCode *projCode);
+    virtual map<string, string> showProjectInfo(ProjectCode *projCode) = 0;
 };
 
 #endif // IBUS_HPP_INCLUDED

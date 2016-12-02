@@ -445,7 +445,7 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode, Projec
             if(newProj->getProjectManager()->getRegistration() == reg->getRegistration())
             {
                 getUser(*oldProjManagerReg, oldProjManager);
-                delFromProj(*projCode, oldProjManager);
+                delFromProj(*projCode);
                 addToProject(*projCode, *projManager);
             }
             else return "ERRO: O Gerente de Projeto só pode alterar projetos que ele gerencia.";
@@ -497,13 +497,14 @@ string StubBus::editProjectInfo(Registration *reg, ProjectCode *projCode,  Proje
 }
 
 map<string, string> StubBus::showPersonalInfo(Registration *reqReg, Registration *viewReg){
+    map<string, string> info;
+
     try{
         CheckType checkType;
         GetUser getUser;
         Developer dev;
         ProjectManager projManager;
         SysManager sysManager;
-        map<string, string> info;
 
         if(checkType(*viewReg) == CheckType::SYS)
         {
@@ -518,7 +519,7 @@ map<string, string> StubBus::showPersonalInfo(Registration *reqReg, Registration
             info["reg"]=projManager.getRegistration();
             info["phone"]=projManager.getPhone();
         }
-        else if(checkType(*reg) == CheckType::DEV)
+        else if(checkType(*viewReg) == CheckType::DEV)
         {
             getUser(*viewReg, dev);
             info["name"]=dev.getName();
@@ -526,7 +527,11 @@ map<string, string> StubBus::showPersonalInfo(Registration *reqReg, Registration
             info["email"]=dev.getEmail();
             info["role"]=dev.getRole();
         }
-        else return "ERRO: Tipo de entidade incorreta.";
+        else
+        {
+            info["error"] = "ERRO: Tipo de entidade incorreta.";
+            return info;
+        }
 
         if(reqReg->getRegistration() == viewReg->getRegistration())
         {
@@ -534,25 +539,28 @@ map<string, string> StubBus::showPersonalInfo(Registration *reqReg, Registration
                     info["pass"]=sysManager.getPassword();
                 if(checkType(*viewReg) == CheckType::PRJ)
                     info["pass"]=projManager.getPassword();
-                if(checkType(*reg) == CheckType::DEV)
+                if(checkType(*viewReg) == CheckType::DEV)
                     info["pass"]=dev.getPassword();
         }
     }
     catch (PersistenceError per_err) {
-        return info["error"] = per_err.what();
+        info["error"] = per_err.what();
+        return info;
     }
     catch (exception& domain_err) {
-        return info["error"] = domain_err.what();
+        info["error"] = domain_err.what();
+        return info;
     }
 
     return info;
 }
 
 map<string, string> StubBus::showProjectInfo(ProjectCode *projCode){
+    map<string, string> info;
+
     try{
         Project *proj;
         GetProject getProj;
-        map<string, string> info;
         vector<Developer> allDevs;
         stringstream dev;
         string devs;
@@ -565,8 +573,8 @@ map<string, string> StubBus::showProjectInfo(ProjectCode *projCode){
         info["currentcost"]=proj->getCurrCost();
         info["estimatecost"]=proj->getEstimateCost();
 
-        allDevs = projCode->getAllDevelopers();
-        for(auto i : allDevs)
+        allDevs = proj->getAllDevelopers();
+        for(auto i : allDevs){
             dev << i.getRegistration() << " ";
         }
         devs = dev.str();
@@ -577,10 +585,12 @@ map<string, string> StubBus::showProjectInfo(ProjectCode *projCode){
 
     }
     catch (PersistenceError per_err) {
-        return info["error"] = per_err.what();
+        info["error"] = per_err.what();
+        return info;
     }
     catch (exception& domain_err) {
-        return info["error"] = domain_err.what();
+        info["error"] = domain_err.what();
+        return info;
     }
 
     return info;
@@ -602,7 +612,7 @@ string StubBus::addDevToProject(Registration *reg, ProjectCode *projCode, Develo
             if(projsCode.size() < 10)
             {
                 if(checkType(*reg) == CheckType::PRJ)
-                    AddToProject(*projCode, *dev);
+                    addProjMan(*projCode, *dev);
                 else return "ERRO: Somente Gerenciador de Sistema pode associar Gerente de Projeto a algum projeto.";
             }
             else return "ERRO: Desenvolver já está vinculado a 10 projetos, não é possível adicioná-lo a mais um projeto.";
@@ -625,7 +635,7 @@ string StubBus::delDevFromProject(Registration *reg, ProjectCode *projCode, Deve
         list<ProjectCode> projsCode;
         Registration regDev;
         GetProject proj;
-        Project tempProj;
+        Project *tempProj;
 
         regDev.setRegistration(dev->getRegistration());
         projsCode = projsFromDev(regDev);
@@ -633,14 +643,14 @@ string StubBus::delDevFromProject(Registration *reg, ProjectCode *projCode, Deve
         for(auto i : projsCode)
         {
             tempProj = proj(i);
-            if(tempProj.getState() == ACTIVE)
+            if(tempProj->getState() == ACTIVE)
                 return "ERRO: Existe projeto ativo vinculado ao desenvolvedor, logo, não é possível descartá-lo do sistema.";
         }
 
         if(qtDev(*projCode) > 0)
         {
             if(checkType(*reg) == CheckType::PRJ)
-                delFromProj(*projCode, *dev);
+                delFromProj(*projCode);
             else return "ERRO: Somente Gerenciador de Sistema pode associar Gerente de Projeto a algum projeto.";
         }
         else return "ERRO: Não existe nenhum desenvolvedor a ser removido do projeto.";
