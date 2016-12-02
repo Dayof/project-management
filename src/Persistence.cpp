@@ -53,7 +53,7 @@ void EditProject::operator()(Project& p) throw (PersistenceError)
                     << " name='" << p.getName() << "',"
                     << " manager='" << p.getProjectManager()->getRegistration() << "',"
                     << " initDate='" << p.getInitDate() << "',"
-                    << " state='" << p.getState() << "',"
+                    << " state=" << p.getState() << ","
                     << " endDate='" << p.getEndDate() << "',"
                     << " currCost='" << p.getCurrCost() << "',"
                     << " estCost='" << p.getEstimateCost() << "',"
@@ -66,14 +66,14 @@ void AddProject::operator()(Project& p) throw (PersistenceError)
 {
     this->SQLquery  << " insert into Project values"
                     << " ("
-                    << p.getName()      <<","
-                    << p.getProjectManager()->getRegistration()   <<","
-                    << p.getInitDate()  <<","
-                    << p.getState()     <<","
-                    << p.getEndDate()   <<","
-                    << p.getCurrCost()  <<","
-                    << p.getEstimateCost() << ","
-                    << p.getCode()  << ")";
+                    << "'" << p.getName() <<"',"
+                    << "'" << p.getProjectManager()->getRegistration() <<"',"
+                    << "'" << p.getInitDate() <<"',"
+                    << p.getState() <<","
+                    << "'" << p.getEndDate() <<"',"
+                    << "'" << p.getCurrCost() <<"',"
+                    << "'" << p.getEstimateCost() << "',"
+                    << "'" << p.getCode()  << "')";
 
     this->run();
 }
@@ -88,7 +88,7 @@ void DeleteProject::operator()(ProjectCode& p) throw (PersistenceError)
 void AddToProject::operator()(ProjectCode& p, Developer& d) throw (PersistenceError)
 {
     this->SQLquery  << "insert into Jobs values ("
-                    << "'" << d.getName() << "',"
+                    << "'" << d.getRegistration() << "',"
                     << "'" << p.getCodProject() << "')";
 
     this->run();
@@ -106,7 +106,7 @@ void AddToProject::operator()(ProjectCode& p, ProjectManager& m) throw (Persiste
 void RemoveFromProject::operator()(ProjectCode& p, Developer& d) throw (PersistenceError)
 {
     this->SQLquery << "remove from Jobs where "
-                    << "dev='" << d.getName() << ", "
+                    << "dev='" << d.getRegistration() << ", "
                     << "project='" << p.getCodProject() << "'";
 
     this->run();
@@ -175,7 +175,7 @@ void EditUser::operator()(Developer& d) throw (PersistenceError)
     this->SQLquery  << "update Developer set "
                     << "name='" << d.getName() << "',"
                     << "password='" << d.getPassword() << "',"
-                    << "role='" << d.getRole() << "',"
+                    << "role=" << d.getRole() << ","
                     << "email='" << d.getEmail() << "'"
                     << "where registration='" << d.getRegistration() << "'";
 
@@ -187,7 +187,7 @@ void EditUser::operator()(ProjectManager& p) throw (PersistenceError)
     this->SQLquery  << "update ProjectManager set "
                     << "name='" << p.getName() << "',"
                     << "password='" << p.getPassword() << "',"
-                    << "email='" << p.getPhone() << "'"
+                    << "phone='" << p.getPhone() << "'"
                     << "where registration='" << p.getRegistration() << "'";
 
     this->run();
@@ -231,7 +231,7 @@ void CreateUser::operator()(Developer& p) throw (PersistenceError)
                     << "'" << p.getName() << "',"
                     << "'" << p.getRegistration() << "',"
                     << "'" << p.getPassword() << "',"
-                    << "'" << p.getRole() << "',"
+                    << p.getRole() << ","
                     << "'" << p.getEmail() << "'";
 
     this->run();
