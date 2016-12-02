@@ -45,7 +45,7 @@ Project* GetProject::operator()(ProjectCode& pc) throw (PersistenceError, except
     if(resultSet.empty())
         throw PersistenceError("O projeto não existe.");
 
-    getUser(r, *pm);
+    getUser(r, pm);
 
     try{
         p = new Project(
@@ -160,7 +160,7 @@ int CountDevelopers::operator()(ProjectCode& p) throw (PersistenceError)
     return stoi(resultSet["count(*)"]);
 }
 
-void GetUser::operator()(Registration& r, Developer& d) throw (PersistenceError)
+void GetUser::operator()(Registration& r, Developer* d) throw (PersistenceError)
 {
     this->SQLquery << "select * from Developer where registration='" << r.getRegistration() << "'";
 
@@ -169,17 +169,17 @@ void GetUser::operator()(Registration& r, Developer& d) throw (PersistenceError)
     if(resultSet.empty())
         throw PersistenceError("O desenvolvedor não existe");
 
-    d = Developer(
+    d = new Developer(
         resultSet["name"],
         resultSet["registration"],
         resultSet["password"],
         stoi(resultSet["role"])
     );
 
-    d.setEmail(resultSet["email"]);
+    d->setEmail(resultSet["email"]);
 }
 
-void GetUser::operator()(Registration& r, ProjectManager& d) throw (PersistenceError)
+void GetUser::operator()(Registration& r, ProjectManager* d) throw (PersistenceError)
 {
     this->SQLquery << "select * from ProjectManager where registration='" << r.getRegistration() << "'";
 
@@ -188,16 +188,16 @@ void GetUser::operator()(Registration& r, ProjectManager& d) throw (PersistenceE
     if(resultSet.empty())
         throw PersistenceError("O gerente não existe");
 
-    d = ProjectManager(
+    d = new ProjectManager(
         resultSet["name"],
         resultSet["registration"],
         resultSet["password"]
     );
 
-    d.setPhone(resultSet["phone"]);
+    d->setPhone(resultSet["phone"]);
 }
 
-void GetUser::operator()(Registration& r, SysManager& d) throw (PersistenceError)
+void GetUser::operator()(Registration& r, SysManager* d) throw (PersistenceError)
 {
     this->SQLquery << "select * from SysManager where registration='" << r.getRegistration() << "'";
 
@@ -206,38 +206,39 @@ void GetUser::operator()(Registration& r, SysManager& d) throw (PersistenceError
     if(resultSet.empty())
         throw PersistenceError("O gerente não existe");
 
-    d = SysManager(
+    d = new SysManager(
         resultSet["name"],
         resultSet["registration"],
         resultSet["password"]
     );
 }
 
-void EditUser::operator()(Developer& d) throw (PersistenceError)
+void EditUser::operator()(Developer* d) throw (PersistenceError)
 {
     this->SQLquery  << "update Developer set "
-                    << "name='" << d.getName() << "',"
-                    << "password='" << d.getPassword() << "',"
-                    << "role=" << d.getRole() << ","
-                    << "email='" << d.getEmail() << "'"
-                    << "where registration='" << d.getRegistration() << "'";
+                    << "name='" << d->getName() << "',"
+                    << "password='" << d->getPassword() << "',"
+                    << "role=" << d->getRole() << ","
+                    << "email='" << d->getEmail() << "'"
+                    << "where registration='" << d->getRegistration() << "'";
 
     this->run();
 }
 
-void EditUser::operator()(ProjectManager& p) throw (PersistenceError)
+void EditUser::operator()(ProjectManager* p) throw (PersistenceError)
 {
     this->SQLquery  << "update ProjectManager set "
-                    << "name='" << p.getName() << "',"
-                    << "password='" << p.getPassword() << "',"
-                    << "phone='" << p.getPhone() << "'"
-                    << "where registration='" << p.getRegistration() << "'";
+                    << "name='" << p->getName() << "',"
+                    << "password='" << p->getPassword() << "',"
+                    << "phone='" << p->getPhone() << "'"
+                    << "where registration='" << p->getRegistration() << "'";
 
     this->run();
 }
 
 CheckType::TYPE CheckType::operator()(Registration& r) throw (PersistenceError)
 {
+    this->SQLquery.str(string());
     this->SQLquery  << "select type from RegType where registration='" << r.getRegistration() << "'";
 
     this->run();

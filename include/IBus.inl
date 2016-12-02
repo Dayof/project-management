@@ -2,7 +2,6 @@
  *  @brief Interface abstrata da camada de negócio.
  *
  *  @author Dayanne Fernandes
- *  @bug Sem bug conhecido.
  */
 
 #ifndef IBUS_HPP_INCLUDED
@@ -16,7 +15,7 @@
 class IBusLogin
 {
 public:
-    virtual void autenticar() = 0;
+    virtual map<string, string> autenticar(string reg) = 0;
 };
 
 class IBusShared
@@ -63,6 +62,5 @@ public:
 
     virtual map<string, string> showProjectInfo(ProjectCode *projCode) = 0;
 };
-
 
 #endif // IBUS_HPP_INCLUDED

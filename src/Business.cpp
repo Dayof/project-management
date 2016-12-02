@@ -11,6 +11,39 @@
 
 #include "Business.hpp"
 
+map<string, string> BusLogin::autenticar(string reg)
+{
+    map<string, string> info;
+
+    GetUser getUser;
+    SysManager *sysMangager;
+    Developer *dev;
+    ProjectManager *projMan;
+
+    Registration *regUser = new Registration(reg);
+
+    CheckType checkType;
+
+    if(checkType( *regUser) == CheckType::SYS){
+        info["type"] = "SysManager";
+        getUser( *regUser, sysMangager);
+    }
+    else if(checkType( *regUser) == CheckType::PRJ){
+        info["type"] = "ManageProject";
+        getUser( *regUser, projMan);
+    }
+    else if(checkType( *regUser) == CheckType::DEV){
+        info["type"] = "Developer";
+        getUser( *regUser, dev);
+    }
+    else
+    {
+        throw invalid_argument("ERRO: Entidade incorreta.");
+    }
+    
+    return info;
+}
+
 string BusManageManager::regPM(Registration *reg, ProjectManager *projManager){
     try{
         CheckType checkType;
@@ -64,7 +97,7 @@ string BusManageProject::regP(Registration *reg, Project *proj){
     try{
         CheckType checkType;
         AddProject addProj;
-        ProjectManager projManager;
+        ProjectManager *projManager;
         GetUser getUser;
         ProjectsFrom projsFromProjManager;
         list<ProjectCode> projsCode;
@@ -75,7 +108,7 @@ string BusManageProject::regP(Registration *reg, Project *proj){
             if(projsCode.size() < 5)
             {
                 getUser(*reg, projManager);
-                proj->setProjectManager(&projManager);
+                proj->setProjectManager(projManager);
                 addProj(*proj);
             }
             else return "ERRO: Gerenciador de Projeto já gerencia 5 projetos, não é possível adicionar mais um projeto para este gerente auxiliar.";
@@ -149,19 +182,19 @@ string BusShared::editPersonalInfo(Registration *reg, Name *name){
         EditUser editUser;
         GetUser getUser;
 
-        ProjectManager newProjManager;
-        Developer newDev;
+        ProjectManager *newProjManager;
+        Developer *newDev;
 
         if(checkType(*reg) == CheckType::PRJ)
         {
             getUser(*reg, newProjManager);
-            newProjManager.setName(name->getName());
+            newProjManager->setName(name->getName());
             editUser(newProjManager);
         }
         else if(checkType(*reg) == CheckType::DEV)
         {
             getUser(*reg, newDev);
-            newDev.setName(name->getName());
+            newDev->setName(name->getName());
             editUser(newDev);
         }
         else return "ERRO: Somente Gerenciador de Projeto ou Desenvolvedor pode editar informações pessoais.";
@@ -182,19 +215,19 @@ string BusShared::editPersonalInfo(Registration *reg, Password *pass){
         EditUser editUser;
         GetUser getUser;
 
-        ProjectManager newProjManager;
-        Developer newDev;
+        ProjectManager *newProjManager;
+        Developer *newDev;
 
         if(checkType(*reg) == CheckType::PRJ)
         {
             getUser(*reg, newProjManager);
-            newProjManager.setPassword(pass->getPassword());
+            newProjManager->setPassword(pass->getPassword());
             editUser(newProjManager);
         }
         else if(checkType(*reg) == CheckType::DEV)
         {
             getUser(*reg, newDev);
-            newDev.setPassword(pass->getPassword());
+            newDev->setPassword(pass->getPassword());
             editUser(newDev);
         }
         else return "ERRO: Somente Gerenciador de Projeto ou Desenvolvedor pode editar informações pessoais.";
@@ -215,12 +248,12 @@ string BusShared::editPersonalInfo(Registration *reg, Phone *phone){
         EditUser editUser;
         GetUser getUser;
 
-        ProjectManager newProjManager;
+        ProjectManager *newProjManager;
 
         if(checkType(*reg) == CheckType::PRJ)
         {
             getUser(*reg, newProjManager);
-            newProjManager.setPhone(phone->getPhone());
+            newProjManager->setPhone(phone->getPhone());
             editUser(newProjManager);
         }
         else return "ERRO: Somente Gerenciador de Projeto pode editar telefone pessoal.";
@@ -241,12 +274,12 @@ string BusShared::editPersonalInfo(Registration *reg, Email *email){
         EditUser editUser;
         GetUser getUser;
 
-        Developer newDev;
+        Developer *newDev;
 
         if(checkType(*reg) == CheckType::DEV)
         {
             getUser(*reg, newDev);
-            newDev.setEmail(email->getEmail());
+            newDev->setEmail(email->getEmail());
             editUser(newDev);
         }
         else return "ERRO: Somente Desenvolvedor pode editar e-mail pessoal.";
@@ -266,12 +299,12 @@ string BusShared::editPersonalInfo(Registration *reg, Role *role){
         CheckType checkType;
         EditUser editUser;
         GetUser getUser;
-        Developer newDev;
+        Developer *newDev;
 
         if(checkType(*reg) == CheckType::DEV)
         {
             getUser(*reg, newDev);
-            newDev.setRole(role->getRole());
+            newDev->setRole(role->getRole());
             editUser(newDev);
         }
         else return "ERRO: Somente Desenvolvedor pode editar função própria.";
@@ -400,7 +433,7 @@ string BusManageProject::editProjectInfo(Registration *reg, ProjectCode *projCod
         RemoveFromProject delFromProj;
         ProjectCode oldCode, newCode;
         GetUser getUser;
-        Developer oldDev;
+        Developer *oldDev;
 
         if(checkType(*reg) == CheckType::PRJ)
         {
@@ -409,7 +442,7 @@ string BusManageProject::editProjectInfo(Registration *reg, ProjectCode *projCod
             if(newProj->getProjectManager()->getRegistration() == reg->getRegistration())
             {
                 getUser(*oldDevReg, oldDev);
-                delFromProj(*projCode, oldDev);
+                delFromProj(*projCode, *oldDev);
                 addToProject(*projCode, *dev);
             }
             else return "ERRO: O Gerente de Projeto só pode alterar projetos que ele gerencia.";
@@ -436,7 +469,6 @@ string BusManageProject::editProjectInfo(Registration *reg, ProjectCode *projCod
         AddToProject addToProject;
         RemoveFromProject delFromProj;
         GetUser getUser;
-        ProjectManager oldProjManager;
 
         if(checkType(*reg) == CheckType::PRJ)
         {
@@ -444,7 +476,6 @@ string BusManageProject::editProjectInfo(Registration *reg, ProjectCode *projCod
 
             if(newProj->getProjectManager()->getRegistration() == reg->getRegistration())
             {
-                getUser(*oldProjManagerReg, oldProjManager);
                 delFromProj(*projCode);
                 addToProject(*projCode, *projManager);
             }
@@ -502,30 +533,30 @@ map<string, string> BusShared::showPersonalInfo(Registration *reqReg, Registrati
     try{
         CheckType checkType;
         GetUser getUser;
-        Developer dev;
-        ProjectManager projManager;
-        SysManager sysManager;
+        Developer *dev;
+        ProjectManager *projManager;
+        SysManager *sysManager;
 
         if(checkType(*viewReg) == CheckType::SYS)
         {
             getUser(*viewReg, sysManager);
-            info["name"]=sysManager.getName();
-            info["reg"]=sysManager.getRegistration();
+            info["name"]=sysManager->getName();
+            info["reg"]=sysManager->getRegistration();
         }
         else if(checkType(*viewReg) == CheckType::PRJ)
         {
             getUser(*viewReg, projManager);
-            info["name"]=projManager.getName();
-            info["reg"]=projManager.getRegistration();
-            info["phone"]=projManager.getPhone();
+            info["name"]=projManager->getName();
+            info["reg"]=projManager->getRegistration();
+            info["phone"]=projManager->getPhone();
         }
         else if(checkType(*viewReg) == CheckType::DEV)
         {
             getUser(*viewReg, dev);
-            info["name"]=dev.getName();
-            info["reg"]=dev.getRegistration();
-            info["email"]=dev.getEmail();
-            info["role"]=dev.getRole();
+            info["name"]=dev->getName();
+            info["reg"]=dev->getRegistration();
+            info["email"]=dev->getEmail();
+            info["role"]=dev->getRole();
         }
         else
         {
@@ -536,11 +567,11 @@ map<string, string> BusShared::showPersonalInfo(Registration *reqReg, Registrati
         if(reqReg->getRegistration() == viewReg->getRegistration())
         {
                 if(checkType(*viewReg) == CheckType::SYS)
-                    info["pass"]=sysManager.getPassword();
+                    info["pass"]=sysManager->getPassword();
                 if(checkType(*viewReg) == CheckType::PRJ)
-                    info["pass"]=projManager.getPassword();
+                    info["pass"]=projManager->getPassword();
                 if(checkType(*viewReg) == CheckType::DEV)
-                    info["pass"]=dev.getPassword();
+                    info["pass"]=dev->getPassword();
         }
     }
     catch (PersistenceError per_err) {

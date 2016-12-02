@@ -25,6 +25,9 @@
 #include <map>
 #include <sstream>
 #include <cstdio>
+#include <cstdlib>
+
+using namespace std;
 
 /* -- Definições -- */
 
@@ -42,7 +45,5 @@
 #define ANALIST 1
 #define SOFTWARE_DESIGNER 2
 #define PROGRAMMER 3
-
-using namespace std;
 
 #endif // HEADERS_HPP_INCLUDED

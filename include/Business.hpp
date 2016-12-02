@@ -15,7 +15,7 @@
 class BusLogin : public IBusLogin
 {
 public:
-    void autenticar();
+    map<string, string> autenticar(string reg);
 };
 
 class BusShared : public IBusShared
