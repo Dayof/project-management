@@ -35,7 +35,7 @@ private:
     int returnCode;
 
 protected:
-    static map<string> returnMap;
+    static map<string, string> returnMap;
     stringstream SQLquery;
 
     void connect() throw (PersistenceError)
