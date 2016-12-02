@@ -7,16 +7,6 @@
 
 using namespace std;
 
-struct Result
-{
-    map<string, string> set;
-    vector<string> list;
-    int digest(void* X, int argc, char** argv, char** colName);
-    int filter(void* X, int argc, char** argv, char** colName);
-
-    int (forwarder)(void* X, int argc, char** argv, char** colName);
-};
-
 /** Classe de exceção para erro de persistência */
 class PersistenceError
 {

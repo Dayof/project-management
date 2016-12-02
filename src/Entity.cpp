@@ -168,8 +168,8 @@ Project::Project(string name,
                 ProjectManager* projectManager,
                 string init_date,
                 int state,
-                string currCost="0.00",
-                string estimateCost="1.00")
+                string currCost,
+                string estimateCost)
 {
     setName(name);
     setCode(code);

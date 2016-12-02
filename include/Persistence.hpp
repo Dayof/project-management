@@ -60,7 +60,7 @@ class RemoveFromProject : public IPersistence
 {
 public:
     void operator()(ProjectCode&, Developer&) throw (PersistenceError);
-    void operator()(ProjectCode&, ProjectManager&) throw (PersistenceError);
+    void operator()(ProjectCode&) throw (PersistenceError);
 };
 
 class CountDevelopers : public IPersistence

@@ -1,5 +1,8 @@
 #include "Persistence.hpp"
 
+map<string, string> IPersistence::resultSet;
+vector<string> IPersistence::resultList;
+
 PersistenceError::PersistenceError()
 {
     this->message = "Erro desconhecido no banco de dados.";
@@ -112,13 +115,13 @@ void RemoveFromProject::operator()(ProjectCode& p, Developer& d) throw (Persiste
     this->run();
 }
 
-void RemoveFromProject::operator()(ProjectCode& p, ProjectManager p) throw (PersistenceError)
+void RemoveFromProject::operator()(ProjectCode& p) throw (PersistenceError)
 {
     this->SQLquery  << "update Projects set "
                     << "manager=NULL "
                     << "where code='" << p.getCodProject() << "''";
 
-    this->run();            
+    this->run();
 }
 
 int CountDevelopers::operator()(ProjectCode& p) throw (PersistenceError)
