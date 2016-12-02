@@ -29,8 +29,7 @@ private:
     Password *password;
 public:
   SysManager(string name, string registration, string password);
-  SysManager(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome,"
-    " matricula e senha do gerente de sistema.");};
+  SysManager(){throw invalid_argument("ERRO: ENTRADA INCOMPLETA. Passe nome, matricula e senha do gerente de sistema.");};
 
   void setName(string name);
   string getName() const {return this->name->getName();};
